@@ -67,6 +67,7 @@ function App() {
     <AuthProvider>
       <AppContent />
     </AuthProvider>
+    // boldi
   );
 }
 
