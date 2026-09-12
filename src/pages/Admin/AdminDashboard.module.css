@@ -1,0 +1,97 @@
+.banner {
+  background: linear-gradient(120deg, #1A1F36, #2F6FED);
+  border-radius: 20px;
+  padding: 26px 28px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.banner h2 {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+}
+
+.banner p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.92rem;
+}
+
+.statsRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .mainGrid { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.cardHeader h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.cardHeader a {
+  font-size: 0.85rem;
+  color: #2F6FED;
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #F3F5F9;
+}
+
+.row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rowTitle {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 3px;
+}
+
+.rowMeta {
+  font-size: 0.8rem;
+  color: #8A94A6;
+  margin: 0;
+}
+
+.rowDate {
+  font-size: 0.8rem;
+  color: #8A94A6;
+}
+
+.badge {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+}

@@ -1,0 +1,31 @@
+.wrap {
+  background: #fff;
+  border: 1px dashed #EDEFF3;
+  border-radius: 18px;
+  padding: 64px 24px;
+  text-align: center;
+  color: #8A94A6;
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.wrap h3 {
+  color: #1A1F36;
+  font-size: 1.05rem;
+  margin: 0 0 6px;
+}
+
+.wrap p {
+  font-size: 0.88rem;
+  margin: 0;
+}

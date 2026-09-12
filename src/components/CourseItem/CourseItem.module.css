@@ -1,0 +1,76 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #F0F1F5;
+}
+
+.item:last-child { border-bottom: none; }
+
+.iconWrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.blue { background: #EAF2FF; color: #2F6FED; }
+.green { background: #E4F8EE; color: #22B573; }
+.orange { background: #FEF3E3; color: #F5A623; }
+
+.info { flex: 1; min-width: 0; }
+
+.title {
+  font-weight: 600;
+  color: #1A1F36;
+  margin: 0 0 3px;
+  font-size: 0.95rem;
+}
+
+.tags {
+  font-size: 0.8rem;
+  color: #8A94A6;
+  margin: 0 0 3px;
+}
+
+.teacher {
+  font-size: 0.78rem;
+  color: #B7BECB;
+  margin: 0;
+}
+
+.progressWrap {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.percent {
+  display: block;
+  text-align: right;
+  font-weight: 700;
+  color: #1A1F36;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.track {
+  height: 6px;
+  background: #EDEFF3;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.fill.blue { background: #2F6FED; }
+.fill.green { background: #22B573; }
+.fill.orange { background: #F5A623; }

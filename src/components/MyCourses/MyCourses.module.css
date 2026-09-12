@@ -1,0 +1,26 @@
+.card {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.header h3 {
+  font-size: 1.05rem;
+  color: #1A1F36;
+  margin: 0;
+}
+
+.viewAll {
+  font-size: 0.85rem;
+  color: #2F6FED;
+  text-decoration: none;
+  font-weight: 500;
+}

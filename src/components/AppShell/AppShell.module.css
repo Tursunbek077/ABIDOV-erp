@@ -1,0 +1,14 @@
+.page {
+  flex: 1;
+  margin-left: 260px;
+  padding: 28px 32px;
+  background: #F8F9FB;
+  min-height: 100vh;
+}
+
+@media (max-width: 860px) {
+  .page {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

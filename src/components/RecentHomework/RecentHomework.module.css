@@ -1,0 +1,51 @@
+.card {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.header h3 {
+  font-size: 1.05rem;
+  color: #1A1F36;
+  margin: 0;
+}
+
+.viewAll {
+  font-size: 0.85rem;
+  color: #2F6FED;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 600;
+  color: #1A1F36;
+  margin: 0 0 3px;
+  font-size: 0.9rem;
+}
+
+.status {
+  font-size: 0.8rem;
+  margin: 0;
+  font-weight: 500;
+}

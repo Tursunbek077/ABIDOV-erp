@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #1A1F36;
+}
+
+a {
+  text-decoration: none;
+}
+html {
+  font-size: 18px; /* standart 16px o'rniga */
+}

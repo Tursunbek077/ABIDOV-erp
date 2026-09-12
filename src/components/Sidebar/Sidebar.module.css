@@ -1,0 +1,81 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  background: #ffffff;
+  border-right: 1px solid #EDEFF3;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1A1F36;
+  padding: 0 8px 28px;
+}
+
+.roleTag {
+  display: inline-block;
+  align-self: flex-start;
+  background: #EAF2FF;
+  color: #2F6FED;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin: 0 8px 20px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #5B6478;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navItem:hover {
+  background: #F3F5F9;
+}
+
+.active {
+  background: #EAF2FF;
+  color: #2F6FED;
+}
+
+.bottomNav {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #EDEFF3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (max-width: 860px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+}

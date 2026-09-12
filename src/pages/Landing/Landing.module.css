@@ -1,0 +1,413 @@
+.page {
+  background: #fff;
+  color: #1A1F36;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #EDEFF3;
+}
+
+.headerInner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1A1F36;
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav a {
+  color: #5B6478;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: #2F6FED;
+}
+
+.headerActions {
+  display: flex;
+  gap: 10px;
+}
+
+.loginBtn {
+  background: none;
+  border: none;
+  color: #1A1F36;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.loginBtn:hover {
+  background: #F3F5F9;
+}
+
+.signupBtn {
+  background: #2F6FED;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.signupBtn:hover {
+  background: #2359C9;
+}
+
+/* Hero */
+.hero {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 72px 24px 56px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.heroText {
+  flex: 1.1;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: #EAF2FF;
+  color: #2F6FED;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+
+.heroText h1 {
+  font-size: 2.6rem;
+  line-height: 1.15;
+  margin: 0 0 18px;
+}
+
+.heroText h1 span {
+  color: #2F6FED;
+}
+
+.heroText p {
+  color: #5B6478;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin: 0 0 32px;
+  max-width: 480px;
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2F6FED;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.primaryBtn:hover {
+  background: #2359C9;
+}
+
+.secondaryBtn {
+  background: #fff;
+  color: #1A1F36;
+  border: 1px solid #EDEFF3;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.secondaryBtn:hover {
+  background: #F3F5F9;
+}
+
+.heroVisual {
+  flex: 0.9;
+  display: flex;
+  justify-content: center;
+}
+
+.heroCard {
+  width: 280px;
+  height: 280px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, #2F6FED, #7C6FF0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 24px 48px -12px rgba(47, 111, 237, 0.35);
+}
+
+/* Stats bar */
+.statsBar {
+  background: #F8F9FC;
+  border-top: 1px solid #EDEFF3;
+  border-bottom: 1px solid #EDEFF3;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  padding: 32px 24px;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #2F6FED;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: #8A94A6;
+  margin-top: 4px;
+}
+
+/* Sections */
+.section {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 72px 24px 24px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 1.9rem;
+  margin: 0 0 10px;
+}
+
+.sectionSub {
+  color: #5B6478;
+  margin: 0 0 40px;
+}
+
+.coursesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+
+.courseCard {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 18px;
+  padding: 26px;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.courseCard:hover {
+  box-shadow: 0 12px 24px -8px rgba(26, 31, 54, 0.12);
+  transform: translateY(-2px);
+}
+
+.courseIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.blue { background: #EAF2FF; color: #2F6FED; }
+.green { background: #E4F8EE; color: #22B573; }
+.orange { background: #FEF3E3; color: #F5A623; }
+
+.courseCard h3 {
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+}
+
+.courseCard p {
+  color: #5B6478;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Features */
+.featuresSection {
+  background: #F8F9FC;
+  padding: 72px 24px;
+}
+
+.featuresSection h2 {
+  text-align: center;
+  font-size: 1.9rem;
+  margin: 0 0 40px;
+}
+
+.featuresGrid {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.featureItem {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.featureIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureItem h4 {
+  font-size: 0.95rem;
+  margin: 0 0 4px;
+}
+
+.featureItem p {
+  font-size: 0.85rem;
+  color: #8A94A6;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* CTA banner */
+.ctaBanner {
+  max-width: 1160px;
+  margin: 56px auto;
+  background: linear-gradient(120deg, #2F6FED, #7C6FF0);
+  border-radius: 24px;
+  padding: 44px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: #fff;
+}
+
+.ctaBanner h2 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+}
+
+.ctaBanner p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.ctaBanner .primaryBtn {
+  background: #fff;
+  color: #2F6FED;
+  flex-shrink: 0;
+}
+
+.ctaBanner .primaryBtn:hover {
+  background: #F0F3FF;
+}
+
+/* Footer */
+.footer {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 48px 24px 24px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 32px;
+  border-top: 1px solid #EDEFF3;
+}
+
+.footerCol p {
+  color: #8A94A6;
+  font-size: 0.88rem;
+  margin: 12px 0 0;
+}
+
+.footerCol h4 {
+  font-size: 0.9rem;
+  margin: 0 0 14px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5B6478;
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+}
+
+.copyright {
+  text-align: center;
+  color: #8A94A6;
+  font-size: 0.8rem;
+  padding: 20px 24px 32px;
+}
+
+@media (max-width: 860px) {
+  .nav { display: none; }
+  .hero { flex-direction: column; padding-top: 40px; }
+  .heroText p { max-width: none; }
+  .coursesGrid { grid-template-columns: 1fr; }
+  .featuresGrid { grid-template-columns: 1fr 1fr; }
+  .statsBar { gap: 32px; }
+  .footer { grid-template-columns: 1fr; }
+  .ctaBanner { flex-direction: column; text-align: center; }
+}

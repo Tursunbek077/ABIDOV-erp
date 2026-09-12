@@ -1,0 +1,71 @@
+.card {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 14px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.header h3 {
+  font-size: 1.05rem;
+  color: #1A1F36;
+  margin: 0;
+}
+
+.viewAll {
+  font-size: 0.85rem;
+  color: #2F6FED;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F0F1F5;
+}
+
+.item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.time {
+  background: #EAF2FF;
+  color: #2F6FED;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.title {
+  font-weight: 600;
+  color: #1A1F36;
+  margin: 0 0 2px;
+  font-size: 0.9rem;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #8A94A6;
+  margin: 0 0 2px;
+}
+
+.room {
+  font-size: 0.75rem;
+  color: #B7BECB;
+  margin: 0;
+}
