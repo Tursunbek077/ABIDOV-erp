@@ -21,3 +21,4 @@ export const homeworks = [
   { id: 2, title: "CSS Flexbox Layout", status: "Due 18 Aug", statusType: "pending" },
   { id: 3, title: "JavaScript Array Methods", status: "Submitted", statusType: "done" },
 ];
+//salom
