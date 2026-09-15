@@ -8,7 +8,7 @@ function Placeholder({ title }) {
         <Construction size={26} />
       </div>
       <h3>{title}</h3>
-      {/* <p>Bu bo'lim hozircha ishlab chiqilmoqda. Tez orada tayyor bo'ladi.</p> */}
+      <p>Bu bo'lim hozircha ishlab chiqilmoqda. Tez orada tayyor bo'ladi.</p>
     </div>
   );
 }

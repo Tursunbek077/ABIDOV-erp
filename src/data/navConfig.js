@@ -21,7 +21,7 @@ export const navConfig = {
     { key: "courses", label: "Kurslar", icon: BookOpen },
     { key: "payments", label: "To'lovlar", icon: CreditCard },
     { key: "reports", label: "Hisobotlar", icon: BarChart3 },
-    // { key: "settings", label: "Sozlamalar", icon: Settings },
+    { key: "settings", label: "Sozlamalar", icon: Settings },
   ],
   teacher: [
     { key: "dashboard", label: "Dashboard", icon: Home },
@@ -30,7 +30,7 @@ export const navConfig = {
     { key: "attendance", label: "Davomat", icon: CheckCircle2 },
     { key: "grades", label: "Baholar", icon: Star },
     { key: "homework", label: "Uy vazifalari", icon: ClipboardList },
-    // { key: "settings", label: "Sozlamalar", icon: Settings },
+    { key: "settings", label: "Sozlamalar", icon: Settings },
   ],
   student: [
     { key: "dashboard", label: "Dashboard", icon: Home },
@@ -40,7 +40,7 @@ export const navConfig = {
     { key: "grades", label: "Baholar", icon: Star },
     { key: "homework", label: "Uy vazifalari", icon: FileText },
     { key: "payments", label: "To'lovlar", icon: CreditCard },
-    // { key: "settings", label: "Sozlamalar", icon: Settings },
+    { key: "settings", label: "Sozlamalar", icon: Settings },
   ],
 };
 
@@ -51,7 +51,7 @@ export const pageTitles = {
   courses: "Kurslar",
   payments: "To'lovlar",
   reports: "Hisobotlar",
-  // settings: "Sozlamalar",
+  settings: "Sozlamalar",
   classes: "Mening sinflarim",
   schedule: "Jadval",
   attendance: "Davomat",

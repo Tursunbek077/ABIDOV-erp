@@ -5,10 +5,15 @@ import UpcomingLessons from "../../components/UpcomingLessons/UpcomingLessons";
 import RecentHomework from "../../components/RecentHomework/RecentHomework";
 import ExamAnnouncement from "../../components/ExamAnnouncement/ExamAnnouncement";
 import Placeholder from "../../components/Placeholder/Placeholder";
+import Schedule from "../../components/Schedule/Schedule";
 import { pageTitles } from "../../data/navConfig";
 import styles from "./StudentDashboard.module.css";
 
 function StudentDashboard({ user, activePage }) {
+  if (activePage === "schedule") {
+    return <Schedule />;
+  }
+
   if (activePage !== "dashboard") {
     return <Placeholder title={pageTitles[activePage] || "Bo'lim"} />;
   }

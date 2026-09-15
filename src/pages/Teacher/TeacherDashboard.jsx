@@ -1,6 +1,7 @@
 import { Users, GraduationCap, Clock, FileText, ChevronRight } from "lucide-react";
 import StatCard from "../../components/StatCard/StatCard";
 import Placeholder from "../../components/Placeholder/Placeholder";
+import Schedule from "../../components/Schedule/Schedule";
 import { teacherStats, teacherClasses, teacherHomeworkQueue } from "../../data/staffData";
 import { pageTitles } from "../../data/navConfig";
 import styles from "./TeacherDashboard.module.css";
@@ -8,6 +9,10 @@ import styles from "./TeacherDashboard.module.css";
 const iconMap = { users: Users, graduation: GraduationCap, clock: Clock, file: FileText };
 
 function TeacherDashboard({ user, activePage }) {
+  if (activePage === "schedule") {
+    return <Schedule />;
+  }
+
   if (activePage !== "dashboard") {
     return <Placeholder title={pageTitles[activePage] || "Bo'lim"} />;
   }
