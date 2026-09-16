@@ -8,10 +8,15 @@ import Placeholder from "../../components/Placeholder/Placeholder";
 import Schedule from "../../components/Schedule/Schedule";
 import { pageTitles } from "../../data/navConfig";
 import styles from "./StudentDashboard.module.css";
+import CoursesPage from "../../components/CoursesPage/CoursesPage";
 
 function StudentDashboard({ user, activePage }) {
   if (activePage === "schedule") {
     return <Schedule />;
+  }
+
+  if (activePage === "courses") {
+    return <CoursesPage />;
   }
 
   if (activePage !== "dashboard") {

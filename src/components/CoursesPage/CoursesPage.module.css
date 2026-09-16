@@ -1,0 +1,72 @@
+.page {
+  padding: 4px 0 24px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.searchBox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 12px;
+  padding: 11px 16px;
+}
+
+.searchBox input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #1A1F36;
+  background: transparent;
+}
+
+.searchBox input::placeholder {
+  color: #B7BECB;
+}
+
+.filterBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 12px;
+  padding: 11px 16px;
+  min-width: 190px;
+}
+
+.filterBox select {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1A1F36;
+  cursor: pointer;
+  appearance: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.emptyState {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 14px;
+  padding: 40px;
+  text-align: center;
+  color: #B7BECB;
+  font-size: 0.9rem;
+}
