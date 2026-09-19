@@ -1,0 +1,233 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 31, 54, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 26px 26px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.header h3 {
+  margin: 0 0 6px;
+  font-size: 1.12rem;
+  color: #1A1F36;
+}
+
+.categoryBadge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2F6FED;
+  background: #EAF2FF;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #F3F5F9;
+  border-radius: 9px;
+  color: #5B6478;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  background: #EDEFF3;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid #F3F5F9;
+  border-bottom: 1px solid #F3F5F9;
+  margin-bottom: 16px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  color: #5B6478;
+  font-weight: 500;
+}
+
+.metaItem svg {
+  color: #B7BECB;
+}
+
+.capacityBlock {
+  margin-bottom: 20px;
+}
+
+.capacityLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1A1F36;
+}
+
+.capacityLabel span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.capacityLabel svg {
+  color: #8A94A6;
+}
+
+.capacityPercent {
+  color: #2F6FED;
+}
+
+.capacityTrack {
+  height: 8px;
+  background: #F3F5F9;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.capacityFill {
+  height: 100%;
+  background: linear-gradient(90deg, #2F6FED, #7C6FF0);
+  border-radius: 20px;
+  transition: width 0.2s;
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.listHeader h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1A1F36;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  border: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.addBtn:hover {
+  background: #D9E6FF;
+}
+
+.studentList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.studentRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #EDEFF3;
+  border-radius: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 10px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.studentInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.studentName {
+  margin: 0 0 2px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #1A1F36;
+}
+
+.studentMeta {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #8A94A6;
+}
+
+.statusBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.statusActive {
+  background: #E4F8EE;
+  color: #22B573;
+}
+
+.statusInactive {
+  background: #FDECEC;
+  color: #D64545;
+}
+
+.emptyState {
+  padding: 30px;
+  text-align: center;
+  color: #B7BECB;
+  font-size: 0.86rem;
+  border: 1px dashed #EDEFF3;
+  border-radius: 12px;
+}

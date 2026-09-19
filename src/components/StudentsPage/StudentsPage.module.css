@@ -1,0 +1,257 @@
+.page {
+  padding: 4px 0 24px;
+}
+
+.statsRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 12px;
+  padding: 11px 16px;
+}
+
+.searchBox input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #1A1F36;
+  background: transparent;
+}
+
+.searchBox input::placeholder {
+  color: #B7BECB;
+}
+
+.filterBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 12px;
+  padding: 11px 16px;
+  min-width: 180px;
+}
+
+.filterBox select {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1A1F36;
+  cursor: pointer;
+  appearance: none;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #2F6FED;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 11px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.addBtn:hover {
+  background: #2359C9;
+}
+
+.tableWrap {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead tr {
+  background: #F8F9FC;
+}
+
+.table th {
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #8A94A6;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 13px 18px;
+  border-bottom: 1px solid #EDEFF3;
+}
+
+.actionsHead {
+  text-align: right;
+}
+
+.table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid #F3F5F9;
+  font-size: 0.88rem;
+  color: #1A1F36;
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: #FAFBFD;
+}
+
+.codeBadge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #5B6478;
+  background: #F3F5F9;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 10px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.fullName {
+  margin: 0 0 2px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1A1F36;
+}
+
+.email {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #8A94A6;
+}
+
+.courseBadge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #2F6FED;
+  background: #EAF2FF;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.phoneCell {
+  color: #5B6478;
+  white-space: nowrap;
+}
+
+.statusBadge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.statusActive {
+  background: #E4F8EE;
+  color: #22B573;
+}
+
+.statusInactive {
+  background: #FDECEC;
+  color: #D64545;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.actionBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #EDEFF3;
+  background: #fff;
+  border-radius: 9px;
+  color: #5B6478;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.actionBtn:hover {
+  background: #EAF2FF;
+  border-color: #2F6FED;
+  color: #2F6FED;
+}
+
+.deleteBtn:hover {
+  background: #FDECEC;
+  border-color: #D64545;
+  color: #D64545;
+}
+
+.emptyState {
+  padding: 40px;
+  text-align: center;
+  color: #B7BECB;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 800px) {
+  .tableWrap {
+    overflow-x: auto;
+  }
+  .table {
+    min-width: 640px;
+  }
+}

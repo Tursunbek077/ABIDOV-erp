@@ -1,0 +1,180 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 31, 54, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 26px 26px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  color: #1A1F36;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #F3F5F9;
+  border-radius: 9px;
+  color: #5B6478;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  background: #EDEFF3;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.error {
+  background: #FDECEC;
+  color: #D64545;
+  font-size: 0.82rem;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #5B6478;
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #EDEFF3;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #8A94A6;
+  transition: border-color 0.15s;
+}
+
+.inputWrap:focus-within {
+  border-color: #2F6FED;
+}
+
+.inputWrap input,
+.inputWrap select {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #1A1F36;
+  font-family: inherit;
+  background: none;
+}
+
+.inputWrap select {
+  cursor: pointer;
+}
+
+.statusTabs {
+  display: flex;
+  gap: 8px;
+  background: #F3F5F9;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.statusTab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 9px 4px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #5B6478;
+  cursor: pointer;
+}
+
+.statusTabActive {
+  background: #fff;
+  color: #2F6FED;
+  box-shadow: 0 2px 6px rgba(26, 31, 54, 0.08);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.cancelBtn {
+  background: #F3F5F9;
+  color: #5B6478;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 11px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background: #EDEFF3;
+}
+
+.submitBtn {
+  background: #2F6FED;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 11px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.submitBtn:hover {
+  background: #2359C9;
+}

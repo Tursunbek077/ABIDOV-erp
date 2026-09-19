@@ -1,0 +1,151 @@
+.card {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.blue { background: #EAF2FF; color: #2F6FED; }
+.green { background: #E4F8EE; color: #22B573; }
+.purple { background: #F0EDFE; color: #7C6FF0; }
+.orange { background: #FEF3E3; color: #F5A623; }
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  margin: 0 0 5px;
+  font-size: 0.98rem;
+  color: #1A1F36;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subjectBadge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2F6FED;
+  background: #EAF2FF;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.statusBadge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.statusActive {
+  background: #E4F8EE;
+  color: #22B573;
+}
+
+.statusInactive {
+  background: #FDECEC;
+  color: #D64545;
+}
+
+.contactRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 0;
+  border-top: 1px solid #F3F5F9;
+  border-bottom: 1px solid #F3F5F9;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.83rem;
+  color: #5B6478;
+}
+
+.contactItem svg {
+  color: #B7BECB;
+  flex-shrink: 0;
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statGroup {
+  display: flex;
+  gap: 14px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #8A94A6;
+  font-weight: 600;
+}
+
+.statItem svg {
+  color: #B7BECB;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #EDEFF3;
+  background: #fff;
+  border-radius: 9px;
+  color: #5B6478;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.actionBtn:hover {
+  background: #EAF2FF;
+  border-color: #2F6FED;
+  color: #2F6FED;
+}
+
+.deleteBtn:hover {
+  background: #FDECEC;
+  border-color: #D64545;
+  color: #D64545;
+}
