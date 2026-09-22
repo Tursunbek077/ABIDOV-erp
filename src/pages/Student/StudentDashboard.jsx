@@ -10,6 +10,8 @@ import { pageTitles } from "../../data/navConfig";
 import styles from "./StudentDashboard.module.css";
 import CoursesPage from "../../components/CoursesPage/CoursesPage";
 import GradesPage from "../../components/GradesPage/GradesPage";
+import Homeworks from "../../components/homeworkStudent/homeworkStudent";
+
 
 function StudentDashboard({ user, activePage }) {
   if (activePage === "schedule") {
@@ -22,6 +24,10 @@ function StudentDashboard({ user, activePage }) {
 
   if (activePage === "grades") {
     return <GradesPage />;
+  }
+
+  if (activePage === "homeworks" || activePage === "homework") {
+    return <Homeworks />;
   }
 
   if (activePage !== "dashboard") {

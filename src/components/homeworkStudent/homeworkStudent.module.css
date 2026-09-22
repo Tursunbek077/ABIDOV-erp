@@ -1,0 +1,239 @@
+/* Asosiy konteyner */
+.homeworksContainer {
+  padding: 2rem;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: inherit;
+}
+
+/* Sarlavha qismi */
+.headerSection {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+/* Statistika kartochkalari ro'yxati */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.statCard {
+  background-color: #ffffff;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.iconWrapper {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBlue {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.iconYellow {
+  background-color: #fffbeb;
+  color: #d97706;
+}
+
+.iconGreen {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Asosiy kontent kartasi */
+.contentCard {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #f1f5f9;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Tab tugmalari */
+.tabsList {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tabButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabButton:hover {
+  background-color: #f8fafc;
+}
+
+.activeTab {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+/* Topshiriqlar ro'yxati */
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.taskItem:hover {
+  border-color: #e2e8f0;
+}
+
+.taskLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statusIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusCompleted {
+  background-color: #ecfdf5;
+  color: #10b981;
+}
+
+.statusUrgent {
+  background-color: #fff1f2;
+  color: #f43f5e;
+}
+
+.statusPending {
+  background-color: #fffbeb;
+  color: #f59e0b;
+}
+
+.taskTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+}
+
+.taskSubject {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+  margin-bottom: 0;
+}
+
+.taskRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.deadlineText {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.textUrgent {
+  color: #ef4444;
+}
+
+.textPending {
+  color: #d97706;
+}
+
+.textCompleted {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #10b981;
+}
+
+.actionButton {
+  padding: 0.5rem 1.25rem;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: #1d4ed8;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 2rem 0;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
