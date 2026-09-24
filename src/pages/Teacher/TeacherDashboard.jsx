@@ -4,7 +4,8 @@ import Placeholder from "../../components/Placeholder/Placeholder";
 import Schedule from "../../components/Schedule/Schedule";
 import { teacherStats, teacherClasses, teacherHomeworkQueue } from "../../data/staffData";
 import { pageTitles } from "../../data/navConfig";
-import styles from "./TeacherDashboard.module.css";
+import styles from "./TeacherDashboard.module.css"; 
+import MyClasses from "../../components/MyClasses/MyClasess";
 
 const iconMap = { users: Users, graduation: GraduationCap, clock: Clock, file: FileText };
 
@@ -12,6 +13,12 @@ function TeacherDashboard({ user, activePage }) {
   if (activePage === "schedule") {
     return <Schedule />;
   }
+
+  
+  if (activePage === "classes") {
+    return <MyClasses />;
+  }
+
 
   if (activePage !== "dashboard") {
     return <Placeholder title={pageTitles[activePage] || "Bo'lim"} />;

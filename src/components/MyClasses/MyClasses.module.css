@@ -1,0 +1,205 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---- Guruhlar ro'yxati ---- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.classCard {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.classCard:hover {
+  border-color: #2F6FED;
+  box-shadow: 0 4px 14px rgba(47, 111, 237, 0.08);
+}
+
+.classTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.classIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.className {
+  margin: 0;
+  font-size: 1.02rem;
+  color: #1A1F36;
+}
+
+.classSubject {
+  margin: 0;
+  font-size: 0.83rem;
+  color: #8A94A6;
+}
+
+.classFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #F3F5F9;
+}
+
+.classFooterItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #5B6478;
+  font-weight: 600;
+}
+
+.classFooterItem svg {
+  color: #B7BECB;
+}
+
+.classFooterTime {
+  font-size: 0.76rem;
+  color: #8A94A6;
+}
+
+/* ---- Guruh ichi: o'quvchilar ro'yxati ---- */
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: #5B6478;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 4px;
+}
+
+.backBtn:hover {
+  color: #2F6FED;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.groupIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.groupTitle {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: #1A1F36;
+}
+
+.groupMeta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #8A94A6;
+}
+
+.studentList {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.studentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #F3F5F9;
+}
+
+.studentRow:last-child {
+  border-bottom: none;
+}
+
+.studentInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 10px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.studentName {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #1A1F36;
+  font-weight: 500;
+}
+
+.statusBadge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.statusActive {
+  background: #E4F8EE;
+  color: #22B573;
+}
+
+.statusInactive {
+  background: #FDECEC;
+  color: #D64545;
+}
