@@ -1,0 +1,258 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---- Stat kartalari ---- */
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.statCard {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 18px;
+  padding: 15px;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.blue { background: #EAF2FF; color: #2F6FED; }
+.green { background: #E4F8EE; color: #22B573; }
+.orange { background: #FEF3E3; color: #F5A623; }
+.red { background: #FDECEC; color: #D64545; }
+
+.statLabel {
+  font-size: 0.85rem;
+  color: #8A94A6;
+  margin: 0 0 6px;
+}
+
+.statValue {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1A1F36;
+  margin: 0;
+}
+
+/* ---- Asosiy karta ---- */
+
+.card {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid #F3F5F9;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.groupInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.groupIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.groupName {
+  margin: 0 0 3px;
+  font-size: 1.02rem;
+  color: #1A1F36;
+}
+
+.groupSubject {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #8A94A6;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: #B7BECB;
+  font-weight: 500;
+}
+
+/* ---- O'quvchilar reytingi ---- */
+
+.studentList {
+  display: flex;
+  flex-direction: column;
+}
+
+.studentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid #F3F5F9;
+  gap: 14px;
+  position: relative;
+  background: #fff;
+  will-change: transform;
+}
+
+.studentRow:last-child {
+  border-bottom: none;
+}
+
+.studentInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.rankBadge {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: #F3F5F9;
+  color: #8A94A6;
+}
+
+.gold {
+  background: #FEF3E3;
+  color: #C9860A;
+}
+
+.silver {
+  background: #EEF1F5;
+  color: #6B7382;
+}
+
+.bronze {
+  background: #FBEBE0;
+  color: #B5651D;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 10px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.nameArea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  position: relative;
+}
+
+.nameBtn {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  font-size: 0.92rem;
+  color: #1A1F36;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nameBtn:hover {
+  color: #2F6FED;
+  text-decoration: underline;
+}
+
+.editBox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.scoreInput {
+  width: 64px;
+  border: 1px solid #2F6FED;
+  color: #1A1F36;
+  background: #EAF2FF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 8px;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+.scoreInput:focus {
+  outline: none;
+}
+
+.confirmBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #2F6FED;
+  color: #fff;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.confirmBtn:hover {
+  background: #2559C7;
+}
+
+.scoreBadge {
+  flex: 0 0 auto;
+  background: #F3F5F9;
+  color: #1A1F36;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

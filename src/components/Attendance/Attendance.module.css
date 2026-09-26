@@ -1,0 +1,245 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---- Stat kartalari ---- */
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.statCard {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 18px;
+  padding: 15px;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.blue { background: #EAF2FF; color: #2F6FED; }
+.green { background: #E4F8EE; color: #22B573; }
+.orange { background: #FEF3E3; color: #F5A623; }
+.red { background: #FDECEC; color: #D64545; }
+
+.statLabel {
+  font-size: 0.85rem;
+  color: #8A94A6;
+  margin: 0 0 6px;
+}
+
+.statValue {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1A1F36;
+  margin: 0;
+}
+
+/* ---- Asosiy karta ---- */
+
+.card {
+  background: #fff;
+  border: 1px solid #EDEFF3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid #F3F5F9;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.groupInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.groupIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.groupName {
+  margin: 0 0 3px;
+  font-size: 1.02rem;
+  color: #1A1F36;
+}
+
+.groupSubject {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #8A94A6;
+}
+
+.dateBadge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #F6F8FB;
+  color: #5B6478;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.dateBadge svg {
+  color: #8A94A6;
+}
+
+/* ---- O'quvchilar ro'yxati ---- */
+
+.studentList {
+  display: flex;
+  flex-direction: column;
+}
+
+.studentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  border-bottom: 1px solid #F3F5F9;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.studentRow:last-child {
+  border-bottom: none;
+}
+
+.studentInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 180px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 10px;
+  background: #EAF2FF;
+  color: #2F6FED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.studentName {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #1A1F36;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #EDEFF3;
+  background: #fff;
+  color: #8A94A6;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.actionBtn:hover {
+  border-color: #D5D9E2;
+}
+
+.borBtn.active {
+  background: #E4F8EE;
+  border-color: #22B573;
+  color: #22B573;
+}
+
+.kechikdiBtn.active {
+  background: #FEF3E3;
+  border-color: #F5A623;
+  color: #F5A623;
+}
+
+.yoqBtn.active {
+  background: #FDECEC;
+  border-color: #D64545;
+  color: #D64545;
+}
+
+/* ---- Footer ---- */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #F9FAFC;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footerHint {
+  font-size: 0.83rem;
+  color: #8A94A6;
+}
+
+.saveBtn {
+  background: #2F6FED;
+  color: #fff;
+  border: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.saveBtn:hover {
+  background: #2559C7;
+}
+
+@media (max-width: 640px) {
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
