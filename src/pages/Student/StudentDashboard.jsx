@@ -11,6 +11,7 @@ import styles from "./StudentDashboard.module.css";
 import CoursesPage from "../../components/CoursesPage/CoursesPage";
 import GradesPage from "../../components/GradesPage/GradesPage";
 import Homeworks from "../../components/homeworkStudent/homeworkStudent";
+import StudentPaymentsPage from "../../components/StudentPaymentsPage/StudentPaymentsPage";
 
 
 function StudentDashboard({ user, activePage }) {
@@ -29,6 +30,10 @@ function StudentDashboard({ user, activePage }) {
   if (activePage === "homeworks" || activePage === "homework") {
     return <Homeworks />;
   }
+
+  if (activePage === "payments") {
+    return <StudentPaymentsPage user={user} />;
+  } 
 
   if (activePage !== "dashboard") {
     return <Placeholder title={pageTitles[activePage] || "Bo'lim"} />;
