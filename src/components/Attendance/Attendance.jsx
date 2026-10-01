@@ -1,17 +1,15 @@
 import { useMemo, useState } from "react";
 import { Check, X, Clock, Users, Layers, CalendarDays } from "lucide-react";
 import { attendanceGroup } from "../../data/attendanceData";
+import { groupName } from "../../utils/groupName";
 import styles from "./Attendance.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function initials(firstName, lastName) {
   return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
 }
 
-const todayLabel = new Date().toLocaleDateString("uz-UZ", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-});
+// Bugungi sana endi komponent ichida tanlangan til formatida chiqariladi (formatDate)
 
 function buildInitialStatus(students) {
   const map = {};
@@ -22,6 +20,7 @@ function buildInitialStatus(students) {
 }
 
 function Attendance() {
+  const { t, formatDate } = useLanguage();
   const [statusMap, setStatusMap] = useState(() => buildInitialStatus(attendanceGroup.students));
   const [saved, setSaved] = useState(false);
 
@@ -50,28 +49,28 @@ function Attendance() {
           <div className={`${styles.iconWrap} ${styles.blue}`}>
             <Users size={20} />
           </div>
-          <p className={styles.statLabel}>Jami o'quvchi</p>
+          <p className={styles.statLabel}>{t("teacher.stats.students")}</p>
           <p className={styles.statValue}>{attendanceGroup.students.length}</p>
         </div>
         <div className={styles.statCard}>
           <div className={`${styles.iconWrap} ${styles.green}`}>
             <Check size={20} />
           </div>
-          <p className={styles.statLabel}>Keldi</p>
+          <p className={styles.statLabel}>{t("att.present")}</p>
           <p className={styles.statValue}>{stats.bor}</p>
         </div>
         <div className={styles.statCard}>
           <div className={`${styles.iconWrap} ${styles.orange}`}>
             <Clock size={20} />
           </div>
-          <p className={styles.statLabel}>Kechikdi</p>
+          <p className={styles.statLabel}>{t("att.late")}</p>
           <p className={styles.statValue}>{stats.kechikdi}</p>
         </div>
         <div className={styles.statCard}>
           <div className={`${styles.iconWrap} ${styles.red}`}>
             <X size={20} />
           </div>
-          <p className={styles.statLabel}>Kelmadi</p>
+          <p className={styles.statLabel}>{t("att.absent")}</p>
           <p className={styles.statValue}>{stats.yoq}</p>
         </div>
       </div>
@@ -83,13 +82,13 @@ function Attendance() {
               <Layers size={18} />
             </div>
             <div>
-              <h3 className={styles.groupName}>{attendanceGroup.name}</h3>
+              <h3 className={styles.groupName}>{groupName(attendanceGroup.name, t)}</h3>
               <p className={styles.groupSubject}>{attendanceGroup.subject}</p>
             </div>
           </div>
           <div className={styles.dateBadge}>
             <CalendarDays size={15} />
-            {todayLabel}
+            {formatDate(new Date())}
           </div>
         </div>
 
@@ -111,21 +110,21 @@ function Attendance() {
                     onClick={() => setStatus(s.id, "bor")}
                   >
                     <Check size={14} />
-                    Keldi
+                    {t("att.present")}
                   </button>
                   <button
                     className={`${styles.actionBtn} ${styles.kechikdiBtn} ${status === "kechikdi" ? styles.active : ""}`}
                     onClick={() => setStatus(s.id, "kechikdi")}
                   >
                     <Clock size={14} />
-                    Kechikdi
+                    {t("att.late")}
                   </button>
                   <button
                     className={`${styles.actionBtn} ${styles.yoqBtn} ${status === "yoq" ? styles.active : ""}`}
                     onClick={() => setStatus(s.id, "yoq")}
                   >
                     <X size={14} />
-                    Kelmadi
+                    {t("att.absent")}
                   </button>
                 </div>
               </div>
@@ -135,10 +134,10 @@ function Attendance() {
 
         <div className={styles.footer}>
           <span className={styles.footerHint}>
-            {saved ? "Davomat saqlandi ✓" : "O'zgarishlarni saqlashni unutmang"}
+            {saved ? t("att.saved") : t("att.remember")}
           </span>
           <button className={styles.saveBtn} onClick={handleSave}>
-            Saqlash
+            {t("common.save")}
           </button>
         </div>
       </div>

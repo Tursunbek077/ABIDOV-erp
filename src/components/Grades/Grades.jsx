@@ -1,7 +1,9 @@
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Layers, Star, Trophy, TrendingUp, TrendingDown, Check } from "lucide-react";
 import { gradesGroup } from "../../data/gradesData";
+import { groupName } from "../../utils/groupName";
 import styles from "./Grades.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function initials(firstName, lastName) {
   return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
@@ -23,6 +25,7 @@ function rankStyle(rank) {
 }
 
 function Grades() {
+  const { t } = useLanguage();
   const [scores, setScores] = useState(() => buildInitialScores(gradesGroup.students));
   const [editingId, setEditingId] = useState(null);
   const [draftValue, setDraftValue] = useState("");
@@ -105,28 +108,28 @@ function Grades() {
           <div className={`${styles.iconWrap} ${styles.blue}`}>
             <Star size={20} />
           </div>
-          <p className={styles.statLabel}>Jami o'quvchi</p>
+          <p className={styles.statLabel}>{t("teacher.stats.students")}</p>
           <p className={styles.statValue}>{gradesGroup.students.length}</p>
         </div>
         <div className={styles.statCard}>
           <div className={`${styles.iconWrap} ${styles.green}`}>
             <Trophy size={20} />
           </div>
-          <p className={styles.statLabel}>O'rtacha ball</p>
+          <p className={styles.statLabel}>{t("tgrades.avg")}</p>
           <p className={styles.statValue}>{stats.avg}</p>
         </div>
         <div className={styles.statCard}>
           <div className={`${styles.iconWrap} ${styles.orange}`}>
             <TrendingUp size={20} />
           </div>
-          <p className={styles.statLabel}>Eng yuqori</p>
+          <p className={styles.statLabel}>{t("tgrades.max")}</p>
           <p className={styles.statValue}>{stats.max}</p>
         </div>
         <div className={styles.statCard}>
           <div className={`${styles.iconWrap} ${styles.red}`}>
             <TrendingDown size={20} />
           </div>
-          <p className={styles.statLabel}>Eng past</p>
+          <p className={styles.statLabel}>{t("tgrades.min")}</p>
           <p className={styles.statValue}>{stats.min}</p>
         </div>
       </div>
@@ -138,11 +141,11 @@ function Grades() {
               <Layers size={18} />
             </div>
             <div>
-              <h3 className={styles.groupName}>{gradesGroup.name}</h3>
+              <h3 className={styles.groupName}>{groupName(gradesGroup.name, t)}</h3>
               <p className={styles.groupSubject}>{gradesGroup.subject}</p>
             </div>
           </div>
-          <span className={styles.hint}>Ismga bosib bahoni o'zgartiring</span>
+          <span className={styles.hint}>{t("tgrades.hint")}</span>
         </div>
 
         <div className={styles.studentList}>
@@ -191,7 +194,7 @@ function Grades() {
                   </div>
                 </div>
 
-                <span className={styles.scoreBadge}>{s.score} ball</span>
+                <span className={styles.scoreBadge}>{t("tgrades.score", { n: s.score })}</span>
               </div>
             );
           })}

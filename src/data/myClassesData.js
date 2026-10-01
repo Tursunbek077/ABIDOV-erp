@@ -6,7 +6,8 @@ export const myClassesSeed = [
         id: "c-108",
         name: "108-guruh",
         subject: "Frontend Development",
-        time: "Dush/Chor/Juma • 17:00",
+        days: [0, 2, 4],
+        time: "17:00",
         students: [
             { id: "st-1", firstName: "Aziza", lastName: "Yusupova", status: "faol" },
             { id: "st-2", firstName: "Diyor", lastName: "Nematov", status: "faol" },

@@ -15,6 +15,7 @@ const iconMap = { users: Users, graduation: GraduationCap, clock: Clock, file: F
 
 function TeacherDashboard({ user, activePage }) {
   const { t } = useLanguage();
+  const weekdays = t("cal.weekdaysShort").split(",");
   if (activePage === "schedule") {
     return <Schedule />;
   }
@@ -48,22 +49,24 @@ function TeacherDashboard({ user, activePage }) {
 
       <div className={styles.statsRow}>
         {teacherStats.map((s) => (
-          <StatCard key={s.id} icon={iconMap[s.icon]} label={s.label} value={s.value} sub={s.sub} color={s.color} />
+          <StatCard key={s.id} icon={iconMap[s.icon]} label={t(s.labelKey)} value={s.value} sub={t(s.subKey)} color={s.color} />
         ))}
       </div>
 
       <div className={styles.mainGrid}>
         <section className={styles.card}>
           <div className={styles.cardHeader}>
-            <h3>Mening sinflarim</h3>
-            <a href="#">Barchasi</a>
+            <h3>{t("nav.classes")}</h3>
+            <a href="#">{t("common.viewAll")}</a>
           </div>
           <div>
             {teacherClasses.map((c) => (
               <div key={c.id} className={styles.classItem}>
                 <div>
                   <p className={styles.classTitle}>{c.name}</p>
-                  <p className={styles.classMeta}>{c.students} o'quvchi • {c.time}</p>
+                  <p className={styles.classMeta}>
+                    {t("teacher.studentsCount", { n: c.students })} • {c.days.map((d) => weekdays[d]).join("/")} • {c.time}
+                  </p>
                 </div>
                 <div className={styles.progressWrap}>
                   <div className={styles.progressBar}>
@@ -78,8 +81,8 @@ function TeacherDashboard({ user, activePage }) {
 
         <section className={styles.card}>
           <div className={styles.cardHeader}>
-            <h3>Tekshirish kerak</h3>
-            <a href="#">Barchasi</a>
+            <h3>{t("teacher.toReview")}</h3>
+            <a href="#">{t("common.viewAll")}</a>
           </div>
           <div className={styles.list}>
             {teacherHomeworkQueue.map((h) => (
@@ -87,7 +90,7 @@ function TeacherDashboard({ user, activePage }) {
                 <div>
                   <p className={styles.hwStudent}>{h.student}</p>
                   <p className={styles.hwTask}>{h.task}</p>
-                  <p className={styles.hwTime}>{h.submitted}</p>
+                  <p className={styles.hwTime}>{t(h.dayKey)}, {h.time}</p>
                 </div>
                 <ChevronRight size={18} style={{ color: "var(--c-b7becb)" }} />
               </div>

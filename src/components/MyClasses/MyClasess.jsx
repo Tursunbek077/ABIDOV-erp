@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Users, ChevronLeft, ChevronRight, Layers } from "lucide-react";
 import { myClassesSeed } from "../../data/myClassesData";
+import { groupName } from "../../utils/groupName";
 import styles from "./MyClasses.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function initials(firstName, lastName) {
   return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
 }
 
 function MyClasses() {
+  const { t } = useLanguage();
+  const weekdays = t("cal.weekdaysShort").split(",");
   const [selectedClass, setSelectedClass] = useState(null);
 
   if (selectedClass) {
@@ -15,7 +19,7 @@ function MyClasses() {
       <div className={styles.page}>
         <button className={styles.backBtn} onClick={() => setSelectedClass(null)}>
           <ChevronLeft size={18} />
-          Orqaga
+          {t("common.back")}
         </button>
 
         <div className={styles.groupHeader}>
@@ -23,9 +27,9 @@ function MyClasses() {
             <Layers size={22} />
           </div>
           <div>
-            <h3 className={styles.groupTitle}>{selectedClass.name}</h3>
+            <h3 className={styles.groupTitle}>{groupName(selectedClass.name, t)}</h3>
             <p className={styles.groupMeta}>
-              {selectedClass.subject} • {selectedClass.students.length} o'quvchi
+              {selectedClass.subject} • {t("teacher.studentsCount", { n: selectedClass.students.length })}
             </p>
           </div>
         </div>
@@ -42,7 +46,7 @@ function MyClasses() {
                   </p>
                 </div>
                 <span className={`${styles.statusBadge} ${isActive ? styles.statusActive : styles.statusInactive}`}>
-                  {isActive ? "Faol" : "Nofaol"}
+                  {isActive ? t("common.active") : t("common.inactive")}
                 </span>
               </div>
             );
@@ -63,14 +67,16 @@ function MyClasses() {
               </div>
               <ChevronRight size={18} style={{ color: "var(--c-b7becb)" }} />
             </div>
-            <h4 className={styles.className}>{c.name}</h4>
+            <h4 className={styles.className}>{groupName(c.name, t)}</h4>
             <p className={styles.classSubject}>{c.subject}</p>
             <div className={styles.classFooter}>
               <span className={styles.classFooterItem}>
                 <Users size={14} />
-                {c.students.length} o'quvchi
+                {t("teacher.studentsCount", { n: c.students.length })}
               </span>
-              <span className={styles.classFooterTime}>{c.time}</span>
+              <span className={styles.classFooterTime}>
+                {c.days.map((d) => weekdays[d]).join("/")} • {c.time}
+              </span>
             </div>
           </button>
         ))}
