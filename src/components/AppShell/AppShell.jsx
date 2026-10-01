@@ -46,7 +46,11 @@ function AppShell({ user, activePage, onNavigate, onLogout, children }) {
         onLogout={onLogout}
       />
       <div className={styles.page}>
-        <Topbar title={t(pageTitles[activePage] || "nav.dashboard")} user={user} />
+        {/* Sarlavha menyudagi nom bilan bir xil (o'quvchida "Mening kurslarim") */}
+        <Topbar
+          title={t(navItems.find((i) => i.key === activePage)?.labelKey || pageTitles[activePage] || "nav.dashboard")}
+          user={user}
+        />
         {children}
       </div>
     </div>

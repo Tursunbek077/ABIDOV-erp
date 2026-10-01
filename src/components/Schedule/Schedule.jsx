@@ -2,12 +2,9 @@ import { useState, useMemo } from "react";
 import { ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import { lessons } from "../../data/dummyData";
 import styles from "./Schedule.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
-const WEEKDAYS = ["Du", "Se", "Ch", "Pa", "Ju", "Sh", "Ya"];
-const MONTHS = [
-  "Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun",
-  "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr",
-];
+// Hafta kunlari va oy nomlari endi tarjimadan olinadi: t("cal.weekdaysShort"), t("cal.months")
 
 // Kunlar: 0 = Dushanba ... 6 = Yakshanba. Dars kunlari: Seshanba(1), Payshanba(3), Shanba(5)
 const LESSON_WEEKDAYS = [1, 3, 5];
@@ -24,6 +21,7 @@ function getMonthMatrix(year, month) {
 }
 
 function Schedule() {
+  const { t, formatDate } = useLanguage();
   const today = new Date();
   const [viewDate, setViewDate] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
   const [selectedDay, setSelectedDay] = useState(today.getDate());
@@ -31,6 +29,8 @@ function Schedule() {
   const year = viewDate.getFullYear();
   const month = viewDate.getMonth();
   const isCurrentMonth = year === today.getFullYear() && month === today.getMonth();
+  const weekdays = t("cal.weekdaysShort").split(",");
+  const monthNames = t("cal.months").split(",");
 
   const cells = useMemo(() => getMonthMatrix(year, month), [year, month]);
 
@@ -60,17 +60,17 @@ function Schedule() {
       <div className={styles.grid}>
         <section className={styles.card}>
           <div className={styles.calHeader}>
-            <button className={styles.navBtn} onClick={goPrevMonth} aria-label="Oldingi oy">
+            <button className={styles.navBtn} onClick={goPrevMonth} aria-label={t("cal.prevMonth")}>
               <ChevronLeft size={18} />
             </button>
-            <span className={styles.monthLabel}>{MONTHS[month]} {year}</span>
-            <button className={styles.navBtn} onClick={goNextMonth} aria-label="Keyingi oy">
+            <span className={styles.monthLabel}>{monthNames[month]} {year}</span>
+            <button className={styles.navBtn} onClick={goNextMonth} aria-label={t("cal.nextMonth")}>
               <ChevronRight size={18} />
             </button>
           </div>
 
           <div className={styles.weekRow}>
-            {WEEKDAYS.map((w, i) => (
+            {weekdays.map((w, i) => (
               <span
                 key={w}
                 className={
@@ -109,15 +109,23 @@ function Schedule() {
           <div className={styles.legend}>
             <span className={styles.legendItem}>
               <span className={`${styles.legendDot} ${styles.legendDotLesson}`} />
-              Dars kuni (Se / Pa / Sh)
+              {t("schedule.lessonDay")} ({LESSON_WEEKDAYS.map((i) => weekdays[i]).join(" / ")})
             </span>
           </div>
         </section>
 
         <section className={styles.card}>
           <div className={styles.sideHeader}>
-            <h3>{selectedIsLessonDay ? "Bugungi darslar" : "Tanlangan kun"}</h3>
-            <span className={styles.sideCount}>{lessonDayCount} ta dars kuni / oy</span>
+            <h3>
+              {!selectedIsLessonDay
+                ? t("schedule.selectedDay")
+                : selectedDay === today.getDate()
+                  ? t("schedule.todayLessons")
+                  : t("schedule.dayLessons", {
+                      date: formatDate(new Date(year, month, selectedDay), { day: "numeric", month: "long" }),
+                    })}
+            </h3>
+            <span className={styles.sideCount}>{t("schedule.daysPerMonth", { n: lessonDayCount })}</span>
           </div>
 
           {selectedIsLessonDay ? (
@@ -129,13 +137,13 @@ function Schedule() {
                   </span>
                   <div>
                     <p className={styles.lessonTitle}>{lesson.title}</p>
-                    <p className={styles.lessonSubtitle}>{lesson.subtitle} · {lesson.room}</p>
+                    <p className={styles.lessonSubtitle}>{lesson.subtitle} · {t("common.room")}: {lesson.room}</p>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <p className={styles.emptyNote}>Bu kunda dars belgilanmagan.</p>
+            <p className={styles.emptyNote}>{t("schedule.noLessons")}</p>
           )}
         </section>
       </div>

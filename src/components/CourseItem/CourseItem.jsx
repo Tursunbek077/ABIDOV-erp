@@ -1,9 +1,11 @@
 import { ChevronRight, Code2, Palette } from "lucide-react";
 import styles from "./CourseItem.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 const iconMap = { code: Code2, palette: Palette };
 
 function CourseItem({ course }) {
+  const { t } = useLanguage();
   const Icon = iconMap[course.icon];
 
   return (
@@ -15,7 +17,7 @@ function CourseItem({ course }) {
       <div className={styles.info}>
         <p className={styles.title}>{course.title}</p>
         <p className={styles.tags}>{course.tags}</p>
-        <p className={styles.teacher}>Teacher: {course.teacher}</p>
+        <p className={styles.teacher}>{t("common.teacher")}: {course.teacher}</p>
       </div>
 
       <div className={styles.progressWrap}>

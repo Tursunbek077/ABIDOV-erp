@@ -7,6 +7,8 @@ import { PAYMENT_STATUS } from "../utils/paymentsStore";
 export const paymentStatusConfig = {
   [PAYMENT_STATUS.PAID]: {
     label: "Faol",
+    labelKey: "pay.status.paid",
+    titleKey: "pay.title.paid",
     icon: CheckCircle2,
     cardColor: "green",
     bannerBg: "var(--c-e9f8f0)",
@@ -17,6 +19,8 @@ export const paymentStatusConfig = {
   },
   [PAYMENT_STATUS.DUE_SOON]: {
     label: "Kutilmoqda",
+    labelKey: "pay.status.dueSoon",
+    titleKey: "pay.title.dueSoon",
     icon: Clock,
     cardColor: "orange",
     bannerBg: "var(--c-fef9f0)",
@@ -27,6 +31,8 @@ export const paymentStatusConfig = {
   },
   [PAYMENT_STATUS.OVERDUE]: {
     label: "Muddati o'tgan",
+    labelKey: "pay.status.overdue",
+    titleKey: "pay.title.overdue",
     icon: AlertTriangle,
     cardColor: "red",
     bannerBg: "var(--c-fdecec)",

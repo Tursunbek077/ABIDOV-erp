@@ -1,6 +1,7 @@
 import { Clock, CheckCircle2 } from "lucide-react";
 import { homeworks } from "../../data/dummyData";
 import styles from "./RecentHomework.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 const statusStyle = {
   due: { color: "var(--c-f55a5a)", icon: Clock },
@@ -9,11 +10,12 @@ const statusStyle = {
 };
 
 function RecentHomework() {
+  const { t, formatDate } = useLanguage();
   return (
     <section className={styles.card}>
       <div className={styles.header}>
-        <h3>Recent Homework</h3>
-        <a href="#" className={styles.viewAll}>View all</a>
+        <h3>{t("student.recentHomework")}</h3>
+        <a href="#" className={styles.viewAll}>{t("common.viewAll")}</a>
       </div>
 
       <div className={styles.list}>
@@ -24,7 +26,9 @@ function RecentHomework() {
             <div key={hw.id} className={styles.item}>
               <div>
                 <p className={styles.title}>{hw.title}</p>
-                <p className={styles.status} style={{ color: s.color }}>{hw.status}</p>
+                <p className={styles.status} style={{ color: s.color }}>
+                  {t(hw.statusKey, { date: formatDate(hw.due, { day: "numeric", month: "short" }) })}
+                </p>
               </div>
               <Icon size={18} style={{ color: s.color }} />
             </div>

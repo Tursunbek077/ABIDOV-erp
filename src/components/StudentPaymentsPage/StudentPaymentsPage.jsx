@@ -2,11 +2,13 @@ import { useMemo, useState } from "react";
 import { Wallet, CalendarClock, CreditCard } from "lucide-react";
 import StatCard from "../StatCard/StatCard";
 import { PAYMENT_STATUS, getStudentAccessInfo } from "../../utils/paymentsStore";
-import { formatDate, daysUntil, buildHistory, buildBannerText } from "../../utils/studentPaymentsHelpers";
+import { daysUntil, buildHistory } from "../../utils/studentPaymentsHelpers";
 import { paymentStatusConfig } from "../../data/paymentStatusConfig";
 import styles from "./StudentPaymentsPage.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function StudentPaymentsPage({ user }) {
+  const { t, formatDate, formatMoney } = useLanguage();
   const [showDetails, setShowDetails] = useState(false);
   const access = useMemo(() => getStudentAccessInfo(user?.email), [user?.email]);
   const { student, statusType, amount } = access;
@@ -18,12 +20,19 @@ function StudentPaymentsPage({ user }) {
     () => buildHistory(student?.lastPaymentDate, amount),
     [student?.lastPaymentDate, amount]
   );
-  const bannerText = buildBannerText(statusType, student?.nextDueDate, amount);
+  // Banner matni tanlangan tilda
+  const bannerVars = { date: formatDate(student?.nextDueDate), sum: formatMoney(amount) };
+  const bannerText =
+    statusType === PAYMENT_STATUS.OVERDUE
+      ? t("pay.banner.overdue", bannerVars)
+      : statusType === PAYMENT_STATUS.DUE_SOON
+        ? t("pay.banner.dueSoon", bannerVars)
+        : t("pay.banner.paid", bannerVars);
 
   if (!student) {
     return (
       <div className={styles.page}>
-        <div className={styles.emptyState}>To'lov ma'lumotlari topilmadi.</div>
+        <div className={styles.emptyState}>{t("pay.notFound")}</div>
       </div>
     );
   }
@@ -33,17 +42,23 @@ function StudentPaymentsPage({ user }) {
       <div className={styles.statsRow}>
         <StatCard
           icon={Icon}
-          label="Joriy holat"
-          value={meta.label}
-          sub={daysLeft === null ? "—" : daysLeft >= 0 ? `Muddatgacha ${daysLeft} kun` : `${Math.abs(daysLeft)} kun kechikdi`}
+          label={t("pay.currentStatus")}
+          value={t(meta.labelKey)}
+          sub={
+            daysLeft === null
+              ? "—"
+              : daysLeft >= 0
+                ? t("pay.daysLeft", { n: daysLeft })
+                : t("pay.daysLate", { n: Math.abs(daysLeft) })
+          }
           color={meta.cardColor}
         />
-        <StatCard icon={Wallet} label="Oylik to'lov" value={`${amount.toLocaleString("uz-UZ")} so'm`} sub={student.course} color="blue" />
+        <StatCard icon={Wallet} label={t("pay.monthly")} value={formatMoney(amount)} sub={student.course} color="blue" />
         <StatCard
           icon={CalendarClock}
-          label="Keyingi muddat"
+          label={t("pay.nextDue")}
           value={formatDate(student.nextDueDate)}
-          sub={`Oxirgi to'lov: ${formatDate(student.lastPaymentDate)}`}
+          sub={`${t("pay.lastPayment")}: ${formatDate(student.lastPaymentDate)}`}
           color="purple"
         />
       </div>
@@ -54,58 +69,58 @@ function StudentPaymentsPage({ user }) {
             <Icon size={20} />
           </div>
           <div>
-            <p className={styles.bannerTitle}>{meta.title}</p>
+            <p className={styles.bannerTitle}>{t(meta.titleKey)}</p>
             <p className={styles.bannerText}>{bannerText}</p>
           </div>
         </div>
         {statusType !== PAYMENT_STATUS.PAID && (
           <button className={styles.detailsBtn} onClick={() => setShowDetails((v) => !v)}>
             <CreditCard size={15} />
-            To'lov tafsilotlari
+            {t("pay.details")}
           </button>
         )}
       </div>
 
       {showDetails && (
         <div className={styles.detailsCard}>
-          <p className={styles.detailsTitle}>To'lov rekvizitlari</p>
+          <p className={styles.detailsTitle}>{t("pay.requisites")}</p>
           <div className={styles.detailsRow}>
-            <span>Karta raqami</span>
+            <span>{t("pay.cardNumber")}</span>
             <span className={styles.detailsValue}>8600 1234 5678 9012</span>
           </div>
           <div className={styles.detailsRow}>
-            <span>Qabul qiluvchi</span>
-            <span className={styles.detailsValue}>Abidov's o'quv markazi</span>
+            <span>{t("pay.recipient")}</span>
+            <span className={styles.detailsValue}>{t("pay.recipientName")}</span>
           </div>
           <div className={styles.detailsRow}>
-            <span>Izoh (komment)</span>
+            <span>{t("pay.comment")}</span>
             <span className={styles.detailsValue}>{student.studentCode} — {student.firstName} {student.lastName}</span>
           </div>
           <p className={styles.detailsNote}>
-            To'lovni amalga oshirgach, chekni administratorga yuboring — u tasdiqlagach holat avtomatik yangilanadi.
+            {t("pay.detailsNote")}
           </p>
         </div>
       )}
 
       <div className={styles.card}>
-        <p className={styles.cardTitle}>To'lovlar tarixi</p>
+        <p className={styles.cardTitle}>{t("pay.history")}</p>
         <div className={styles.historyHead}>
-          <span>Sana</span>
-          <span>Summa</span>
-          <span className={styles.historyStatusHead}>Holat</span>
+          <span>{t("pay.col.date")}</span>
+          <span>{t("pay.col.amount")}</span>
+          <span className={styles.historyStatusHead}>{t("pay.col.status")}</span>
         </div>
         {history.length > 0 ? (
           history.map((row, i) => (
             <div key={row.date + i} className={styles.historyRow}>
               <span className={styles.historyDate}>{formatDate(row.date)}</span>
-              <span className={styles.historyAmount}>{row.amount.toLocaleString("uz-UZ")} so'm</span>
+              <span className={styles.historyAmount}>{formatMoney(row.amount)}</span>
               <span className={styles.historyStatus}>
-                <span className={styles.paidBadge}>To'landi</span>
+                <span className={styles.paidBadge}>{t("pay.paid")}</span>
               </span>
             </div>
           ))
         ) : (
-          <div className={styles.emptyState}>Hozircha to'lovlar tarixi yo'q.</div>
+          <div className={styles.emptyState}>{t("pay.noHistory")}</div>
         )}
       </div>
     </div>

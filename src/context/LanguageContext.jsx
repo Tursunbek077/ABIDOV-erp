@@ -63,7 +63,28 @@ export function LanguageProvider({ children }) {
 
   const locale = LANGUAGES.find((l) => l.code === lang)?.locale || "uz-UZ";
 
-  const value = useMemo(() => ({ lang, setLang, t, locale }), [lang, setLang, t, locale]);
+  // Sana va summalarni tanlangan til formatida chiqarish:
+  //   formatDate("2026-09-05") -> "5-sentabr, 2026" / "5 сентября 2026 г." / "September 5, 2026"
+  //   formatMoney(450000)      -> "450 000 so'm" / "450 000 сум" / "450,000 UZS"
+  const formatDate = useCallback(
+    (value, options = { day: "numeric", month: "long", year: "numeric" }) => {
+      if (!value) return "—";
+      const d = value instanceof Date ? value : new Date(value);
+      if (Number.isNaN(d.getTime())) return String(value);
+      return new Intl.DateTimeFormat(locale, options).format(d);
+    },
+    [locale]
+  );
+
+  const formatMoney = useCallback(
+    (amount) => `${Number(amount || 0).toLocaleString(locale)} ${t("common.currency")}`,
+    [locale, t]
+  );
+
+  const value = useMemo(
+    () => ({ lang, setLang, t, locale, formatDate, formatMoney }),
+    [lang, setLang, t, locale, formatDate, formatMoney]
+  );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

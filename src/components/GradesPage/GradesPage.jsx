@@ -3,6 +3,7 @@ import { Trophy, TrendingUp, ClipboardCheck, CalendarCheck2 } from "lucide-react
 import StatCard from "../StatCard/StatCard";
 import { courses, stats } from "../../data/dummyData";
 import styles from "./GradesPage.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 // Umumiy bahoning tarkibiy qismlari (davomat, uy vazifasi, imtihon, faollik).
 // Backend ulanganda bu massiv shu joyning API javobiga almashtiriladi.
@@ -16,6 +17,7 @@ const gradeBreakdown = [
 const averageGrade = stats.find((s) => s.icon === "star")?.value || "86%";
 
 function GradeDonut({ segments }) {
+  const { t } = useLanguage();
   const [hoveredId, setHoveredId] = useState(null);
   const size = 160;
   const stroke = 22;
@@ -62,25 +64,26 @@ function GradeDonut({ segments }) {
       </svg>
       <div className={styles.donutCenter}>
         <span className={styles.donutValue}>{averageGrade}</span>
-        <span className={styles.donutLabel}>o'rtacha baho</span>
+        <span className={styles.donutLabel}>{t("grades.avgShort")}</span>
       </div>
     </div>
   );
 }
 
 function GradesPage() {
+  const { t } = useLanguage();
   return (
     <div className={styles.page}>
       <div className={styles.statsRow}>
-        <StatCard icon={Trophy} label="O'rtacha baho" value={averageGrade} sub="Barcha kurslar bo'yicha" color="purple" />
-        <StatCard icon={TrendingUp} label="Eng yuqori ball" value="Frontend Development" sub="Kurs bo'yicha" color="blue" />
-        <StatCard icon={ClipboardCheck} label="Baholangan ishlar" value="24" sub="Shu semestrda" color="green" />
+        <StatCard icon={Trophy} label={t("grades.avg")} value={averageGrade} sub={t("grades.avgSub")} color="purple" />
+        <StatCard icon={TrendingUp} label={t("grades.best")} value="Frontend Development" sub={t("grades.bestSub")} color="blue" />
+        <StatCard icon={ClipboardCheck} label={t("grades.graded")} value="24" sub={t("grades.gradedSub")} color="green" />
       </div>
 
       <div className={styles.mainGrid}>
         <section className={styles.card}>
           <div className={styles.cardHeader}>
-            <h3>Baho tarkibi</h3>
+            <h3>{t("grades.breakdown")}</h3>
           </div>
           <div className={styles.donutRow}>
             <GradeDonut segments={gradeBreakdown} />
@@ -125,14 +128,14 @@ function GradesPage() {
           <div className={styles.levelTop}>
             <span className={styles.levelTag}>
               <CalendarCheck2 size={15} />
-              Shu semestrdagi umumiy natija
+              {t("grades.semesterResult")}
             </span>
           </div>
           <span className={styles.progressTrack}>
             <span className={styles.progressFill} style={{ width: averageGrade }} />
           </span>
           <div className={styles.progressFoot}>
-            <span>710 / 1000 ball</span>
+            <span>{t("grades.points", { got: 710, total: 1000 })}</span>
             <span>{averageGrade}</span>
           </div>
         </div>

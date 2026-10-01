@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FileText, Clock, CheckCircle } from 'lucide-react';
 import styles from './homeworkStudent.module.css';
+import { useLanguage } from "../../context/useLanguage";
 
 const HomeworkStudent = () => {
+  const { t, formatDate } = useLanguage();
   const [activeTab, setActiveTab] = useState('all');
 
   // Vazifalar ro'yxati (useState ichida saqlanadi)
@@ -12,7 +14,7 @@ const HomeworkStudent = () => {
       title: 'React Components',
       subject: 'Frontend Development',
       status: 'urgent',
-      deadline: 'Ertaga muddati',
+      deadlineKey: 'student.hw.dueTomorrow',
       isCompleted: false,
     },
     {
@@ -20,7 +22,8 @@ const HomeworkStudent = () => {
       title: 'CSS Flexbox Layout',
       subject: 'Frontend Development',
       status: 'pending',
-      deadline: '24-sentabrgacha',
+      deadlineKey: 'hwStudent.until',
+      due: '2026-09-24',
       isCompleted: false,
     },
     {
@@ -61,9 +64,9 @@ const HomeworkStudent = () => {
     <div className={styles.homeworksContainer}>
       {/* Sarlavha */}
       <div className={styles.headerSection}>
-        <h1 className={styles.title}>Uy vazifalari</h1>
+        <h1 className={styles.title}>{t("nav.homework")}</h1>
         <p className={styles.subtitle}>
-          Barcha fanlar bo'yicha topshiriqlar va ularning holati
+          {t("hwStudent.subtitle")}
         </p>
       </div>
 
@@ -74,7 +77,7 @@ const HomeworkStudent = () => {
             <FileText size={24} />
           </div>
           <div>
-            <p className={styles.statLabel}>Jami vazifalar</p>
+            <p className={styles.statLabel}>{t("hwStudent.total")}</p>
             <h3 className={styles.statValue}>{totalCount}</h3>
           </div>
         </div>
@@ -84,7 +87,7 @@ const HomeworkStudent = () => {
             <Clock size={24} />
           </div>
           <div>
-            <p className={styles.statLabel}>Muddati yaqinlashgan</p>
+            <p className={styles.statLabel}>{t("hwStudent.urgent")}</p>
             <h3 className={styles.statValue}>{urgentCount}</h3>
           </div>
         </div>
@@ -94,7 +97,7 @@ const HomeworkStudent = () => {
             <CheckCircle size={24} />
           </div>
           <div>
-            <p className={styles.statLabel}>Topshirilgan</p>
+            <p className={styles.statLabel}>{t("hwStudent.done")}</p>
             <h3 className={styles.statValue}>{completedCount}</h3>
           </div>
         </div>
@@ -108,25 +111,25 @@ const HomeworkStudent = () => {
             onClick={() => setActiveTab('all')}
             className={`${styles.tabButton} ${activeTab === 'all' ? styles.activeTab : ''}`}
           >
-            Barchasi
+            {t("common.all")}
           </button>
           <button
             onClick={() => setActiveTab('urgent')}
             className={`${styles.tabButton} ${activeTab === 'urgent' ? styles.activeTab : ''}`}
           >
-            Muddati yaqin
+            {t("hwStudent.tabUrgent")}
           </button>
           <button
             onClick={() => setActiveTab('pending')}
             className={`${styles.tabButton} ${activeTab === 'pending' ? styles.activeTab : ''}`}
           >
-            Kutilmoqda
+            {t("hwStudent.tabPending")}
           </button>
           <button
             onClick={() => setActiveTab('completed')}
             className={`${styles.tabButton} ${activeTab === 'completed' ? styles.activeTab : ''}`}
           >
-            Topshirilgan
+            {t("hwStudent.done")}
           </button>
         </div>
 
@@ -154,7 +157,7 @@ const HomeworkStudent = () => {
 
               <div className={styles.taskRight}>
                 {item.isCompleted ? (
-                  <span className={styles.textCompleted}>Topshirildi</span>
+                  <span className={styles.textCompleted}>{t("student.hw.submitted")}</span>
                 ) : (
                   <>
                     <span
@@ -162,14 +165,14 @@ const HomeworkStudent = () => {
                         item.status === 'urgent' ? styles.textUrgent : styles.textPending
                       }`}
                     >
-                      {item.deadline}
+                      {t(item.deadlineKey, { date: formatDate(item.due, { day: "numeric", month: "long" }) })}
                     </span>
                     {/* Topshirish tugmasiga onClick ulandi */}
                     <button
                       onClick={() => handleSubmitHomework(item.id)}
                       className={styles.actionButton}
                     >
-                      Topshirish
+                      {t("hwStudent.submit")}
                     </button>
                   </>
                 )}
@@ -179,7 +182,7 @@ const HomeworkStudent = () => {
 
           {filteredHomeworks.length === 0 && (
             <div className={styles.emptyState}>
-              Ushbu bo'limda hech qanday vazifa topilmadi.
+              {t("hwStudent.empty")}
             </div>
           )}
         </div>

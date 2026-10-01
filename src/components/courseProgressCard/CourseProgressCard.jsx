@@ -1,5 +1,6 @@
 import { Code2, Palette, Calendar, Check } from "lucide-react";
 import styles from "./CourseProgressCard.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 const iconMap = { code: Code2, palette: Palette };
 
@@ -40,6 +41,7 @@ function CircularProgress({ percent }) {
 }
 
 function CourseProgressCard({ course }) {
+  const { t, formatDate } = useLanguage();
   const Icon = iconMap[course.icon];
   const months = Array.from({ length: course.durationMonths }, (_, i) => i + 1);
 
@@ -54,18 +56,21 @@ function CourseProgressCard({ course }) {
           <h4 className={styles.title}>{course.title}</h4>
           <div className={styles.metaRow}>
             <span className={styles.badge}>{course.category}</span>
-            <span className={styles.durationText}>{course.durationMonths} oyli kurs</span>
+            <span className={styles.durationText}>{t("courses.duration", { n: course.durationMonths })}</span>
           </div>
           <div className={styles.dateRow}>
             <Calendar size={14} />
-            <span>Boshlanish sanasi: {course.startDate}</span>
+            <span>{t("courses.startDate")}: {formatDate(course.startDate)}</span>
           </div>
         </div>
 
         <div className={styles.statPanel}>
           <div className={styles.statText}>
-            <p>O'quv vaqti: <b>{course.durationMonths} oy</b></p>
-            <p className={styles.statElapsed}>O'tgan vaqti: <b>{course.elapsed}</b></p>
+            <p>{t("courses.studyTime")}: <b>{t("common.months", { n: course.durationMonths })}</b></p>
+            <p className={styles.statElapsed}>
+              {t("courses.elapsed")}:{" "}
+              <b>{t("courses.elapsedValue", { m: course.elapsedMonths, d: course.elapsedDays })}</b>
+            </p>
           </div>
           <CircularProgress percent={course.progress} />
         </div>
@@ -101,9 +106,9 @@ function CourseProgressCard({ course }) {
                 )}
               </div>
               <span className={`${styles.monthLabel} ${isCurrent ? styles.monthLabelCurrent : ""}`}>
-                {m}-oy
+                {t("courses.monthN", { n: m })}
               </span>
-              {isCurrent && <span className={styles.currentTag}>Joriy oy</span>}
+              {isCurrent && <span className={styles.currentTag}>{t("courses.currentMonth")}</span>}
             </div>
           );
         })}
