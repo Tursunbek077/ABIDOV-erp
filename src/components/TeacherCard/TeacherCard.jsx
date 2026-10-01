@@ -1,11 +1,13 @@
 import { Mail, Phone, Users, BookOpen, Pencil, Trash2 } from "lucide-react";
 import styles from "./TeacherCard.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function initials(firstName, lastName) {
   return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
 }
 
 function TeacherCard({ teacher, onEdit, onDelete }) {
+  const { t } = useLanguage();
   const isActive = teacher.status === "faol";
 
   return (
@@ -23,7 +25,7 @@ function TeacherCard({ teacher, onEdit, onDelete }) {
         </div>
 
         <span className={`${styles.statusBadge} ${isActive ? styles.statusActive : styles.statusInactive}`}>
-          {isActive ? "Faol" : "Nofaol"}
+          {isActive ? t("common.active") : t("common.inactive")}
         </span>
       </div>
 
@@ -42,22 +44,22 @@ function TeacherCard({ teacher, onEdit, onDelete }) {
         <div className={styles.statGroup}>
           <span className={styles.statItem}>
             <Users size={14} />
-            {teacher.studentsCount} o'quvchi
+            {t("teacher.studentsCount", { n: teacher.studentsCount })}
           </span>
           <span className={styles.statItem}>
             <BookOpen size={14} />
-            {teacher.classesCount} guruh
+            {t("teachers.groupsCount", { n: teacher.classesCount })}
           </span>
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.actionBtn} onClick={() => onEdit(teacher)} aria-label="Tahrirlash">
+          <button className={styles.actionBtn} onClick={() => onEdit(teacher)} aria-label={t("common.edit")}>
             <Pencil size={15} />
           </button>
           <button
             className={`${styles.actionBtn} ${styles.deleteBtn}`}
             onClick={() => onDelete(teacher)}
-            aria-label="O'chirish"
+            aria-label={t("common.delete")}
           >
             <Trash2 size={15} />
           </button>

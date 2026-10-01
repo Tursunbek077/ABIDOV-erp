@@ -6,12 +6,14 @@ import TeacherFormModal from "../TeacherFormModal/TeacherFormModal";
 import { subjectOptions } from "../../data/teachersData";
 import { loadTeachers, saveTeachers } from "../../utils/teachersStore";
 import styles from "./TeachersPage.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function TeachersPage() {
+  const { t } = useLanguage();
   const [teachers, setTeachers] = useState(loadTeachers);
   const [query, setQuery] = useState("");
-  const [subjectFilter, setSubjectFilter] = useState("Barcha yo'nalishlar");
-  const [statusFilter, setStatusFilter] = useState("Barcha holatlar");
+  const [subjectFilter, setSubjectFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
   const [modalOpen, setModalOpen] = useState(false);
   const [editingTeacher, setEditingTeacher] = useState(null);
 
@@ -31,11 +33,9 @@ function TeachersPage() {
     const fullName = `${t.firstName} ${t.lastName}`.toLowerCase();
     const matchesQuery =
       fullName.includes(query.toLowerCase()) || t.email.toLowerCase().includes(query.toLowerCase());
-    const matchesSubject = subjectFilter === "Barcha yo'nalishlar" || t.subject === subjectFilter;
+    const matchesSubject = subjectFilter === "all" || t.subject === subjectFilter;
     const matchesStatus =
-      statusFilter === "Barcha holatlar" ||
-      (statusFilter === "Faol" && t.status === "faol") ||
-      (statusFilter === "Nofaol" && t.status === "nofaol");
+      statusFilter === "all" || t.status === statusFilter;
     return matchesQuery && matchesSubject && matchesStatus;
   });
 
@@ -65,7 +65,7 @@ function TeachersPage() {
 
   function handleDelete(teacher) {
     const confirmed = window.confirm(
-      `${teacher.firstName} ${teacher.lastName}ni ro'yxatdan o'chirishni tasdiqlaysizmi?`
+      t("admin.confirmDelete", { name: `${teacher.firstName} ${teacher.lastName}` })
     );
     if (confirmed) {
       setTeachers((prev) => prev.filter((t) => t.id !== teacher.id));
@@ -75,10 +75,10 @@ function TeachersPage() {
   return (
     <div className={styles.page}>
       <div className={styles.statsRow}>
-        <StatCard icon={Users} label="Jami o'qituvchilar" value={stats.total} sub="Barcha xodimlar" color="blue" />
-        <StatCard icon={UserCheck} label="Faol o'qituvchilar" value={stats.active} sub="Hozirda dars beradi" color="green" />
-        <StatCard icon={Layers} label="Jami guruhlar" value={stats.classes} sub="Barcha yo'nalishlarda" color="purple" />
-        <StatCard icon={GraduationCap} label="Jami o'quvchilar" value={stats.students} sub="O'qituvchilar oldida" color="orange" />
+        <StatCard icon={Users} label={t("admin.stats.teachers")} value={stats.total} sub={t("teachers.allStaff")} color="blue" />
+        <StatCard icon={UserCheck} label={t("teachers.active")} value={stats.active} sub={t("teachers.activeSub")} color="green" />
+        <StatCard icon={Layers} label={t("teachers.groups")} value={stats.classes} sub={t("teachers.groupsSub")} color="purple" />
+        <StatCard icon={GraduationCap} label={t("admin.stats.students")} value={stats.students} sub={t("teachers.studentsSub")} color="orange" />
       </div>
 
       <div className={styles.toolbar}>
@@ -86,7 +86,7 @@ function TeachersPage() {
           <Search size={16} style={{ color: "var(--c-8a94a6)" }} />
           <input
             type="text"
-            placeholder="Ism yoki email bo'yicha qidirish..."
+            placeholder={t("teachers.search")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -94,7 +94,7 @@ function TeachersPage() {
 
         <div className={styles.filterBox}>
           <select value={subjectFilter} onChange={(e) => setSubjectFilter(e.target.value)}>
-            <option value="Barcha yo'nalishlar">Barcha yo'nalishlar</option>
+            <option value="all">{t("admin.allTracks")}</option>
             {subjectOptions.map((s) => (
               <option key={s} value={s}>{s}</option>
             ))}
@@ -104,16 +104,16 @@ function TeachersPage() {
 
         <div className={styles.filterBox}>
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
-            <option value="Barcha holatlar">Barcha holatlar</option>
-            <option value="Faol">Faol</option>
-            <option value="Nofaol">Nofaol</option>
+            <option value="all">{t("admin.allStatuses")}</option>
+            <option value="faol">{t("common.active")}</option>
+            <option value="nofaol">{t("common.inactive")}</option>
           </select>
           <ChevronDown size={16} style={{ color: "var(--c-8a94a6)" }} />
         </div>
 
         <button className={styles.addBtn} onClick={openAddModal}>
           <Plus size={16} />
-          Yangi o'qituvchi
+          {t("teachers.new")}
         </button>
       </div>
 
@@ -128,7 +128,7 @@ function TeachersPage() {
             />
           ))
         ) : (
-          <div className={styles.emptyState}>Hech qanday o'qituvchi topilmadi.</div>
+          <div className={styles.emptyState}>{t("teachers.empty")}</div>
         )}
       </div>
 

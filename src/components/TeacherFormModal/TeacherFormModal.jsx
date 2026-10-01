@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X, User, Mail, Phone, BookOpen, Users, Layers } from "lucide-react";
 import { subjectOptions } from "../../data/teachersData";
 import styles from "./TeacherFormModal.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 const AVATAR_COLORS = ["blue", "green", "purple", "orange"];
 
@@ -17,6 +18,7 @@ const emptyForm = {
 };
 
 function TeacherFormModal({ teacher, onClose, onSave }) {
+  const { t } = useLanguage();
   const isEdit = Boolean(teacher);
   const [form, setForm] = useState(
     teacher
@@ -42,15 +44,15 @@ function TeacherFormModal({ teacher, onClose, onSave }) {
     e.preventDefault();
 
     if (!form.firstName.trim() || !form.lastName.trim()) {
-      setError("Ism va familiyani kiriting");
+      setError("form.errName");
       return;
     }
     if (!form.email.trim() || !form.email.includes("@")) {
-      setError("To'g'ri email kiriting");
+      setError("form.errEmail");
       return;
     }
     if (!form.phone.trim()) {
-      setError("Telefon raqamini kiriting");
+      setError("form.errPhone");
       return;
     }
 
@@ -74,18 +76,18 @@ function TeacherFormModal({ teacher, onClose, onSave }) {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h3>{isEdit ? "O'qituvchini tahrirlash" : "Yangi o'qituvchi qo'shish"}</h3>
-          <button className={styles.closeBtn} onClick={onClose} aria-label="Yopish">
+          <h3>{isEdit ? t("teachers.editTitle") : t("teachers.addTitle")}</h3>
+          <button className={styles.closeBtn} onClick={onClose} aria-label={t("common.close")}>
             <X size={18} />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
-          {error && <p className={styles.error}>{error}</p>}
+          {error && <p className={styles.error}>{t(error)}</p>}
 
           <div className={styles.formRow}>
             <label className={styles.field}>
-              <span>Ism</span>
+              <span>{t("form.firstName")}</span>
               <div className={styles.inputWrap}>
                 <User size={16} />
                 <input
@@ -98,7 +100,7 @@ function TeacherFormModal({ teacher, onClose, onSave }) {
             </label>
 
             <label className={styles.field}>
-              <span>Familiya</span>
+              <span>{t("form.lastName")}</span>
               <div className={styles.inputWrap}>
                 <User size={16} />
                 <input
@@ -125,7 +127,7 @@ function TeacherFormModal({ teacher, onClose, onSave }) {
           </label>
 
           <label className={styles.field}>
-            <span>Telefon</span>
+            <span>{t("form.phone")}</span>
             <div className={styles.inputWrap}>
               <Phone size={16} />
               <input
@@ -138,7 +140,7 @@ function TeacherFormModal({ teacher, onClose, onSave }) {
           </label>
 
           <label className={styles.field}>
-            <span>Yo'nalish</span>
+            <span>{t("form.track")}</span>
             <div className={styles.inputWrap}>
               <BookOpen size={16} />
               <select value={form.subject} onChange={(e) => update("subject", e.target.value)}>
@@ -151,7 +153,7 @@ function TeacherFormModal({ teacher, onClose, onSave }) {
 
           <div className={styles.formRow}>
             <label className={styles.field}>
-              <span>Guruhlar soni</span>
+              <span>{t("form.groupsCount")}</span>
               <div className={styles.inputWrap}>
                 <Layers size={16} />
                 <input
@@ -165,7 +167,7 @@ function TeacherFormModal({ teacher, onClose, onSave }) {
             </label>
 
             <label className={styles.field}>
-              <span>O'quvchilar soni</span>
+              <span>{t("form.studentsCount")}</span>
               <div className={styles.inputWrap}>
                 <Users size={16} />
                 <input
@@ -180,31 +182,31 @@ function TeacherFormModal({ teacher, onClose, onSave }) {
           </div>
 
           <label className={styles.field}>
-            <span>Holati</span>
+            <span>{t("form.status")}</span>
             <div className={styles.statusTabs}>
               <button
                 type="button"
                 className={`${styles.statusTab} ${form.status === "faol" ? styles.statusTabActive : ""}`}
                 onClick={() => update("status", "faol")}
               >
-                Faol
+                {t("common.active")}
               </button>
               <button
                 type="button"
                 className={`${styles.statusTab} ${form.status === "nofaol" ? styles.statusTabActive : ""}`}
                 onClick={() => update("status", "nofaol")}
               >
-                Nofaol
+                {t("common.inactive")}
               </button>
             </div>
           </label>
 
           <div className={styles.footer}>
             <button type="button" className={styles.cancelBtn} onClick={onClose}>
-              Bekor qilish
+              {t("common.cancel")}
             </button>
             <button type="submit" className={styles.submitBtn}>
-              {isEdit ? "Saqlash" : "Qo'shish"}
+              {isEdit ? t("common.save") : t("common.add")}
             </button>
           </div>
         </form>

@@ -5,17 +5,19 @@ import StudentFormModal from "../StudentFormModal/StudentFormModal";
 import { loadStudents, saveStudents, nextStudentCode } from "../../utils/studentsStore";
 import { loadCourses } from "../../utils/coursesStore";
 import styles from "./StudentsPage.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function initials(firstName, lastName) {
   return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
 }
 
 function StudentsPage() {
+  const { t } = useLanguage();
   const [students, setStudents] = useState(loadStudents);
   const courseOptions = useMemo(() => loadCourses().map((c) => c.title), [students]);
   const [query, setQuery] = useState("");
-  const [courseFilter, setCourseFilter] = useState("Barcha kurslar");
-  const [statusFilter, setStatusFilter] = useState("Barcha holatlar");
+  const [courseFilter, setCourseFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
   const [modalOpen, setModalOpen] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
 
@@ -36,11 +38,9 @@ function StudentsPage() {
       fullName.includes(query.toLowerCase()) ||
       s.studentCode.toLowerCase().includes(query.toLowerCase()) ||
       s.email.toLowerCase().includes(query.toLowerCase());
-    const matchesCourse = courseFilter === "Barcha kurslar" || s.course === courseFilter;
+    const matchesCourse = courseFilter === "all" || s.course === courseFilter;
     const matchesStatus =
-      statusFilter === "Barcha holatlar" ||
-      (statusFilter === "Faol" && s.status === "faol") ||
-      (statusFilter === "Nofaol" && s.status === "nofaol");
+      statusFilter === "all" || s.status === statusFilter;
     return matchesQuery && matchesCourse && matchesStatus;
   });
 
@@ -73,7 +73,7 @@ function StudentsPage() {
 
   function handleDelete(student) {
     const confirmed = window.confirm(
-      `${student.firstName} ${student.lastName}ni ro'yxatdan o'chirishni tasdiqlaysizmi?`
+      t("admin.confirmDelete", { name: `${student.firstName} ${student.lastName}` })
     );
     if (confirmed) {
       setStudents((prev) => prev.filter((s) => s.id !== student.id));
@@ -83,9 +83,9 @@ function StudentsPage() {
   return (
     <div className={styles.page}>
       <div className={styles.statsRow}>
-        <StatCard icon={Users} label="Jami o'quvchilar" value={stats.total} sub="Barcha ro'yxatdagilar" color="blue" />
-        <StatCard icon={UserCheck} label="Faol o'quvchilar" value={stats.active} sub="Hozirda o'qimoqda" color="green" />
-        <StatCard icon={BookOpen} label="Kurslar soni" value={stats.courses} sub="O'quvchilar bilan" color="purple" />
+        <StatCard icon={Users} label={t("admin.stats.students")} value={stats.total} sub={t("students.allSub")} color="blue" />
+        <StatCard icon={UserCheck} label={t("students.active")} value={stats.active} sub={t("students.activeSub")} color="green" />
+        <StatCard icon={BookOpen} label={t("students.courses")} value={stats.courses} sub={t("students.coursesSub")} color="purple" />
       </div>
 
       <div className={styles.toolbar}>
@@ -93,7 +93,7 @@ function StudentsPage() {
           <Search size={16} style={{ color: "var(--c-8a94a6)" }} />
           <input
             type="text"
-            placeholder="Ism, ID yoki email bo'yicha qidirish..."
+            placeholder={t("students.search")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -101,7 +101,7 @@ function StudentsPage() {
 
         <div className={styles.filterBox}>
           <select value={courseFilter} onChange={(e) => setCourseFilter(e.target.value)}>
-            <option value="Barcha kurslar">Barcha kurslar</option>
+            <option value="all">{t("courses.all")}</option>
             {courseOptions.map((c) => (
               <option key={c} value={c}>{c}</option>
             ))}
@@ -111,16 +111,16 @@ function StudentsPage() {
 
         <div className={styles.filterBox}>
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
-            <option value="Barcha holatlar">Barcha holatlar</option>
-            <option value="Faol">Faol</option>
-            <option value="Nofaol">Nofaol</option>
+            <option value="all">{t("admin.allStatuses")}</option>
+            <option value="faol">{t("common.active")}</option>
+            <option value="nofaol">{t("common.inactive")}</option>
           </select>
           <ChevronDown size={16} style={{ color: "var(--c-8a94a6)" }} />
         </div>
 
         <button className={styles.addBtn} onClick={openAddModal}>
           <Plus size={16} />
-          Yangi o'quvchi
+          {t("students.new")}
         </button>
       </div>
 
@@ -130,11 +130,11 @@ function StudentsPage() {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Ism Familiya</th>
-                <th>Kurs</th>
-                <th>Telefon</th>
-                <th>Holat</th>
-                <th className={styles.actionsHead}>Amallar</th>
+                <th>{t("students.col.name")}</th>
+                <th>{t("students.col.course")}</th>
+                <th>{t("form.phone")}</th>
+                <th>{t("pay.col.status")}</th>
+                <th className={styles.actionsHead}>{t("students.col.actions")}</th>
               </tr>
             </thead>
             <tbody>
@@ -158,18 +158,18 @@ function StudentsPage() {
                   <td className={styles.phoneCell}>{s.phone}</td>
                   <td>
                     <span className={`${styles.statusBadge} ${s.status === "faol" ? styles.statusActive : styles.statusInactive}`}>
-                      {s.status === "faol" ? "Faol" : "Nofaol"}
+                      {s.status === "faol" ? t("common.active") : t("common.inactive")}
                     </span>
                   </td>
                   <td>
                     <div className={styles.actions}>
-                      <button className={styles.actionBtn} onClick={() => openEditModal(s)} aria-label="Tahrirlash">
+                      <button className={styles.actionBtn} onClick={() => openEditModal(s)} aria-label={t("common.edit")}>
                         <Pencil size={15} />
                       </button>
                       <button
                         className={`${styles.actionBtn} ${styles.deleteBtn}`}
                         onClick={() => handleDelete(s)}
-                        aria-label="O'chirish"
+                        aria-label={t("common.delete")}
                       >
                         <Trash2 size={15} />
                       </button>
@@ -180,7 +180,7 @@ function StudentsPage() {
             </tbody>
           </table>
         ) : (
-          <div className={styles.emptyState}>Hech qanday o'quvchi topilmadi.</div>
+          <div className={styles.emptyState}>{t("students.empty")}</div>
         )}
       </div>
 

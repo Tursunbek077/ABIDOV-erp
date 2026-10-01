@@ -19,13 +19,15 @@ import { categoryOptions } from "../../data/coursesData";
 import { loadCourses, saveCourses } from "../../utils/coursesStore";
 import { loadStudents } from "../../utils/studentsStore";
 import styles from "./CoursesManagementPage.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function CoursesManagementPage() {
+  const { t, formatMoney } = useLanguage();
   const [courses, setCourses] = useState(loadCourses);
   const [studentsTick, setStudentsTick] = useState(0);
   const [query, setQuery] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("Barcha yo'nalishlar");
-  const [statusFilter, setStatusFilter] = useState("Barcha holatlar");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
   const [formOpen, setFormOpen] = useState(false);
   const [editingCourse, setEditingCourse] = useState(null);
   const [detailCourse, setDetailCourse] = useState(null);
@@ -57,11 +59,9 @@ function CoursesManagementPage() {
 
   const filtered = courses.filter((c) => {
     const matchesQuery = c.title.toLowerCase().includes(query.toLowerCase());
-    const matchesCategory = categoryFilter === "Barcha yo'nalishlar" || c.category === categoryFilter;
+    const matchesCategory = categoryFilter === "all" || c.category === categoryFilter;
     const matchesStatus =
-      statusFilter === "Barcha holatlar" ||
-      (statusFilter === "Faol" && c.status === "faol") ||
-      (statusFilter === "Nofaol" && c.status === "nofaol");
+      statusFilter === "all" || c.status === statusFilter;
     return matchesQuery && matchesCategory && matchesStatus;
   });
 
@@ -93,8 +93,8 @@ function CoursesManagementPage() {
     const enrolled = studentCountByCourse[course.title] || 0;
     const message =
       enrolled > 0
-        ? `"${course.title}" kursida ${enrolled} ta o'quvchi bor. Kursni baribir o'chirishni tasdiqlaysizmi?`
-        : `"${course.title}" kursini o'chirishni tasdiqlaysizmi?`;
+        ? t("cm.confirmDeleteWithStudents", { title: course.title, n: enrolled })
+        : t("cm.confirmDelete", { title: course.title });
     if (window.confirm(message)) {
       setCourses((prev) => prev.filter((c) => c.id !== course.id));
     }
@@ -107,14 +107,14 @@ function CoursesManagementPage() {
   return (
     <div className={styles.page}>
       <div className={styles.statsRow}>
-        <StatCard icon={Layers} label="Jami kurslar" value={stats.totalCourses} sub="Barcha yo'nalishlar" color="blue" />
-        <StatCard icon={BookOpen} label="Faol kurslar" value={stats.activeCourses} sub="Hozirda o'tilmoqda" color="green" />
-        <StatCard icon={Users} label="Jami o'quvchilar" value={stats.totalEnrolled} sub="Barcha kurslarda" color="purple" />
+        <StatCard icon={Layers} label={t("cm.total")} value={stats.totalCourses} sub={t("admin.allTracks")} color="blue" />
+        <StatCard icon={BookOpen} label={t("admin.stats.courses")} value={stats.activeCourses} sub={t("cm.activeSub")} color="green" />
+        <StatCard icon={Users} label={t("admin.stats.students")} value={stats.totalEnrolled} sub={t("cm.studentsSub")} color="purple" />
         <StatCard
           icon={Wallet}
-          label="Oylik taxminiy tushum"
-          value={`${(stats.monthlyRevenue / 1000000).toFixed(1)}M so'm`}
-          sub="Faol yozilishlar bo'yicha"
+          label={t("cm.revenue")}
+          value={`${(stats.monthlyRevenue / 1000000).toFixed(1)}M ${t("common.currency")}`}
+          sub={t("cm.revenueSub")}
           color="orange"
         />
       </div>
@@ -124,7 +124,7 @@ function CoursesManagementPage() {
           <Search size={16} style={{ color: "var(--c-8a94a6)" }} />
           <input
             type="text"
-            placeholder="Kurslarni qidirish..."
+            placeholder={t("courses.search")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -132,7 +132,7 @@ function CoursesManagementPage() {
 
         <div className={styles.filterBox}>
           <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>
-            <option value="Barcha yo'nalishlar">Barcha yo'nalishlar</option>
+            <option value="all">{t("admin.allTracks")}</option>
             {categoryOptions.map((c) => (
               <option key={c} value={c}>{c}</option>
             ))}
@@ -142,16 +142,16 @@ function CoursesManagementPage() {
 
         <div className={styles.filterBox}>
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
-            <option value="Barcha holatlar">Barcha holatlar</option>
-            <option value="Faol">Faol</option>
-            <option value="Nofaol">Nofaol</option>
+            <option value="all">{t("admin.allStatuses")}</option>
+            <option value="faol">{t("common.active")}</option>
+            <option value="nofaol">{t("common.inactive")}</option>
           </select>
           <ChevronDown size={16} style={{ color: "var(--c-8a94a6)" }} />
         </div>
 
         <button className={styles.addBtn} onClick={openAddModal}>
           <Plus size={16} />
-          Yangi kurs
+          {t("cm.new")}
         </button>
       </div>
 
@@ -170,7 +170,7 @@ function CoursesManagementPage() {
                     <BookOpen size={22} />
                   </div>
                   <span className={`${styles.statusBadge} ${isActive ? styles.statusActive : styles.statusInactive}`}>
-                    {isActive ? "Faol" : "Nofaol"}
+                    {isActive ? t("common.active") : t("common.inactive")}
                   </span>
                 </div>
 
@@ -184,20 +184,20 @@ function CoursesManagementPage() {
                   </span>
                   <span className={styles.metaItem}>
                     <Calendar size={13} />
-                    {course.durationMonths} oy
+                    {t("common.months", { n: course.durationMonths })}
                   </span>
                 </div>
 
                 <div className={styles.priceRow}>
                   <Wallet size={13} />
-                  {course.price.toLocaleString("uz-UZ")} so'm / oy
+                  {t("cm.perMonth", { price: formatMoney(course.price) })}
                 </div>
 
                 <div className={styles.capacityBlock}>
                   <div className={styles.capacityLabel}>
                     <span>
                       <Users size={13} /> {enrolled}
-                      {course.capacity > 0 ? ` / ${course.capacity}` : ""} o'quvchi
+                      {course.capacity > 0 ? ` / ${course.capacity}` : ""} {t("cm.studentsWord")}
                     </span>
                     {course.capacity > 0 && <span className={styles.capacityPercent}>{fillPercent}%</span>}
                   </div>
@@ -209,13 +209,13 @@ function CoursesManagementPage() {
                 </div>
 
                 <div className={styles.cardActions} onClick={(e) => e.stopPropagation()}>
-                  <button className={styles.actionBtn} onClick={() => openEditModal(course)} aria-label="Tahrirlash">
+                  <button className={styles.actionBtn} onClick={() => openEditModal(course)} aria-label={t("common.edit")}>
                     <Pencil size={15} />
                   </button>
                   <button
                     className={`${styles.actionBtn} ${styles.deleteBtn}`}
                     onClick={() => handleDelete(course)}
-                    aria-label="O'chirish"
+                    aria-label={t("common.delete")}
                   >
                     <Trash2 size={15} />
                   </button>
@@ -224,7 +224,7 @@ function CoursesManagementPage() {
             );
           })
         ) : (
-          <div className={styles.emptyState}>Hech qanday kurs topilmadi.</div>
+          <div className={styles.emptyState}>{t("courses.empty")}</div>
         )}
       </div>
 

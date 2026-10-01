@@ -4,6 +4,7 @@ import StatCard from "../StatCard/StatCard";
 import { ratingSeed } from "../../data/ratingData";
 import { loadStudents } from "../../utils/studentsStore";
 import styles from "./RatingPage.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 const AVATAR_COLORS = ["#2F6FED", "#22B573", "#F5A623", "#8B5CF6", "#EC4899", "#14B8A6", "#F97316"];
 
@@ -50,6 +51,7 @@ function buildRating() {
 }
 
 function PodiumCard({ item, place }) {
+  const { t } = useLanguage();
   const icons = { 1: Crown, 2: Medal, 3: Medal };
   const Icon = icons[place];
   return (
@@ -64,16 +66,17 @@ function PodiumCard({ item, place }) {
         {item.firstName} {item.lastName}
       </p>
       <p className={styles.podiumCourse}>{item.course}</p>
-      <div className={styles.podiumPoints}>{item.points} ball</div>
+      <div className={styles.podiumPoints}>{t("tgrades.score", { n: item.points })}</div>
       <div className={styles.podiumBase}>{place}</div>
     </div>
   );
 }
 
 function RatingPage() {
+  const { t } = useLanguage();
   const rating = useMemo(buildRating, []);
   const [query, setQuery] = useState("");
-  const [courseFilter, setCourseFilter] = useState("Barcha kurslar");
+  const [courseFilter, setCourseFilter] = useState("all");
 
   const courses = useMemo(() => [...new Set(rating.map((r) => r.course))], [rating]);
 
@@ -87,28 +90,28 @@ function RatingPage() {
     const name = `${r.firstName} ${r.lastName}`.toLowerCase();
     return (
       name.includes(query.toLowerCase()) &&
-      (courseFilter === "Barcha kurslar" || r.course === courseFilter)
+      (courseFilter === "all" || r.course === courseFilter)
     );
   });
 
-  const showPodium = query === "" && courseFilter === "Barcha kurslar";
+  const showPodium = query === "" && courseFilter === "all";
   const top3 = rating.slice(0, 3);
   const listItems = showPodium ? filtered.slice(3) : filtered;
 
   return (
     <div className={styles.page}>
       <div className={styles.statsRow}>
-        <StatCard icon={Trophy} label="Reytingdagilar" value={rating.length} sub="Jami o'quvchilar" color="orange" />
-        <StatCard icon={TrendingUp} label="O'rtacha baho" value={stats.avgScore} sub="100 ballik tizimda" color="blue" />
-        <StatCard icon={CalendarCheck} label="O'rtacha davomat" value={`${stats.avgAttendance}%`} sub="Barcha o'quvchilar" color="green" />
-        <StatCard icon={ClipboardCheck} label="Uy vazifalari" value={`${stats.avgHomework}%`} sub="Bajarilish darajasi" color="purple" />
+        <StatCard icon={Trophy} label={t("rating.inRating")} value={rating.length} sub={t("admin.stats.students")} color="orange" />
+        <StatCard icon={TrendingUp} label={t("grades.avg")} value={stats.avgScore} sub={t("rating.scale")} color="blue" />
+        <StatCard icon={CalendarCheck} label={t("rating.avgAttendance")} value={`${stats.avgAttendance}%`} sub={t("ap.monthlyTotalSub")} color="green" />
+        <StatCard icon={ClipboardCheck} label={t("nav.homework")} value={`${stats.avgHomework}%`} sub={t("rating.completion")} color="purple" />
       </div>
 
       {showPodium && (
         <section className={styles.podiumCard}>
           <div className={styles.podiumHeader}>
             <Trophy size={20} />
-            <h3>Eng yaxshi uchtalik</h3>
+            <h3>{t("rating.top3")}</h3>
           </div>
           <div className={styles.podiumRow}>
             <PodiumCard item={top3[1]} place={2} />
@@ -122,16 +125,16 @@ function RatingPage() {
         <div className={styles.searchBox}>
           <Search size={18} style={{ color: "var(--c-8a93a6)" }} />
           <input
-            placeholder="Ism yoki familiya bo'yicha qidirish..."
+            placeholder={t("rating.search")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
         <div className={styles.filterBox}>
           <select value={courseFilter} onChange={(e) => setCourseFilter(e.target.value)}>
-            <option>Barcha kurslar</option>
+            <option value="all">{t("courses.all")}</option>
             {courses.map((c) => (
-              <option key={c}>{c}</option>
+              <option key={c} value={c}>{c}</option>
             ))}
           </select>
           <ChevronDown size={16} style={{ color: "var(--c-8a93a6)" }} />
@@ -140,15 +143,15 @@ function RatingPage() {
 
       <section className={styles.listCard}>
         <div className={styles.listHead}>
-          <span className={styles.colRank}>O'rin</span>
-          <span className={styles.colName}>O'quvchi</span>
-          <span className={styles.colMetric}>Baho</span>
-          <span className={styles.colMetric}>Davomat</span>
-          <span className={styles.colMetric}>Vazifa</span>
-          <span className={styles.colPoints}>Umumiy ball</span>
+          <span className={styles.colRank}>{t("rating.col.rank")}</span>
+          <span className={styles.colName}>{t("thw.col.student")}</span>
+          <span className={styles.colMetric}>{t("thw.col.grade")}</span>
+          <span className={styles.colMetric}>{t("student.stats.attendance")}</span>
+          <span className={styles.colMetric}>{t("rating.col.homework")}</span>
+          <span className={styles.colPoints}>{t("rating.col.total")}</span>
         </div>
 
-        {listItems.length === 0 && <p className={styles.empty}>Hech narsa topilmadi.</p>}
+        {listItems.length === 0 && <p className={styles.empty}>{t("rating.empty")}</p>}
 
         {listItems.map((r) => (
           <div key={r.id} className={styles.listRow}>

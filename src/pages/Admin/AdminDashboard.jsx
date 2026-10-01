@@ -20,9 +20,9 @@ import styles from "./AdminDashboard.module.css";
 const iconMap = { graduation: GraduationCap, users: Users, book: BookOpen, wallet: Wallet };
 
 const statusMeta = {
-  [PAYMENT_STATUS.PAID]: { label: "To'landi", bg: "var(--c-e4f8ee)", color: "var(--c-22b573)" },
-  [PAYMENT_STATUS.DUE_SOON]: { label: "Kutilmoqda", bg: "var(--c-fef3e3)", color: "var(--c-f5a623)" },
-  [PAYMENT_STATUS.OVERDUE]: { label: "Muddati o'tgan", bg: "var(--c-fdecec)", color: "var(--c-d64545)" },
+  [PAYMENT_STATUS.PAID]: { labelKey: "pay.paid", bg: "var(--c-e4f8ee)", color: "var(--c-22b573)" },
+  [PAYMENT_STATUS.DUE_SOON]: { labelKey: "pay.status.dueSoon", bg: "var(--c-fef3e3)", color: "var(--c-f5a623)" },
+  [PAYMENT_STATUS.OVERDUE]: { labelKey: "pay.status.overdue", bg: "var(--c-fdecec)", color: "var(--c-d64545)" },
 };
 
 const statusOrder = {
@@ -32,13 +32,13 @@ const statusOrder = {
 };
 
 function AdminDashboard({ user, activePage, onNavigate }) {
-  const { t } = useLanguage();
+  const { t, formatDate, formatMoney } = useLanguage();
   const paymentPreview = useMemo(() => {
     return loadStudents()
       .map((s) => ({
         id: s.id,
         name: `${s.firstName} ${s.lastName}`,
-        amount: `${getStudentPaymentAmount(s).toLocaleString("uz-UZ")} so'm`,
+        amount: getStudentPaymentAmount(s),
         statusType: getPaymentStatusType(s),
       }))
       .sort((a, b) => statusOrder[a.statusType] - statusOrder[b.statusType])
@@ -78,15 +78,15 @@ function AdminDashboard({ user, activePage, onNavigate }) {
 
       <div className={styles.statsRow}>
         {adminStats.map((s) => (
-          <StatCard key={s.id} icon={iconMap[s.icon]} label={s.label} value={s.value} sub={s.sub} color={s.color} />
+          <StatCard key={s.id} icon={iconMap[s.icon]} label={t(s.labelKey)} value={s.labelKey === "admin.stats.revenue" ? `${s.value} ${t("common.currency")}` : s.value} sub={t(s.subKey)} color={s.color} />
         ))}
       </div>
 
       <div className={styles.mainGrid}>
         <section className={styles.card}>
           <div className={styles.cardHeader}>
-            <h3>So'nggi ro'yxatdan o'tganlar</h3>
-            <a href="#">Barchasi</a>
+            <h3>{t("admin.recent")}</h3>
+            <a href="#">{t("common.viewAll")}</a>
           </div>
           <div>
             {recentEnrollments.map((e) => (
@@ -95,7 +95,7 @@ function AdminDashboard({ user, activePage, onNavigate }) {
                   <p className={styles.rowTitle}>{e.name}</p>
                   <p className={styles.rowMeta}>{e.course}</p>
                 </div>
-                <span className={styles.rowDate}>{e.date}</span>
+                <span className={styles.rowDate}>{formatDate(e.date, { day: "2-digit", month: "short" })}</span>
               </div>
             ))}
           </div>
@@ -103,9 +103,9 @@ function AdminDashboard({ user, activePage, onNavigate }) {
 
         <section className={styles.card}>
           <div className={styles.cardHeader}>
-            <h3>To'lovlar holati</h3>
+            <h3>{t("admin.paymentsStatus")}</h3>
             <button className={styles.cardHeaderBtn} onClick={() => onNavigate?.("payments")}>
-              Barchasi
+              {t("common.viewAll")}
             </button>
           </div>
           <div>
@@ -115,10 +115,10 @@ function AdminDashboard({ user, activePage, onNavigate }) {
                 <div key={p.id} className={styles.row}>
                   <div>
                     <p className={styles.rowTitle}>{p.name}</p>
-                    <p className={styles.rowMeta}>{p.amount}</p>
+                    <p className={styles.rowMeta}>{formatMoney(p.amount)}</p>
                   </div>
                   <span className={styles.badge} style={{ background: meta.bg, color: meta.color }}>
-                    {meta.label}
+                    {t(meta.labelKey)}
                   </span>
                 </div>
               );

@@ -3,12 +3,14 @@ import { X, Plus, Users, Calendar, Wallet, User } from "lucide-react";
 import StudentFormModal from "../StudentFormModal/StudentFormModal";
 import { loadStudents, saveStudents, nextStudentCode } from "../../utils/studentsStore";
 import styles from "./CourseDetailModal.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function initials(firstName, lastName) {
   return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
 }
 
 function CourseDetailModal({ course, onClose, onStudentsChanged }) {
+  const { t, formatMoney } = useLanguage();
   const [students, setStudents] = useState(() =>
     loadStudents().filter((s) => s.course === course.title)
   );
@@ -36,7 +38,7 @@ function CourseDetailModal({ course, onClose, onStudentsChanged }) {
             <h3>{course.title}</h3>
             <span className={styles.categoryBadge}>{course.category}</span>
           </div>
-          <button className={styles.closeBtn} onClick={onClose} aria-label="Yopish">
+          <button className={styles.closeBtn} onClick={onClose} aria-label={t("common.close")}>
             <X size={18} />
           </button>
         </div>
@@ -48,11 +50,11 @@ function CourseDetailModal({ course, onClose, onStudentsChanged }) {
           </span>
           <span className={styles.metaItem}>
             <Calendar size={14} />
-            {course.durationMonths} oylik kurs
+            {t("courses.duration", { n: course.durationMonths })}
           </span>
           <span className={styles.metaItem}>
             <Wallet size={14} />
-            {course.price.toLocaleString("uz-UZ")} so'm / oy
+            {t("cm.perMonth", { price: formatMoney(course.price) })}
           </span>
         </div>
 
@@ -60,7 +62,7 @@ function CourseDetailModal({ course, onClose, onStudentsChanged }) {
           <div className={styles.capacityLabel}>
             <span>
               <Users size={14} /> {students.length}
-              {course.capacity > 0 ? ` / ${course.capacity}` : ""} o'quvchi
+              {course.capacity > 0 ? ` / ${course.capacity}` : ""} {t("cm.studentsWord")}
             </span>
             {course.capacity > 0 && <span className={styles.capacityPercent}>{fillPercent}%</span>}
           </div>
@@ -72,10 +74,10 @@ function CourseDetailModal({ course, onClose, onStudentsChanged }) {
         </div>
 
         <div className={styles.listHeader}>
-          <h4>Kursga yozilgan o'quvchilar</h4>
+          <h4>{t("cd.enrolled")}</h4>
           <button className={styles.addBtn} onClick={() => setAddOpen(true)}>
             <Plus size={15} />
-            Yangi o'quvchi qo'shish
+            {t("students.addTitle")}
           </button>
         </div>
 
@@ -89,12 +91,12 @@ function CourseDetailModal({ course, onClose, onStudentsChanged }) {
                   <p className={styles.studentMeta}>{s.studentCode} · {s.phone}</p>
                 </div>
                 <span className={`${styles.statusBadge} ${s.status === "faol" ? styles.statusActive : styles.statusInactive}`}>
-                  {s.status === "faol" ? "Faol" : "Nofaol"}
+                  {s.status === "faol" ? t("common.active") : t("common.inactive")}
                 </span>
               </div>
             ))
           ) : (
-            <div className={styles.emptyState}>Bu kursga hali o'quvchi yozilmagan.</div>
+            <div className={styles.emptyState}>{t("cd.empty")}</div>
           )}
         </div>
       </div>

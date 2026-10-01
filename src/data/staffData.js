@@ -18,17 +18,17 @@ export const teacherHomeworkQueue = [
 ];
 
 export const adminStats = [
-  { id: 1, label: "Jami o'quvchilar", value: "312", sub: "+18 shu oy", color: "blue", icon: "graduation" },
-  { id: 2, label: "Jami o'qituvchilar", value: "14", sub: "Faol xodimlar", color: "green", icon: "users" },
-  { id: 3, label: "Faol kurslar", value: "9", sub: "Barcha yo'nalishlar", color: "purple", icon: "book" },
-  { id: 4, label: "Oylik tushum", value: "48.6M so'm", sub: "Avgust 2026", color: "orange", icon: "wallet" },
+  { id: 1, labelKey: "admin.stats.students", value: "312", subKey: "admin.stats.studentsSub", color: "blue", icon: "graduation" },
+  { id: 2, labelKey: "admin.stats.teachers", value: "14", subKey: "admin.stats.teachersSub", color: "green", icon: "users" },
+  { id: 3, labelKey: "admin.stats.courses", value: "9", subKey: "admin.stats.coursesSub", color: "purple", icon: "book" },
+  { id: 4, labelKey: "admin.stats.revenue", value: "48.6M", subKey: "admin.stats.revenueSub", color: "orange", icon: "wallet" },
 ];
 
 export const recentEnrollments = [
-  { id: 1, name: "Diyor Nematov", course: "Frontend Development", date: "07 sen" },
-  { id: 2, name: "Malika Tosheva", course: "JavaScript Fundamentals", date: "06 sen" },
-  { id: 3, name: "Bekzod Alimov", course: "HTML & CSS Basics", date: "05 sen" },
-  { id: 4, name: "Sevinch Qodirova", course: "Frontend Development", date: "04 sen" },
+  { id: 1, name: "Diyor Nematov", course: "Frontend Development", date: "2026-09-07" },
+  { id: 2, name: "Malika Tosheva", course: "JavaScript Fundamentals", date: "2026-09-06" },
+  { id: 3, name: "Bekzod Alimov", course: "HTML & CSS Basics", date: "2026-09-05" },
+  { id: 4, name: "Sevinch Qodirova", course: "Frontend Development", date: "2026-09-04" },
 ];
 
 export const paymentStatus = [

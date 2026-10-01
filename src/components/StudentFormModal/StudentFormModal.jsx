@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X, User, Mail, Phone, BookOpen } from "lucide-react";
 import { loadCourses } from "../../utils/coursesStore";
 import styles from "./StudentFormModal.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function buildEmptyForm(lockedCourse, courseOptions) {
   return {
@@ -15,6 +16,7 @@ function buildEmptyForm(lockedCourse, courseOptions) {
 }
 
 function StudentFormModal({ student, lockedCourse, onClose, onSave }) {
+  const { t } = useLanguage();
   const isEdit = Boolean(student);
   const courseOptions = loadCourses().map((c) => c.title);
   const [form, setForm] = useState(
@@ -39,15 +41,15 @@ function StudentFormModal({ student, lockedCourse, onClose, onSave }) {
     e.preventDefault();
 
     if (!form.firstName.trim() || !form.lastName.trim()) {
-      setError("Ism va familiyani kiriting");
+      setError("form.errName");
       return;
     }
     if (!form.email.trim() || !form.email.includes("@")) {
-      setError("To'g'ri email kiriting");
+      setError("form.errEmail");
       return;
     }
     if (!form.phone.trim()) {
-      setError("Telefon raqamini kiriting");
+      setError("form.errPhone");
       return;
     }
 
@@ -68,25 +70,25 @@ function StudentFormModal({ student, lockedCourse, onClose, onSave }) {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h3>{isEdit ? "O'quvchini tahrirlash" : "Yangi o'quvchi qo'shish"}</h3>
-          <button className={styles.closeBtn} onClick={onClose} aria-label="Yopish">
+          <h3>{isEdit ? t("students.editTitle") : t("students.addTitle")}</h3>
+          <button className={styles.closeBtn} onClick={onClose} aria-label={t("common.close")}>
             <X size={18} />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
-          {error && <p className={styles.error}>{error}</p>}
+          {error && <p className={styles.error}>{t(error)}</p>}
 
           {isEdit && (
             <label className={styles.field}>
-              <span>O'quvchi ID</span>
+              <span>{t("students.id")}</span>
               <div className={styles.readonlyBox}>{student.studentCode}</div>
             </label>
           )}
 
           <div className={styles.formRow}>
             <label className={styles.field}>
-              <span>Ism</span>
+              <span>{t("form.firstName")}</span>
               <div className={styles.inputWrap}>
                 <User size={16} />
                 <input
@@ -99,7 +101,7 @@ function StudentFormModal({ student, lockedCourse, onClose, onSave }) {
             </label>
 
             <label className={styles.field}>
-              <span>Familiya</span>
+              <span>{t("form.lastName")}</span>
               <div className={styles.inputWrap}>
                 <User size={16} />
                 <input
@@ -126,7 +128,7 @@ function StudentFormModal({ student, lockedCourse, onClose, onSave }) {
           </label>
 
           <label className={styles.field}>
-            <span>Telefon</span>
+            <span>{t("form.phone")}</span>
             <div className={styles.inputWrap}>
               <Phone size={16} />
               <input
@@ -139,7 +141,7 @@ function StudentFormModal({ student, lockedCourse, onClose, onSave }) {
           </label>
 
           <label className={styles.field}>
-            <span>Kurs</span>
+            <span>{t("students.col.course")}</span>
             {lockedCourse ? (
               <div className={styles.readonlyBox}>
                 <BookOpen size={15} style={{ marginRight: 8, verticalAlign: "-2px" }} />
@@ -158,31 +160,31 @@ function StudentFormModal({ student, lockedCourse, onClose, onSave }) {
           </label>
 
           <label className={styles.field}>
-            <span>Holati</span>
+            <span>{t("form.status")}</span>
             <div className={styles.statusTabs}>
               <button
                 type="button"
                 className={`${styles.statusTab} ${form.status === "faol" ? styles.statusTabActive : ""}`}
                 onClick={() => update("status", "faol")}
               >
-                Faol
+                {t("common.active")}
               </button>
               <button
                 type="button"
                 className={`${styles.statusTab} ${form.status === "nofaol" ? styles.statusTabActive : ""}`}
                 onClick={() => update("status", "nofaol")}
               >
-                Nofaol
+                {t("common.inactive")}
               </button>
             </div>
           </label>
 
           <div className={styles.footer}>
             <button type="button" className={styles.cancelBtn} onClick={onClose}>
-              Bekor qilish
+              {t("common.cancel")}
             </button>
             <button type="submit" className={styles.submitBtn}>
-              {isEdit ? "Saqlash" : "Qo'shish"}
+              {isEdit ? t("common.save") : t("common.add")}
             </button>
           </div>
         </form>

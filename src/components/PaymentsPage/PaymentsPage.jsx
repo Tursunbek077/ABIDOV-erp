@@ -9,23 +9,21 @@ import {
   markStudentPaid,
 } from "../../utils/paymentsStore";
 import styles from "./PaymentsPage.module.css";
+import { useLanguage } from "../../context/useLanguage";
 
 function initials(firstName, lastName) {
   return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
 }
 
-function formatDate(iso) {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleDateString("uz-UZ", { day: "2-digit", month: "2-digit", year: "numeric" });
-}
 
 const statusMeta = {
-  [PAYMENT_STATUS.PAID]: { label: "To'landi", bg: "var(--c-e4f8ee)", color: "var(--c-22b573)" },
-  [PAYMENT_STATUS.DUE_SOON]: { label: "Muddati yaqinlashmoqda", bg: "var(--c-fef3e3)", color: "var(--c-f5a623)" },
-  [PAYMENT_STATUS.OVERDUE]: { label: "Muddati o'tgan", bg: "var(--c-fdecec)", color: "var(--c-d64545)" },
+  [PAYMENT_STATUS.PAID]: { labelKey: "pay.paid", bg: "var(--c-e4f8ee)", color: "var(--c-22b573)" },
+  [PAYMENT_STATUS.DUE_SOON]: { labelKey: "ap.dueSoon", bg: "var(--c-fef3e3)", color: "var(--c-f5a623)" },
+  [PAYMENT_STATUS.OVERDUE]: { labelKey: "pay.status.overdue", bg: "var(--c-fdecec)", color: "var(--c-d64545)" },
 };
 
 function PaymentsPage() {
+  const { t, formatDate, formatMoney } = useLanguage();
   const [students, setStudents] = useState(loadStudents);
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("barchasi");
@@ -67,7 +65,7 @@ function PaymentsPage() {
 
   function handleMarkPaid(student) {
     const confirmed = window.confirm(
-      `${student.firstName} ${student.lastName} uchun to'lov qabul qilindi deb belgilansinmi? O'quvchi ERPga qayta kira oladigan bo'ladi.`
+      t("ap.confirmPaid", { name: `${student.firstName} ${student.lastName}` })
     );
     if (!confirmed) return;
     const updated = markStudentPaid(student.id);
@@ -79,14 +77,14 @@ function PaymentsPage() {
       <div className={styles.statsRow}>
         <StatCard
           icon={Wallet}
-          label="Oylik jami summa"
-          value={`${(stats.monthlyTotal / 1000000).toFixed(1)}M so'm`}
-          sub="Barcha o'quvchilar bo'yicha"
+          label={t("ap.monthlyTotal")}
+          value={`${(stats.monthlyTotal / 1000000).toFixed(1)}M ${t("common.currency")}`}
+          sub={t("ap.monthlyTotalSub")}
           color="blue"
         />
-        <StatCard icon={CheckCircle2} label="To'lagan o'quvchilar" value={stats.paid} sub="Joriy holat bo'yicha" color="green" />
-        <StatCard icon={Clock} label="Muddati yaqinlashgan" value={stats.dueSoon} sub="5 kun ichida" color="orange" />
-        <StatCard icon={AlertTriangle} label="Muddati o'tgan" value={stats.overdue} sub="Vaqtincha chetlatilgan" color="red" />
+        <StatCard icon={CheckCircle2} label={t("ap.paidStudents")} value={stats.paid} sub={t("ap.paidSub")} color="green" />
+        <StatCard icon={Clock} label={t("hwStudent.urgent")} value={stats.dueSoon} sub={t("ap.within5")} color="orange" />
+        <StatCard icon={AlertTriangle} label={t("pay.status.overdue")} value={stats.overdue} sub={t("ap.suspended")} color="red" />
       </div>
 
       <div className={styles.toolbar}>
@@ -94,7 +92,7 @@ function PaymentsPage() {
           <Search size={16} style={{ color: "var(--c-8a94a6)" }} />
           <input
             type="text"
-            placeholder="Ism yoki ID bo'yicha qidirish..."
+            placeholder={t("ap.search")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -102,10 +100,10 @@ function PaymentsPage() {
 
         <div className={styles.filterBox}>
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
-            <option value="barchasi">Barcha holatlar</option>
-            <option value={PAYMENT_STATUS.OVERDUE}>Muddati o'tgan</option>
-            <option value={PAYMENT_STATUS.DUE_SOON}>Muddati yaqinlashmoqda</option>
-            <option value={PAYMENT_STATUS.PAID}>To'langan</option>
+            <option value="barchasi">{t("admin.allStatuses")}</option>
+            <option value={PAYMENT_STATUS.OVERDUE}>{t("pay.status.overdue")}</option>
+            <option value={PAYMENT_STATUS.DUE_SOON}>{t("ap.dueSoon")}</option>
+            <option value={PAYMENT_STATUS.PAID}>{t("ap.paidState")}</option>
           </select>
         </div>
       </div>
@@ -115,13 +113,13 @@ function PaymentsPage() {
           <table className={styles.table}>
             <thead>
               <tr>
-                <th>O'quvchi</th>
-                <th>Kurs</th>
-                <th>Oxirgi to'lov</th>
-                <th>Keyingi muddat</th>
-                <th>Summa</th>
-                <th>Holat</th>
-                <th className={styles.actionsHead}>Amal</th>
+                <th>{t("thw.col.student")}</th>
+                <th>{t("students.col.course")}</th>
+                <th>{t("pay.lastPayment")}</th>
+                <th>{t("pay.nextDue")}</th>
+                <th>{t("pay.col.amount")}</th>
+                <th>{t("pay.col.status")}</th>
+                <th className={styles.actionsHead}>{t("thw.col.action")}</th>
               </tr>
             </thead>
             <tbody>
@@ -143,20 +141,20 @@ function PaymentsPage() {
                     </td>
                     <td className={styles.dateCell}>{formatDate(s.lastPaymentDate)}</td>
                     <td className={styles.dateCell}>{formatDate(s.nextDueDate)}</td>
-                    <td className={styles.amountCell}>{s.amount.toLocaleString("uz-UZ")} so'm</td>
+                    <td className={styles.amountCell}>{formatMoney(s.amount)}</td>
                     <td>
                       <span className={styles.statusBadge} style={{ background: meta.bg, color: meta.color }}>
-                        {meta.label}
+                        {t(meta.labelKey)}
                       </span>
                     </td>
                     <td>
                       {s.statusType !== PAYMENT_STATUS.PAID ? (
                         <button className={styles.payBtn} onClick={() => handleMarkPaid(s)}>
-                          To'landi deb belgilash
+                          {t("ap.markPaid")}
                         </button>
                       ) : (
                         <span className={styles.paidTag}>
-                          <CheckCircle2 size={14} /> To'langan
+                          <CheckCircle2 size={14} /> {t("ap.paidState")}
                         </span>
                       )}
                     </td>
@@ -166,7 +164,7 @@ function PaymentsPage() {
             </tbody>
           </table>
         ) : (
-          <div className={styles.emptyState}>Hech qanday o'quvchi topilmadi.</div>
+          <div className={styles.emptyState}>{t("students.empty")}</div>
         )}
       </div>
     </div>
