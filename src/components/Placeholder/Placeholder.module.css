@@ -1,18 +1,18 @@
 .wrap {
-  background: #fff;
-  border: 1px dashed #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px dashed var(--c-edeff3);
   border-radius: 18px;
   padding: 64px 24px;
   text-align: center;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .icon {
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
 }
 
 .wrap h3 {
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   font-size: 1.05rem;
   margin: 0 0 6px;
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -14,5 +14,204 @@ a {
   text-decoration: none;
 }
 html {
+  font-size: 18px; 
+} */
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/*
+  Ranglar bitta joyda. Komponentlarning .module.css fayllari ranglarni
+  to'g'ridan-to'g'ri emas, shu o'zgaruvchilar orqali oladi. Yorug' mavzuda
+  qiymatlar avvalgi ranglarning aynan o'zi; <html data-theme="dark">
+  bo'lganda esa pastdagi qorong'i qiymatlar ishlaydi.
+*/
+:root {
+  color-scheme: light;
+  --c-059669: #059669;
+  --c-0f172a: #0F172A;
+  --c-0f2a44: #0F2A44;
+  --c-10b981: #10B981;
+  --c-1a1f36: #1A1F36;
+  --c-1d4ed8: #1D4ED8;
+  --c-22b573: #22B573;
+  --c-2359c9: #2359C9;
+  --c-2563eb: #2563EB;
+  --c-2f6fed: #2F6FED;
+  --c-475569: #475569;
+  --c-4fd1f0: #4FD1F0;
+  --c-5b6478: #5B6478;
+  --c-64748b: #64748B;
+  --c-7c6ff0: #7C6FF0;
+  --c-8a94a6: #8A94A6;
+  --c-94a3b8: #94A3B8;
+  --c-b7becb: #B7BECB;
+  --c-c7ecd8: #C7ECD8;
+  --c-c9d3e0: #C9D3E0;
+  --c-d3e4ff: #D3E4FF;
+  --c-d64545: #D64545;
+  --c-d97706: #D97706;
+  --c-d9e6ff: #D9E6FF;
+  --c-dce2ec: #DCE2EC;
+  --c-dcebfb: #DCEBFB;
+  --c-e2e8f0: #E2E8F0;
+  --c-e4f8ee: #E4F8EE;
+  --c-e9f8f0: #E9F8F0;
+  --c-eaf2ff: #EAF2FF;
+  --c-ecfdf5: #ECFDF5;
+  --c-edeff3: #EDEFF3;
+  --c-ef4444: #EF4444;
+  --c-eff6ff: #EFF6FF;
+  --c-f0edfe: #F0EDFE;
+  --c-f0f1f5: #F0F1F5;
+  --c-f0f3ff: #F0F3FF;
+  --c-f1f3f8: #F1F3F8;
+  --c-f1f5f9: #F1F5F9;
+  --c-f3f5f9: #F3F5F9;
+  --c-f3f7ff: #F3F7FF;
+  --c-f43f5e: #F43F5E;
+  --c-f55a5a: #F55A5A;
+  --c-f59e0b: #F59E0B;
+  --c-f5a623: #F5A623;
+  --c-f5f7fa: #F5F7FA;
+  --c-f6c9c9: #F6C9C9;
+  --c-f8f9fb: #F8F9FB;
+  --c-f8f9fc: #F8F9FC;
+  --c-f8fafc: #F8FAFC;
+  --c-fafbfd: #FAFBFD;
+  --c-fbe4bc: #FBE4BC;
+  --c-fdecec: #FDECEC;
+  --c-fef3e3: #FEF3E3;
+  --c-fef9f0: #FEF9F0;
+  --c-fff1f2: #FFF1F2;
+  --c-fffbeb: #FFFBEB;
+  --c-ffffff: #FFFFFF;
+  /* Attendance, Grades, Homework, Rating sahifalaridagi qo'shimcha ranglar */
+  --c-2559c7: #2559C7;
+  --c-6b7382: #6B7382;
+  --c-8a93a6: #8A93A6;
+  --c-b5651d: #B5651D;
+  --c-c9860a: #C9860A;
+  --c-d5d9e2: #D5D9E2;
+  --c-eef1f5: #EEF1F5;
+  --c-eef3fe: #EEF3FE;
+  --c-f1f3f7: #F1F3F7;
+  --c-f6f8fb: #F6F8FB;
+  --c-f8faff: #F8FAFF;
+  --c-f9fafc: #F9FAFC;
+  --c-fbebe0: #FBEBE0;
+  --glass-90: rgba(255, 255, 255, 0.9);
+  --glass-60: rgba(255, 255, 255, 0.6);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --c-059669: #3DD68C;
+  --c-0f172a: #E8ECF4;
+  --c-0f2a44: #DCE6F5;
+  --c-10b981: #3DD68C;
+  --c-1a1f36: #E8ECF4;
+  --c-1d4ed8: #7AA3F5;
+  --c-22b573: #3DD68C;
+  --c-2359c9: #7AA3F5;
+  --c-2563eb: #5B8DEF;
+  --c-2f6fed: #5B8DEF;
+  --c-475569: #A9B2C3;
+  --c-4fd1f0: #4FD1F0;
+  --c-5b6478: #A9B2C3;
+  --c-64748b: #9AA3B5;
+  --c-7c6ff0: #9D93F5;
+  --c-8a94a6: #8A94A6;
+  --c-94a3b8: #7F8AA0;
+  --c-b7becb: #5E6880;
+  --c-c7ecd8: #1F5540;
+  --c-c9d3e0: #3B4863;
+  --c-d3e4ff: #243A66;
+  --c-d64545: #F07171;
+  --c-d97706: #F5B54A;
+  --c-d9e6ff: #243A66;
+  --c-dce2ec: #334059;
+  --c-dcebfb: #20304F;
+  --c-e2e8f0: #2C3548;
+  --c-e4f8ee: #173A2C;
+  --c-e9f8f0: #16332A;
+  --c-eaf2ff: #1C2A4A;
+  --c-ecfdf5: #173A2C;
+  --c-edeff3: #262E40;
+  --c-ef4444: #F07171;
+  --c-eff6ff: #1C2A4A;
+  --c-f0edfe: #2A2650;
+  --c-f0f1f5: #212839;
+  --c-f0f3ff: #1A2440;
+  --c-f1f3f8: #212839;
+  --c-f1f5f9: #212839;
+  --c-f3f5f9: #212839;
+  --c-f3f7ff: #1A2440;
+  --c-f43f5e: #F27289;
+  --c-f55a5a: #F07171;
+  --c-f59e0b: #F5B54A;
+  --c-f5a623: #F5B54A;
+  --c-f5f7fa: #131927;
+  --c-f6c9c9: #5C2A30;
+  --c-f8f9fb: #0F1420;
+  --c-f8f9fc: #131927;
+  --c-f8fafc: #131927;
+  --c-fafbfd: #131927;
+  --c-fbe4bc: #5A4521;
+  --c-fdecec: #3A1E24;
+  --c-fef3e3: #3A2E17;
+  --c-fef9f0: #2F2716;
+  --c-fff1f2: #3A1E27;
+  --c-fffbeb: #352B16;
+  --c-ffffff: #171D2B;
+  /* Attendance, Grades, Homework, Rating sahifalaridagi qo'shimcha ranglar */
+  --c-2559c7: #7AA3F5;
+  --c-6b7382: #A9B2C3;
+  --c-8a93a6: #8A94A6;
+  --c-b5651d: #E3A36B;
+  --c-c9860a: #F5B54A;
+  --c-d5d9e2: #334059;
+  --c-eef1f5: #212839;
+  --c-eef3fe: #1C2A4A;
+  --c-f1f3f7: #212839;
+  --c-f6f8fb: #131927;
+  --c-f8faff: #1A2440;
+  --c-f9fafc: #131927;
+  --c-fbebe0: #3A2A1F;
+  --glass-90: rgba(23, 29, 43, 0.9);
+  --glass-60: rgba(23, 29, 43, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--c-1a1f36);
+  background: var(--c-f8f9fb);
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
   font-size: 18px; /* standart 16px o'rniga */
+}
+
+/* Mavzu almashganda ranglar keskin emas, silliq o'zgarsin */
+body,
+body * {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  body * {
+    transition: none !important;
+  }
 }

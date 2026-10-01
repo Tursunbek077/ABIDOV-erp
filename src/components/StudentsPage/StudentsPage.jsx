@@ -90,7 +90,7 @@ function StudentsPage() {
 
       <div className={styles.toolbar}>
         <div className={styles.searchBox}>
-          <Search size={16} color="#8A94A6" />
+          <Search size={16} style={{ color: "var(--c-8a94a6)" }} />
           <input
             type="text"
             placeholder="Ism, ID yoki email bo'yicha qidirish..."
@@ -106,7 +106,7 @@ function StudentsPage() {
               <option key={c} value={c}>{c}</option>
             ))}
           </select>
-          <ChevronDown size={16} color="#8A94A6" />
+          <ChevronDown size={16} style={{ color: "var(--c-8a94a6)" }} />
         </div>
 
         <div className={styles.filterBox}>
@@ -115,7 +115,7 @@ function StudentsPage() {
             <option value="Faol">Faol</option>
             <option value="Nofaol">Nofaol</option>
           </select>
-          <ChevronDown size={16} color="#8A94A6" />
+          <ChevronDown size={16} style={{ color: "var(--c-8a94a6)" }} />
         </div>
 
         <button className={styles.addBtn} onClick={openAddModal}>

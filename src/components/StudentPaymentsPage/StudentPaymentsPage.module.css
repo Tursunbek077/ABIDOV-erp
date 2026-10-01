@@ -40,13 +40,13 @@
   margin: 0 0 4px;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .bannerText {
   margin: 0;
   font-size: 0.85rem;
-  color: #5B6478;
+  color: var(--c-5b6478);
   max-width: 460px;
 }
 
@@ -54,7 +54,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #1A1F36;
+  background: var(--c-1a1f36);
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -71,8 +71,8 @@
 }
 
 .detailsCard {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 18px;
   padding: 18px 20px;
 }
@@ -81,16 +81,16 @@
   margin: 0 0 12px;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .detailsRow {
   display: flex;
   justify-content: space-between;
   padding: 9px 0;
-  border-bottom: 1px solid #F1F3F8;
+  border-bottom: 1px solid var(--c-f1f3f8);
   font-size: 0.85rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .detailsRow:last-of-type {
@@ -99,18 +99,18 @@
 
 .detailsValue {
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .detailsNote {
   margin: 12px 0 0;
   font-size: 0.78rem;
-  color: #B7BECB;
+  color: var(--c-b7becb);
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 18px;
   padding: 18px 20px;
 }
@@ -119,16 +119,16 @@
   margin: 0 0 14px;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .historyHead {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 8px 0;
-  border-bottom: 1px solid #F1F3F8;
+  border-bottom: 1px solid var(--c-f1f3f8);
   font-size: 0.74rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
@@ -142,7 +142,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #F1F3F8;
+  border-bottom: 1px solid var(--c-f1f3f8);
 }
 
 .historyRow:last-child {
@@ -152,7 +152,7 @@
 .historyDate,
 .historyAmount {
   font-size: 0.85rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .historyAmount {
@@ -165,8 +165,8 @@
 
 .paidBadge {
   display: inline-block;
-  background: #E4F8EE;
-  color: #22B573;
+  background: var(--c-e4f8ee);
+  color: var(--c-22b573);
   font-size: 0.76rem;
   font-weight: 700;
   padding: 4px 10px;
@@ -176,7 +176,7 @@
 .emptyState {
   padding: 32px;
   text-align: center;
-  color: #B7BECB;
+  color: var(--c-b7becb);
   font-size: 0.88rem;
 }
 

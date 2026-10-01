@@ -3,9 +3,9 @@ import { homeworks } from "../../data/dummyData";
 import styles from "./RecentHomework.module.css";
 
 const statusStyle = {
-  due: { color: "#F55A5A", icon: Clock },
-  pending: { color: "#F5A623", icon: Clock },
-  done: { color: "#22B573", icon: CheckCircle2 },
+  due: { color: "var(--c-f55a5a)", icon: Clock },
+  pending: { color: "var(--c-f5a623)", icon: Clock },
+  done: { color: "var(--c-22b573)", icon: CheckCircle2 },
 };
 
 function RecentHomework() {
@@ -26,7 +26,7 @@ function RecentHomework() {
                 <p className={styles.title}>{hw.title}</p>
                 <p className={styles.status} style={{ color: s.color }}>{hw.status}</p>
               </div>
-              <Icon size={18} color={s.color} />
+              <Icon size={18} style={{ color: s.color }} />
             </div>
           );
         })}

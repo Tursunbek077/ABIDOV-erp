@@ -14,7 +14,7 @@ function ExamAnnouncement() {
         <p className={styles.meta}>20 Aug 2024 • 10:00 AM • Room 205</p>
       </div>
 
-      <ChevronRight size={18} color="#B7BECB" />
+      <ChevronRight size={18} style={{ color: "var(--c-b7becb)" }} />
     </section>
   );
 }

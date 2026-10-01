@@ -14,7 +14,7 @@
   max-width: 480px;
   max-height: 90vh;
   overflow-y: auto;
-  background: #fff;
+  background: var(--c-ffffff);
   border-radius: 20px;
   padding: 24px 26px 26px;
 }
@@ -29,7 +29,7 @@
 .header h3 {
   margin: 0;
   font-size: 1.08rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .closeBtn {
@@ -39,14 +39,14 @@
   align-items: center;
   justify-content: center;
   border: none;
-  background: #F3F5F9;
+  background: var(--c-f3f5f9);
   border-radius: 9px;
-  color: #5B6478;
+  color: var(--c-5b6478);
   cursor: pointer;
 }
 
 .closeBtn:hover {
-  background: #EDEFF3;
+  background: var(--c-edeff3);
 }
 
 .form {
@@ -56,8 +56,8 @@
 }
 
 .error {
-  background: #FDECEC;
-  color: #D64545;
+  background: var(--c-fdecec);
+  color: var(--c-d64545);
   font-size: 0.82rem;
   padding: 10px 12px;
   border-radius: 8px;
@@ -80,22 +80,22 @@
 .field span {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #5B6478;
+  color: var(--c-5b6478);
 }
 
 .inputWrap {
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid #EDEFF3;
+  border: 1px solid var(--c-edeff3);
   border-radius: 10px;
   padding: 10px 12px;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   transition: border-color 0.15s;
 }
 
 .inputWrap:focus-within {
-  border-color: #2F6FED;
+  border-color: var(--c-2f6fed);
 }
 
 .inputWrap input,
@@ -106,7 +106,7 @@
   min-width: 0;
   width: 100%;
   font-size: 0.9rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   font-family: inherit;
   background: none;
 }
@@ -118,7 +118,7 @@
 .statusTabs {
   display: flex;
   gap: 8px;
-  background: #F3F5F9;
+  background: var(--c-f3f5f9);
   padding: 4px;
   border-radius: 10px;
 }
@@ -131,13 +131,13 @@
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #5B6478;
+  color: var(--c-5b6478);
   cursor: pointer;
 }
 
 .statusTabActive {
-  background: #fff;
-  color: #2F6FED;
+  background: var(--c-ffffff);
+  color: var(--c-2f6fed);
   box-shadow: 0 2px 6px rgba(26, 31, 54, 0.08);
 }
 
@@ -149,8 +149,8 @@
 }
 
 .cancelBtn {
-  background: #F3F5F9;
-  color: #5B6478;
+  background: var(--c-f3f5f9);
+  color: var(--c-5b6478);
   border: none;
   font-weight: 600;
   font-size: 0.9rem;
@@ -160,11 +160,11 @@
 }
 
 .cancelBtn:hover {
-  background: #EDEFF3;
+  background: var(--c-edeff3);
 }
 
 .submitBtn {
-  background: #2F6FED;
+  background: var(--c-2f6fed);
   color: #fff;
   border: none;
   font-weight: 600;
@@ -176,5 +176,5 @@
 }
 
 .submitBtn:hover {
-  background: #2359C9;
+  background: var(--c-2359c9);
 }

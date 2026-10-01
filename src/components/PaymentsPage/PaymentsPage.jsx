@@ -20,9 +20,9 @@ function formatDate(iso) {
 }
 
 const statusMeta = {
-  [PAYMENT_STATUS.PAID]: { label: "To'landi", bg: "#E4F8EE", color: "#22B573" },
-  [PAYMENT_STATUS.DUE_SOON]: { label: "Muddati yaqinlashmoqda", bg: "#FEF3E3", color: "#F5A623" },
-  [PAYMENT_STATUS.OVERDUE]: { label: "Muddati o'tgan", bg: "#FDECEC", color: "#D64545" },
+  [PAYMENT_STATUS.PAID]: { label: "To'landi", bg: "var(--c-e4f8ee)", color: "var(--c-22b573)" },
+  [PAYMENT_STATUS.DUE_SOON]: { label: "Muddati yaqinlashmoqda", bg: "var(--c-fef3e3)", color: "var(--c-f5a623)" },
+  [PAYMENT_STATUS.OVERDUE]: { label: "Muddati o'tgan", bg: "var(--c-fdecec)", color: "var(--c-d64545)" },
 };
 
 function PaymentsPage() {
@@ -91,7 +91,7 @@ function PaymentsPage() {
 
       <div className={styles.toolbar}>
         <div className={styles.searchBox}>
-          <Search size={16} color="#8A94A6" />
+          <Search size={16} style={{ color: "var(--c-8a94a6)" }} />
           <input
             type="text"
             placeholder="Ism yoki ID bo'yicha qidirish..."

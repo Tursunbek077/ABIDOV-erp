@@ -68,8 +68,8 @@ function Landing({ onLogin, onSignup }) {
             <a href="#contact">Aloqa</a>
           </nav>
           <div className={styles.headerActions}>
-            <button className={styles.loginBtn} onClick={onLogin}>Kirish</button>
-            <button className={styles.signupBtn} onClick={onSignup}>Ro'yxatdan o'tish</button>
+            <button className={styles.signupBtn} onClick={onLogin}>Kirish</button>
+            {/* <button className={styles.signupBtn, styles.loginBtn} onClick={onSignup}>Ro'yxatdan o'tish</button> */}
           </div>
         </div>
       </header>
@@ -82,14 +82,14 @@ function Landing({ onLogin, onSignup }) {
             Zamonaviy dasturlash kurslari, tajribali o'qituvchilar va amaliyotga
             yo'naltirilgan ta'lim dasturi — barchasi bitta joyda.
           </p>
-          <div className={styles.heroActions}>
+          {/* <div className={styles.heroActions}>
             <button className={styles.primaryBtn} onClick={onSignup}>
               Ro'yxatdan o'tish <ArrowRight size={18} />
             </button>
             <button className={styles.secondaryBtn} onClick={onLogin}>
               Tizimga kirish
             </button>
-          </div>
+          </div> */}
         </div>
         <div className={styles.heroVisual}>
           <div className={styles.heroCard}>
@@ -142,12 +142,12 @@ function Landing({ onLogin, onSignup }) {
 
       <section className={styles.ctaBanner}>
         <div>
-          <h2>Bugun ro'yxatdan o'ting</h2>
+          <h2>Bugunoq qo'ng'iroq qiling !</h2>
           <p>Birinchi darsga hoziroq yoziling va o'z yo'lingizni boshlang</p>
         </div>
-        <button className={styles.primaryBtn} onClick={onSignup}>
+        {/* <button className={styles.primaryBtn} onClick={onSignup}>
           Ro'yxatdan o'tish <ArrowRight size={18} />
-        </button>
+        </button> */}
       </section>
 
       <footer id="contact" className={styles.footer}>

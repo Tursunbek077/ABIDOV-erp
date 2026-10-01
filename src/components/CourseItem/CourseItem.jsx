@@ -25,7 +25,7 @@ function CourseItem({ course }) {
         </div>
       </div>
 
-      <ChevronRight size={18} color="#B7BECB" />
+      <ChevronRight size={18} style={{ color: "var(--c-b7becb)" }} />
     </div>
   );
 }

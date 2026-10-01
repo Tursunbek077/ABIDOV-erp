@@ -5,8 +5,8 @@
   top: 0;
   left: 0;
   overflow-y: auto;
-  background: #ffffff;
-  border-right: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border-right: 1px solid var(--c-edeff3);
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
@@ -19,15 +19,15 @@
   gap: 10px;
   font-size: 1.15rem;
   font-weight: 700;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   padding: 0 8px 28px;
 }
 
 .roleTag {
   display: inline-block;
   align-self: flex-start;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -49,7 +49,7 @@
   gap: 12px;
   padding: 10px 12px;
   border-radius: 10px;
-  color: #5B6478;
+  color: var(--c-5b6478);
   font-size: 0.92rem;
   font-weight: 500;
   cursor: pointer;
@@ -57,18 +57,18 @@
 }
 
 .navItem:hover {
-  background: #F3F5F9;
+  background: var(--c-f3f5f9);
 }
 
 .active {
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
 }
 
 .bottomNav {
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid #EDEFF3;
+  border-top: 1px solid var(--c-edeff3);
   display: flex;
   flex-direction: column;
   gap: 4px;

@@ -16,8 +16,8 @@
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 14px;
   padding: 18px 20px;
 }
@@ -33,16 +33,16 @@
 .monthLabel {
   font-size: 1rem;
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .navBtn {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  border: 1px solid #EDEFF3;
-  background: #fff;
-  color: #1A1F36;
+  border: 1px solid var(--c-edeff3);
+  background: var(--c-ffffff);
+  color: var(--c-1a1f36);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +51,7 @@
 }
 
 .navBtn:hover {
-  background: #F5F7FA;
+  background: var(--c-f5f7fa);
 }
 
 /* Weekday row */
@@ -69,11 +69,11 @@
 }
 
 .weekLabel {
-  color: #B7BECB;
+  color: var(--c-b7becb);
 }
 
 .weekLabelLesson {
-  color: #2F6FED;
+  color: var(--c-2f6fed);
   font-weight: 600;
 }
 
@@ -92,8 +92,8 @@
   position: relative;
   min-height: 56px;
   border-radius: 10px;
-  border: 1px solid #EDEFF3;
-  background: #fff;
+  border: 1px solid var(--c-edeff3);
+  background: var(--c-ffffff);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,37 +104,37 @@
 }
 
 .dayCell:hover {
-  border-color: #C9D3E0;
+  border-color: var(--c-c9d3e0);
 }
 
 .dayNum {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .lessonCell {
-  background: #EAF2FF;
-  border-color: #D3E4FF;
+  background: var(--c-eaf2ff);
+  border-color: var(--c-d3e4ff);
 }
 
 .lessonCell .dayNum {
-  color: #2F6FED;
+  color: var(--c-2f6fed);
 }
 
 .dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #2F6FED;
+  background: var(--c-2f6fed);
 }
 
 .selectedCell {
-  border: 2px solid #2F6FED;
+  border: 2px solid var(--c-2f6fed);
 }
 
 .selectedCell.lessonCell {
-  background: #2F6FED;
+  background: var(--c-2f6fed);
 }
 
 .selectedCell.lessonCell .dayNum {
@@ -142,11 +142,11 @@
 }
 
 .selectedCell.lessonCell .dot {
-  background: #fff;
+  background: var(--c-ffffff);
 }
 
 .selectedCell:not(.lessonCell) .dayNum {
-  color: #2F6FED;
+  color: var(--c-2f6fed);
 }
 
 /* Legend */
@@ -155,7 +155,7 @@
   gap: 16px;
   margin-top: 14px;
   padding-top: 12px;
-  border-top: 1px solid #F0F1F5;
+  border-top: 1px solid var(--c-f0f1f5);
 }
 
 .legendItem {
@@ -163,7 +163,7 @@
   align-items: center;
   gap: 6px;
   font-size: 0.78rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .legendDot {
@@ -173,7 +173,7 @@
 }
 
 .legendDotLesson {
-  background: #2F6FED;
+  background: var(--c-2f6fed);
 }
 
 /* Side panel */
@@ -186,13 +186,13 @@
 
 .sideHeader h3 {
   font-size: 1.05rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   margin: 0;
 }
 
 .sideCount {
   font-size: 0.75rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .lessonList {
@@ -205,7 +205,7 @@
   display: flex;
   gap: 14px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #F0F1F5;
+  border-bottom: 1px solid var(--c-f0f1f5);
 }
 
 .lessonItem:last-child {
@@ -217,8 +217,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   font-weight: 700;
   font-size: 0.78rem;
   padding: 6px 10px;
@@ -229,20 +229,20 @@
 
 .lessonTitle {
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   margin: 0 0 2px;
   font-size: 0.9rem;
 }
 
 .lessonSubtitle {
   font-size: 0.8rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   margin: 0;
 }
 
 .emptyNote {
   font-size: 0.85rem;
-  color: #B7BECB;
+  color: var(--c-b7becb);
   padding: 20px 0;
   text-align: center;
 }

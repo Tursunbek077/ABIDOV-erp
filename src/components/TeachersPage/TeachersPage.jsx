@@ -83,7 +83,7 @@ function TeachersPage() {
 
       <div className={styles.toolbar}>
         <div className={styles.searchBox}>
-          <Search size={16} color="#8A94A6" />
+          <Search size={16} style={{ color: "var(--c-8a94a6)" }} />
           <input
             type="text"
             placeholder="Ism yoki email bo'yicha qidirish..."
@@ -99,7 +99,7 @@ function TeachersPage() {
               <option key={s} value={s}>{s}</option>
             ))}
           </select>
-          <ChevronDown size={16} color="#8A94A6" />
+          <ChevronDown size={16} style={{ color: "var(--c-8a94a6)" }} />
         </div>
 
         <div className={styles.filterBox}>
@@ -108,7 +108,7 @@ function TeachersPage() {
             <option value="Faol">Faol</option>
             <option value="Nofaol">Nofaol</option>
           </select>
-          <ChevronDown size={16} color="#8A94A6" />
+          <ChevronDown size={16} style={{ color: "var(--c-8a94a6)" }} />
         </div>
 
         <button className={styles.addBtn} onClick={openAddModal}>

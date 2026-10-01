@@ -1,6 +1,6 @@
 .card {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 14px;
   padding: 15px 20px;
   margin-bottom: 20px;
@@ -15,13 +15,13 @@
 
 .header h3 {
   font-size: 1.05rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   margin: 0;
 }
 
 .viewAll {
   font-size: 0.85rem;
-  color: #2F6FED;
+  color: var(--c-2f6fed);
   text-decoration: none;
   font-weight: 500;
 }
@@ -36,14 +36,14 @@
   display: flex;
   gap: 14px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #F0F1F5;
+  border-bottom: 1px solid var(--c-f0f1f5);
 }
 
 .item:last-child { border-bottom: none; padding-bottom: 0; }
 
 .time {
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   font-weight: 700;
   font-size: 0.8rem;
   padding: 6px 10px;
@@ -53,19 +53,19 @@
 
 .title {
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   margin: 0 0 2px;
   font-size: 0.9rem;
 }
 
 .subtitle {
   font-size: 0.8rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   margin: 0 0 2px;
 }
 
 .room {
   font-size: 0.75rem;
-  color: #B7BECB;
+  color: var(--c-b7becb);
   margin: 0;
 }

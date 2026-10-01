@@ -35,8 +35,8 @@
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 18px;
   padding: 20px;
 }
@@ -55,7 +55,7 @@
 
 .cardHeader a {
   font-size: 0.85rem;
-  color: #2F6FED;
+  color: var(--c-2f6fed);
   font-weight: 600;
 }
 
@@ -64,7 +64,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #F3F5F9;
+  border-bottom: 1px solid var(--c-f3f5f9);
 }
 
 .classItem:last-child {
@@ -80,7 +80,7 @@
 
 .classMeta {
   font-size: 0.8rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   margin: 0;
 }
 
@@ -94,20 +94,20 @@
 .progressBar {
   width: 70px;
   height: 6px;
-  background: #EDEFF3;
+  background: var(--c-edeff3);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .progressFill {
   height: 100%;
-  background: #2F6FED;
+  background: var(--c-2f6fed);
   border-radius: 4px;
 }
 
 .progressWrap span {
   font-size: 0.8rem;
-  color: #5B6478;
+  color: var(--c-5b6478);
   font-weight: 600;
 }
 
@@ -121,7 +121,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #F3F5F9;
+  border-bottom: 1px solid var(--c-f3f5f9);
 }
 
 .hwItem:last-child {
@@ -137,12 +137,12 @@
 
 .hwTask {
   font-size: 0.82rem;
-  color: #5B6478;
+  color: var(--c-5b6478);
   margin: 0 0 2px;
 }
 
 .hwTime {
   font-size: 0.76rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   margin: 0;
 }

@@ -13,8 +13,8 @@
 }
 
 .statCard {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 18px;
   padding: 15px;
 }
@@ -29,29 +29,29 @@
   margin-bottom: 14px;
 }
 
-.blue { background: #EAF2FF; color: #2F6FED; }
-.green { background: #E4F8EE; color: #22B573; }
-.orange { background: #FEF3E3; color: #F5A623; }
-.red { background: #FDECEC; color: #D64545; }
+.blue { background: var(--c-eaf2ff); color: var(--c-2f6fed); }
+.green { background: var(--c-e4f8ee); color: var(--c-22b573); }
+.orange { background: var(--c-fef3e3); color: var(--c-f5a623); }
+.red { background: var(--c-fdecec); color: var(--c-d64545); }
 
 .statLabel {
   font-size: 0.85rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   margin: 0 0 6px;
 }
 
 .statValue {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   margin: 0;
 }
 
 /* ---- Asosiy karta ---- */
 
 .card {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -61,7 +61,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 20px;
-  border-bottom: 1px solid #F3F5F9;
+  border-bottom: 1px solid var(--c-f3f5f9);
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -76,8 +76,8 @@
   width: 42px;
   height: 42px;
   border-radius: 11px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,21 +87,21 @@
 .groupName {
   margin: 0 0 3px;
   font-size: 1.02rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .groupSubject {
   margin: 0;
   font-size: 0.82rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .dateBadge {
   display: flex;
   align-items: center;
   gap: 7px;
-  background: #F6F8FB;
-  color: #5B6478;
+  background: var(--c-f6f8fb);
+  color: var(--c-5b6478);
   font-size: 0.82rem;
   font-weight: 600;
   padding: 8px 14px;
@@ -109,7 +109,7 @@
 }
 
 .dateBadge svg {
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 /* ---- O'quvchilar ro'yxati ---- */
@@ -124,7 +124,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 13px 20px;
-  border-bottom: 1px solid #F3F5F9;
+  border-bottom: 1px solid var(--c-f3f5f9);
   gap: 14px;
   flex-wrap: wrap;
 }
@@ -145,8 +145,8 @@
   height: 38px;
   flex: 0 0 38px;
   border-radius: 10px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,7 +157,7 @@
 .studentName {
   margin: 0;
   font-size: 0.92rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   font-weight: 500;
 }
 
@@ -170,9 +170,9 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  border: 1px solid #EDEFF3;
-  background: #fff;
-  color: #8A94A6;
+  border: 1px solid var(--c-edeff3);
+  background: var(--c-ffffff);
+  color: var(--c-8a94a6);
   font-size: 0.8rem;
   font-weight: 600;
   padding: 7px 12px;
@@ -183,25 +183,25 @@
 }
 
 .actionBtn:hover {
-  border-color: #D5D9E2;
+  border-color: var(--c-d5d9e2);
 }
 
 .borBtn.active {
-  background: #E4F8EE;
-  border-color: #22B573;
-  color: #22B573;
+  background: var(--c-e4f8ee);
+  border-color: var(--c-22b573);
+  color: var(--c-22b573);
 }
 
 .kechikdiBtn.active {
-  background: #FEF3E3;
-  border-color: #F5A623;
-  color: #F5A623;
+  background: var(--c-fef3e3);
+  border-color: var(--c-f5a623);
+  color: var(--c-f5a623);
 }
 
 .yoqBtn.active {
-  background: #FDECEC;
-  border-color: #D64545;
-  color: #D64545;
+  background: var(--c-fdecec);
+  border-color: var(--c-d64545);
+  color: var(--c-d64545);
 }
 
 /* ---- Footer ---- */
@@ -211,18 +211,18 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  background: #F9FAFC;
+  background: var(--c-f9fafc);
   gap: 12px;
   flex-wrap: wrap;
 }
 
 .footerHint {
   font-size: 0.83rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .saveBtn {
-  background: #2F6FED;
+  background: var(--c-2f6fed);
   color: #fff;
   border: none;
   font-size: 0.86rem;
@@ -235,7 +235,7 @@
 }
 
 .saveBtn:hover {
-  background: #2559C7;
+  background: var(--c-2559c7);
 }
 
 @media (max-width: 640px) {

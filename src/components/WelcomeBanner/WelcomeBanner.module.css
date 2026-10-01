@@ -1,6 +1,6 @@
 .banner {
-  background: #ffffff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 16px;
   padding: 25px 30px;
   display: flex;
@@ -12,12 +12,12 @@
 .heading {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   margin: 0 0 8px;
 }
 
 .subtext {
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   font-size: 0.95rem;
   margin: 0;
 }

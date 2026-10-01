@@ -35,7 +35,7 @@ function GradeDonut({ segments }) {
     <div className={styles.donutWrap}>
       <svg width={size} height={size}>
         <g transform={`rotate(-90 ${size / 2} ${size / 2})`}>
-          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#F1F3F8" strokeWidth={stroke} />
+          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" style={{ stroke: "var(--c-f1f3f8)" }} strokeWidth={stroke} />
           {arcs.map((a) => {
             const isHovered = hoveredId === a.id;
             return (

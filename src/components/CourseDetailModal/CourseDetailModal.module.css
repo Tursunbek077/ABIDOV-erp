@@ -14,7 +14,7 @@
   max-width: 560px;
   max-height: 88vh;
   overflow-y: auto;
-  background: #fff;
+  background: var(--c-ffffff);
   border-radius: 20px;
   padding: 24px 26px 26px;
 }
@@ -29,15 +29,15 @@
 .header h3 {
   margin: 0 0 6px;
   font-size: 1.12rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .categoryBadge {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #2F6FED;
-  background: #EAF2FF;
+  color: var(--c-2f6fed);
+  background: var(--c-eaf2ff);
   padding: 3px 10px;
   border-radius: 20px;
 }
@@ -50,14 +50,14 @@
   align-items: center;
   justify-content: center;
   border: none;
-  background: #F3F5F9;
+  background: var(--c-f3f5f9);
   border-radius: 9px;
-  color: #5B6478;
+  color: var(--c-5b6478);
   cursor: pointer;
 }
 
 .closeBtn:hover {
-  background: #EDEFF3;
+  background: var(--c-edeff3);
 }
 
 .metaRow {
@@ -65,8 +65,8 @@
   flex-wrap: wrap;
   gap: 14px;
   padding: 14px 0;
-  border-top: 1px solid #F3F5F9;
-  border-bottom: 1px solid #F3F5F9;
+  border-top: 1px solid var(--c-f3f5f9);
+  border-bottom: 1px solid var(--c-f3f5f9);
   margin-bottom: 16px;
 }
 
@@ -75,12 +75,12 @@
   align-items: center;
   gap: 7px;
   font-size: 0.84rem;
-  color: #5B6478;
+  color: var(--c-5b6478);
   font-weight: 500;
 }
 
 .metaItem svg {
-  color: #B7BECB;
+  color: var(--c-b7becb);
 }
 
 .capacityBlock {
@@ -94,7 +94,7 @@
   margin-bottom: 8px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .capacityLabel span {
@@ -104,16 +104,16 @@
 }
 
 .capacityLabel svg {
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .capacityPercent {
-  color: #2F6FED;
+  color: var(--c-2f6fed);
 }
 
 .capacityTrack {
   height: 8px;
-  background: #F3F5F9;
+  background: var(--c-f3f5f9);
   border-radius: 20px;
   overflow: hidden;
 }
@@ -136,15 +136,15 @@
 .listHeader h4 {
   margin: 0;
   font-size: 0.95rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .addBtn {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   border: none;
   font-weight: 600;
   font-size: 0.82rem;
@@ -155,7 +155,7 @@
 }
 
 .addBtn:hover {
-  background: #D9E6FF;
+  background: var(--c-d9e6ff);
 }
 
 .studentList {
@@ -169,7 +169,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
-  border: 1px solid #EDEFF3;
+  border: 1px solid var(--c-edeff3);
   border-radius: 12px;
 }
 
@@ -178,8 +178,8 @@
   height: 36px;
   flex: 0 0 36px;
   border-radius: 10px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,13 +196,13 @@
   margin: 0 0 2px;
   font-weight: 600;
   font-size: 0.88rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .studentMeta {
   margin: 0;
   font-size: 0.78rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .statusBadge {
@@ -214,20 +214,20 @@
 }
 
 .statusActive {
-  background: #E4F8EE;
-  color: #22B573;
+  background: var(--c-e4f8ee);
+  color: var(--c-22b573);
 }
 
 .statusInactive {
-  background: #FDECEC;
-  color: #D64545;
+  background: var(--c-fdecec);
+  color: var(--c-d64545);
 }
 
 .emptyState {
   padding: 30px;
   text-align: center;
-  color: #B7BECB;
+  color: var(--c-b7becb);
   font-size: 0.86rem;
-  border: 1px dashed #EDEFF3;
+  border: 1px dashed var(--c-edeff3);
   border-radius: 12px;
 }

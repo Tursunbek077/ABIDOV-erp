@@ -6,7 +6,7 @@ import RecentHomework from "../../components/RecentHomework/RecentHomework";
 import ExamAnnouncement from "../../components/ExamAnnouncement/ExamAnnouncement";
 import Placeholder from "../../components/Placeholder/Placeholder";
 import Schedule from "../../components/Schedule/Schedule";
-import { pageTitles } from "../../data/navConfig";
+// import { pageTitles } from "../../data/navConfig";
 import styles from "./StudentDashboard.module.css";
 import CoursesPage from "../../components/CoursesPage/CoursesPage";
 import GradesPage from "../../components/GradesPage/GradesPage";
@@ -36,7 +36,7 @@ function StudentDashboard({ user, activePage }) {
   } 
 
   if (activePage !== "dashboard") {
-    return <Placeholder title={pageTitles[activePage] || "Bo'lim"} />;
+        return <Placeholder page={activePage} />;
   }
 
   return (

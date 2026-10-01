@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 12px;
   padding: 11px 16px;
 }
@@ -24,20 +24,20 @@
   border: none;
   outline: none;
   font-size: 0.9rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   background: transparent;
 }
 
 .searchBox input::placeholder {
-  color: #B7BECB;
+  color: var(--c-b7becb);
 }
 
 .filterBox {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 12px;
   padding: 11px 16px;
   min-width: 190px;
@@ -50,7 +50,7 @@
   background: transparent;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   cursor: pointer;
   appearance: none;
 }
@@ -62,11 +62,11 @@
 }
 
 .emptyState {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 14px;
   padding: 40px;
   text-align: center;
-  color: #B7BECB;
+  color: var(--c-b7becb);
   font-size: 0.9rem;
 }

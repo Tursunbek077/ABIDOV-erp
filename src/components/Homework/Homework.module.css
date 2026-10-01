@@ -14,8 +14,8 @@
 }
 
 .groupCard {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 16px;
   padding: 18px;
   display: flex;
@@ -28,7 +28,7 @@
 }
 
 .groupCard:hover {
-  border-color: #2F6FED;
+  border-color: var(--c-2f6fed);
   box-shadow: 0 4px 14px rgba(47, 111, 237, 0.08);
 }
 
@@ -42,8 +42,8 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,20 +52,20 @@
 .className {
   margin: 0;
   font-size: 1.02rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .classSubject {
   margin: 0;
   font-size: 0.83rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .assignmentLine {
   margin: -4px 0 0;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #2F6FED;
+  color: var(--c-2f6fed);
 }
 
 .classFooter {
@@ -73,7 +73,7 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 10px;
-  border-top: 1px solid #F3F5F9;
+  border-top: 1px solid var(--c-f3f5f9);
 }
 
 .classFooterItem {
@@ -81,17 +81,17 @@
   align-items: center;
   gap: 6px;
   font-size: 0.8rem;
-  color: #5B6478;
+  color: var(--c-5b6478);
   font-weight: 600;
 }
 
 .classFooterItem svg {
-  color: #B7BECB;
+  color: var(--c-b7becb);
 }
 
 .classFooterTime {
   font-size: 0.76rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .miniProgress {
@@ -103,15 +103,15 @@
 }
 
 .miniDone {
-  color: #22B573;
+  color: var(--c-22b573);
 }
 
 .miniPending {
-  color: #F5A623;
+  color: var(--c-f5a623);
 }
 
 .miniMissing {
-  color: #D64545;
+  color: var(--c-d64545);
 }
 
 /* ---- Guruh ichi ---- */
@@ -123,7 +123,7 @@
   align-self: flex-start;
   background: none;
   border: none;
-  color: #5B6478;
+  color: var(--c-5b6478);
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
@@ -131,7 +131,7 @@
 }
 
 .backBtn:hover {
-  color: #2F6FED;
+  color: var(--c-2f6fed);
 }
 
 .groupHeader {
@@ -140,8 +140,8 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 16px;
   padding: 18px;
 }
@@ -156,8 +156,8 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,26 +167,26 @@
 .groupName {
   margin: 0 0 4px;
   font-size: 1.05rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .groupSubject {
   margin: 0;
   font-size: 0.85rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .dateBadge {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: #F8F9FC;
-  border: 1px solid #EDEFF3;
+  background: var(--c-f8f9fc);
+  border: 1px solid var(--c-edeff3);
   border-radius: 10px;
   padding: 8px 14px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #5B6478;
+  color: var(--c-5b6478);
 }
 
 /* ---- Statistika kartalari ---- */
@@ -200,8 +200,8 @@
 .statCard {
   flex: 1;
   min-width: 160px;
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 16px;
   padding: 16px 18px;
 }
@@ -216,15 +216,15 @@
   margin-bottom: 10px;
 }
 
-.blue { background: #EAF2FF; color: #2F6FED; }
-.green { background: #E4F8EE; color: #22B573; }
-.orange { background: #FEF3E3; color: #F5A623; }
-.red { background: #FDECEC; color: #D64545; }
+.blue { background: var(--c-eaf2ff); color: var(--c-2f6fed); }
+.green { background: var(--c-e4f8ee); color: var(--c-22b573); }
+.orange { background: var(--c-fef3e3); color: var(--c-f5a623); }
+.red { background: var(--c-fdecec); color: var(--c-d64545); }
 
 .statLabel {
   margin: 0 0 4px;
   font-size: 0.8rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   font-weight: 600;
 }
 
@@ -232,14 +232,14 @@
   margin: 0;
   font-size: 1.35rem;
   font-weight: 700;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 /* ---- Jadval (PaymentsPage dizayni bilan bir xil) ---- */
 
 .tableWrap {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -250,18 +250,18 @@
 }
 
 .table thead tr {
-  background: #F8F9FC;
+  background: var(--c-f8f9fc);
 }
 
 .table th {
   text-align: left;
   font-size: 0.78rem;
   font-weight: 700;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   text-transform: uppercase;
   letter-spacing: 0.02em;
   padding: 13px 18px;
-  border-bottom: 1px solid #EDEFF3;
+  border-bottom: 1px solid var(--c-edeff3);
 }
 
 .actionsHead {
@@ -270,9 +270,9 @@
 
 .table td {
   padding: 13px 18px;
-  border-bottom: 1px solid #F3F5F9;
+  border-bottom: 1px solid var(--c-f3f5f9);
   font-size: 0.88rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   vertical-align: middle;
   white-space: nowrap;
 }
@@ -282,7 +282,7 @@
 }
 
 .table tbody tr:hover {
-  background: #FAFBFD;
+  background: var(--c-fafbfd);
 }
 
 .nameCell {
@@ -297,8 +297,8 @@
   height: 36px;
   flex: 0 0 36px;
   border-radius: 10px;
-  background: #EAF2FF;
-  color: #2F6FED;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -310,22 +310,22 @@
   margin: 0 0 2px;
   font-weight: 600;
   font-size: 0.9rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .code {
   margin: 0;
   font-size: 0.78rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .dateCell {
-  color: #5B6478;
+  color: var(--c-5b6478);
 }
 
 .gradeCell {
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .statusBadge {
@@ -337,7 +337,7 @@
 }
 
 .checkBtn {
-  background: #2F6FED;
+  background: var(--c-2f6fed);
   color: #fff;
   border: none;
   font-weight: 600;
@@ -350,7 +350,7 @@
 }
 
 .checkBtn:hover {
-  background: #2359C9;
+  background: var(--c-2359c9);
 }
 
 .doneTag {
@@ -359,13 +359,13 @@
   gap: 5px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #22B573;
+  color: var(--c-22b573);
 }
 
 .waitingTag {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #B7BECB;
+  color: var(--c-b7becb);
 }
 
 @media (max-width: 900px) {

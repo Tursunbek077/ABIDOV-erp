@@ -18,7 +18,7 @@ function CircularProgress({ percent }) {
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#D9E6FF"
+          style={{ stroke: "var(--c-d9e6ff)" }}
           strokeWidth={stroke}
         />
         <circle
@@ -26,7 +26,7 @@ function CircularProgress({ percent }) {
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#2F6FED"
+          style={{ stroke: "var(--c-2f6fed)" }}
           strokeWidth={stroke}
           strokeLinecap="round"
           strokeDasharray={circumference}

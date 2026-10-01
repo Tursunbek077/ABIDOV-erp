@@ -6,8 +6,9 @@ import TeachersPage from "../../components/TeachersPage/TeachersPage";
 import StudentsPage from "../../components/StudentsPage/StudentsPage";
 import CoursesManagementPage from "../../components/CoursesManagementPage/CoursesManagementPage";
 import PaymentsPage from "../../components/PaymentsPage/PaymentsPage";
+import RatingPage from "../../components/RatingPage/RatingPage";
 import { adminStats, recentEnrollments } from "../../data/staffData";
-import { pageTitles } from "../../data/navConfig";
+import { useLanguage } from "../../context/useLanguage";
 import { loadStudents } from "../../utils/studentsStore";
 import {
   PAYMENT_STATUS,
@@ -19,9 +20,9 @@ import styles from "./AdminDashboard.module.css";
 const iconMap = { graduation: GraduationCap, users: Users, book: BookOpen, wallet: Wallet };
 
 const statusMeta = {
-  [PAYMENT_STATUS.PAID]: { label: "To'landi", bg: "#E4F8EE", color: "#22B573" },
-  [PAYMENT_STATUS.DUE_SOON]: { label: "Kutilmoqda", bg: "#FEF3E3", color: "#F5A623" },
-  [PAYMENT_STATUS.OVERDUE]: { label: "Muddati o'tgan", bg: "#FDECEC", color: "#D64545" },
+  [PAYMENT_STATUS.PAID]: { label: "To'landi", bg: "var(--c-e4f8ee)", color: "var(--c-22b573)" },
+  [PAYMENT_STATUS.DUE_SOON]: { label: "Kutilmoqda", bg: "var(--c-fef3e3)", color: "var(--c-f5a623)" },
+  [PAYMENT_STATUS.OVERDUE]: { label: "Muddati o'tgan", bg: "var(--c-fdecec)", color: "var(--c-d64545)" },
 };
 
 const statusOrder = {
@@ -31,6 +32,7 @@ const statusOrder = {
 };
 
 function AdminDashboard({ user, activePage, onNavigate }) {
+  const { t } = useLanguage();
   const paymentPreview = useMemo(() => {
     return loadStudents()
       .map((s) => ({
@@ -59,15 +61,19 @@ function AdminDashboard({ user, activePage, onNavigate }) {
     return <PaymentsPage />;
   }
 
+  if (activePage === "rating") {
+    return <RatingPage />;
+  }
+
   if (activePage !== "dashboard") {
-    return <Placeholder title={pageTitles[activePage] || "Bo'lim"} />;
+        return <Placeholder page={activePage} />;
   }
 
   return (
     <div className={styles.page}>
       <section className={styles.banner}>
-        <h2>Xush kelibsiz, {user.firstName}! 👋</h2>
-        <p>O'quv markazingizning umumiy holati bir qarashda.</p>
+        <h2>{t("dashboard.welcome", { name: user.firstName })}</h2>
+        <p>{t("dashboard.adminSub")}</p>
       </section>
 
       <div className={styles.statsRow}>

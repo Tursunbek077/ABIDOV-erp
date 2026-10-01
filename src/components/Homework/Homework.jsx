@@ -201,7 +201,7 @@ function Homework() {
                 <div className={styles.classIcon}>
                   <ClipboardList size={20} />
                 </div>
-                <ChevronRight size={18} color="#B7BECB" />
+                <ChevronRight size={18} style={{ color: "var(--c-b7becb)" }} />
               </div>
               <h4 className={styles.className}>{g.name}</h4>
               <p className={styles.classSubject}>{g.subject}</p>

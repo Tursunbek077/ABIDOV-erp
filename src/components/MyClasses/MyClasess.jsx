@@ -61,7 +61,7 @@ function MyClasses() {
               <div className={styles.classIcon}>
                 <Layers size={20} />
               </div>
-              <ChevronRight size={18} color="#B7BECB" />
+              <ChevronRight size={18} style={{ color: "var(--c-b7becb)" }} />
             </div>
             <h4 className={styles.className}>{c.name}</h4>
             <p className={styles.classSubject}>{c.subject}</p>

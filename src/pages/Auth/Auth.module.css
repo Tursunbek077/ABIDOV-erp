@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  background: #F3F5F9;
+  background: var(--c-f3f5f9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 900px;
   min-height: 560px;
-  background: #fff;
+  background: var(--c-ffffff);
   border-radius: 24px;
   box-shadow: 0 24px 60px -20px rgba(26, 31, 54, 0.18);
   display: flex;
@@ -21,7 +21,7 @@
 /* Left panel */
 .leftPanel {
   flex: 0 0 42%;
-  background: linear-gradient(160deg, #EAF2FF, #DCEBFB);
+  background: linear-gradient(160deg, var(--c-eaf2ff), var(--c-dcebfb));
   padding: 32px 36px;
   display: flex;
   flex-direction: column;
@@ -32,9 +32,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--glass-60);
   border: none;
-  color: #2F6FED;
+  color: var(--c-2f6fed);
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
@@ -44,7 +44,7 @@
 }
 
 .backBtn:hover {
-  background: #fff;
+  background: var(--c-ffffff);
 }
 
 .welcomeText {
@@ -52,21 +52,21 @@
 }
 
 .welcomeSmall {
-  color: #2F6FED;
+  color: var(--c-2f6fed);
   font-size: 0.92rem;
   font-weight: 600;
   margin: 0 0 4px;
 }
 
 .welcomeBig {
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   font-size: 1.15rem;
   line-height: 1.4;
   margin: 0;
 }
 
 .welcomeBig strong {
-  color: #2F6FED;
+  color: var(--c-2f6fed);
 }
 
 .illustration {
@@ -78,7 +78,7 @@
 .contactEmail {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #2F6FED;
+  color: var(--c-2f6fed);
   margin: 0;
 }
 
@@ -99,7 +99,7 @@
   gap: 8px;
   font-weight: 700;
   font-size: 1.2rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   margin-bottom: 22px;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .subtitle {
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   font-size: 0.86rem;
   margin: 0 0 26px;
   text-align: center;
@@ -139,23 +139,23 @@
 .field span {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #5B6478;
+  color: var(--c-5b6478);
 }
 
 .inputWrap {
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid #EDEFF3;
+  border: 1px solid var(--c-edeff3);
   border-radius: 10px;
   padding: 11px 12px;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   transition: border-color 0.15s;
   min-width: 0;
 }
 
 .inputWrap:focus-within {
-  border-color: #2F6FED;
+  border-color: var(--c-2f6fed);
 }
 
 .inputWrap input {
@@ -165,7 +165,7 @@
   min-width: 0;
   width: 100%;
   font-size: 0.92rem;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   font-family: inherit;
   background: none;
 }
@@ -181,12 +181,12 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  color: #5B6478;
+  color: var(--c-5b6478);
   cursor: pointer;
 }
 
 .rememberMe input {
-  accent-color: #2F6FED;
+  accent-color: var(--c-2f6fed);
   width: 15px;
   height: 15px;
   cursor: pointer;
@@ -195,7 +195,7 @@
 .forgotLink {
   background: none;
   border: none;
-  color: #2F6FED;
+  color: var(--c-2f6fed);
   font-weight: 600;
   cursor: pointer;
   padding: 0;
@@ -203,8 +203,8 @@
 }
 
 .error {
-  background: #FDECEC;
-  color: #D64545;
+  background: var(--c-fdecec);
+  color: var(--c-d64545);
   font-size: 0.82rem;
   padding: 10px 12px;
   border-radius: 8px;
@@ -212,7 +212,7 @@
 }
 
 .submitBtn {
-  background: #2F6FED;
+  background: var(--c-2f6fed);
   color: #fff;
   border: none;
   font-weight: 600;
@@ -224,20 +224,20 @@
 }
 
 .submitBtn:hover {
-  background: #2359C9;
+  background: var(--c-2359c9);
 }
 
 .footer {
   text-align: center;
   margin-top: 22px;
   font-size: 0.86rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
 }
 
 .linkBtn {
   background: none;
   border: none;
-  color: #2F6FED;
+  color: var(--c-2f6fed);
   font-weight: 600;
   cursor: pointer;
   padding: 0;
@@ -247,7 +247,7 @@
 .roleTabs {
   display: flex;
   gap: 8px;
-  background: #F3F5F9;
+  background: var(--c-f3f5f9);
   padding: 4px;
   border-radius: 10px;
   min-width: 0;
@@ -266,7 +266,7 @@
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #5B6478;
+  color: var(--c-5b6478);
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
@@ -274,20 +274,20 @@
 }
 
 .roleTabActive {
-  background: #fff;
-  color: #2F6FED;
+  background: var(--c-ffffff);
+  color: var(--c-2f6fed);
   box-shadow: 0 2px 6px rgba(26, 31, 54, 0.08);
 }
 
 .demoBox {
   margin-top: 22px;
-  border-top: 1px dashed #EDEFF3;
+  border-top: 1px dashed var(--c-edeff3);
   padding-top: 16px;
 }
 
 .demoBox > p {
   font-size: 0.78rem;
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   margin: 0 0 8px;
   font-weight: 600;
 }
@@ -297,24 +297,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #F8F9FC;
-  border: 1px solid #EDEFF3;
+  background: var(--c-f8f9fc);
+  border: 1px solid var(--c-edeff3);
   border-radius: 8px;
   padding: 8px 12px;
   margin-bottom: 6px;
   cursor: pointer;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
 }
 
 .demoRow:hover {
-  background: #EAF2FF;
-  border-color: #2F6FED;
+  background: var(--c-eaf2ff);
+  border-color: var(--c-2f6fed);
 }
 
 .demoEmail {
-  color: #8A94A6;
+  color: var(--c-8a94a6);
   font-weight: 500;
 }
 

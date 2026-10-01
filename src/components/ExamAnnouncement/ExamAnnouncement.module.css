@@ -1,6 +1,6 @@
 .card {
-  background: #fff;
-  border: 1px solid #EDEFF3;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
   border-radius: 14px;
   padding: 18px 22px;
   display: flex;
@@ -13,8 +13,8 @@
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  background: #F0EDFE;
-  color: #7C6FF0;
+  background: var(--c-f0edfe);
+  color: var(--c-7c6ff0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,19 +25,19 @@
 
 .title {
   font-weight: 600;
-  color: #1A1F36;
+  color: var(--c-1a1f36);
   margin: 0 0 3px;
   font-size: 0.95rem;
 }
 
 .text {
   font-size: 0.85rem;
-  color: #5B6478;
+  color: var(--c-5b6478);
   margin: 0 0 3px;
 }
 
 .meta {
   font-size: 0.78rem;
-  color: #B7BECB;
+  color: var(--c-b7becb);
   margin: 0;
 }
