@@ -7,3 +7,11 @@
 @media (max-width: 900px) {
   .row { flex-wrap: wrap; }
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 900px) {
+  .row > * { flex: 1 1 calc(50% - 8px); min-width: 0; }
+}
+@media (max-width: 480px) {
+  .row > * { flex-basis: 100%; }
+}

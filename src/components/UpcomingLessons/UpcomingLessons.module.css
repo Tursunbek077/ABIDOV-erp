@@ -69,3 +69,8 @@
   color: var(--c-b7becb);
   margin: 0;
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 640px) {
+  .card { padding: 14px 16px; }
+}

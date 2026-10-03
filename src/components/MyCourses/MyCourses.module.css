@@ -24,3 +24,8 @@
   text-decoration: none;
   font-weight: 500;
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 640px) {
+  .card { padding: 16px 18px; }
+}

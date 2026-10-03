@@ -256,3 +256,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 900px) {
+  .statsRow { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .cardHeader, .studentRow { padding-left: 14px; padding-right: 14px; }
+}

@@ -40,3 +40,10 @@
   color: var(--c-8a94a6);
   margin: 0;
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+.card { min-width: 0; }
+.value { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .value { font-size: 1.35rem; }
+}

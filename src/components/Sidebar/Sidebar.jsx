@@ -43,18 +43,40 @@
 // export default Sidebar;
 
 
-import { LogOut, GraduationCap } from "lucide-react";
+import { useEffect } from "react";
+import { LogOut, GraduationCap, X } from "lucide-react";
 import { useLanguage } from "../../context/useLanguage";
 import styles from "./Sidebar.module.css";
 
-function Sidebar({ navItems, activePage, onNavigate, role, onLogout }) {
+function Sidebar({ navItems, activePage, onNavigate, role, onLogout, open = false, onClose }) {
   const { t } = useLanguage();
 
+  // Menyu ochiq bo'lganda Esc bilan yopiladi va orqadagi sahifa aylanmaydi
+  useEffect(() => {
+    if (!open) return;
+    function handleKey(e) {
+      if (e.key === "Escape") onClose?.();
+    }
+    document.addEventListener("keydown", handleKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open, onClose]);
+
   return (
-    <aside className={styles.sidebar}>
+    <>
+    {/* Telefonda menyu ortidagi qoraytirilgan fon — bosilsa menyu yopiladi */}
+    <div className={`${styles.backdrop} ${open ? styles.backdropOpen : ""}`} onClick={onClose} aria-hidden="true" />
+    <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ""}`}>
       <div className={styles.logo}>
         <GraduationCap size={30} />
         <span>ABIDOV'S</span>
+        <button type="button" className={styles.closeBtn} onClick={onClose} aria-label={t("common.close")}>
+          <X size={20} />
+        </button>
       </div>
 
       {role && <div className={styles.roleTag}>{t(`role.${role}`)}</div>}
@@ -79,6 +101,7 @@ function Sidebar({ navItems, activePage, onNavigate, role, onLogout }) {
         </div>
       </div>
     </aside>
+    </>
   );
 }
 

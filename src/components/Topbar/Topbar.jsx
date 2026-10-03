@@ -37,18 +37,24 @@
 // export default Topbar;
 
 
-import { Bell, ChevronDown } from "lucide-react";
+import { Bell, ChevronDown, Menu } from "lucide-react";
 import { useLanguage } from "../../context/useLanguage";
 import styles from "./Topbar.module.css";
 
-function Topbar({ title = "Dashboard", user }) {
+function Topbar({ title = "Dashboard", user, onMenuClick }) {
   const { t } = useLanguage();
   const initials = user ? `${user.firstName?.[0] || ""}${user.lastName?.[0] || ""}`.toUpperCase() : "?";
   const fullName = user ? `${user.firstName} ${user.lastName}` : "";
 
   return (
     <header className={styles.topbar}>
-      <h1 className={styles.title}>{title}</h1>
+      <div className={styles.left}>
+        {/* ☰ — faqat planshet va telefonda ko'rinadi */}
+        <button type="button" className={styles.menuBtn} onClick={onMenuClick} aria-label={t("common.menu")}>
+          <Menu size={22} />
+        </button>
+        <h1 className={styles.title}>{title}</h1>
+      </div>
 
       <div className={styles.right}>
         <div className={styles.bellWrap}>
@@ -62,7 +68,7 @@ function Topbar({ title = "Dashboard", user }) {
             <span className={styles.name}>{fullName}</span>
             <span className={styles.role}>{user ? t(`role.${user.role}`) : ""}</span>
           </div>
-          <ChevronDown size={25} style={{ color: "var(--c-8a94a6)" }} />
+          <ChevronDown size={25} className={styles.chevron} style={{ color: "var(--c-8a94a6)" }} />
         </div>
       </div>
     </header>

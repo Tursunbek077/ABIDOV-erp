@@ -188,3 +188,12 @@
 .submitBtn:hover {
   background: var(--c-2359c9);
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 640px) {
+  .overlay { padding: 12px; }
+  .modal { padding: 20px 18px; max-height: calc(100vh - 24px); }
+  .formRow { grid-template-columns: 1fr; }
+  .footer { flex-direction: column-reverse; }
+  .footer > button { width: 100%; }
+}

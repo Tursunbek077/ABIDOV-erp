@@ -74,8 +74,65 @@
   gap: 4px;
 }
 
-@media (max-width: 860px) {
+/* Yopish tugmasi va qoraytirilgan fon — faqat planshet/telefonda */
+.closeBtn {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  color: var(--c-5b6478);
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  background: var(--c-f3f5f9);
+}
+
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 1024px) {
   .sidebar {
+    z-index: 50;
+    width: 280px;
+    max-width: 85vw;
     transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: none;
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+    box-shadow: 0 0 40px rgba(15, 20, 32, 0.25);
+  }
+
+  .closeBtn {
+    display: inline-flex;
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgba(15, 20, 32, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .backdropOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .backdrop {
+    transition: none;
   }
 }

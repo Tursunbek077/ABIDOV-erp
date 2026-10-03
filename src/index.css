@@ -215,3 +215,15 @@ body * {
     transition: none !important;
   }
 }
+
+/* ===== Responsive: umumiy qoidalar ===== */
+img {
+  max-width: 100%;
+}
+
+/* Telefonda asosiy shrift biroz kichikroq — matn sig'adi */
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}

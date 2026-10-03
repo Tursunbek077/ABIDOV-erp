@@ -6,9 +6,17 @@
   min-height: 100vh;
 }
 
-@media (max-width: 860px) {
+/* Planshet: menyu yon tomondan chiqadi, sahifa butun kenglikni egallaydi */
+@media (max-width: 1024px) {
   .page {
     margin-left: 0;
-    padding: 20px;
+    padding: 20px 24px;
+  }
+}
+
+/* Telefon */
+@media (max-width: 640px) {
+  .page {
+    padding: 14px 14px 24px;
   }
 }

@@ -78,3 +78,67 @@
   /* color: #8A94A6; */
   color: var(--c-8a94a6);
 }
+/* ===== Responsive ===== */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.menuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--c-edeff3);
+  background: var(--c-ffffff);
+  color: var(--c-1a1f36);
+  cursor: pointer;
+}
+
+.title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .menuBtn {
+    display: inline-flex;
+  }
+
+  .topbar {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .right {
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .userInfo,
+  .chevron {
+    display: none;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 0.78rem;
+  }
+}

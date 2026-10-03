@@ -237,3 +237,16 @@
   color: var(--c-94a3b8);
   font-size: 0.875rem;
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 1024px) {
+  .homeworksContainer { padding: 0; }
+}
+@media (max-width: 640px) {
+  .contentCard { padding: 1rem; }
+  .tabsList { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+  .tabsList > * { flex-shrink: 0; white-space: nowrap; }
+  .taskItem { flex-wrap: wrap; gap: 0.75rem; }
+  .taskLeft { min-width: 0; }
+  .taskRight { width: 100%; justify-content: space-between; }
+}

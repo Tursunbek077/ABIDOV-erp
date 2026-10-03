@@ -376,3 +376,15 @@
     min-width: 720px;
   }
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+.tableWrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table { min-width: 720px; }
+@media (max-width: 640px) {
+  .table th, .table td { padding: 11px 12px; }
+}
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .groupHeader { padding: 14px; }
+  .statCard { flex: 1 1 calc(50% - 8px); min-width: 0; }
+}

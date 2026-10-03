@@ -149,3 +149,8 @@
   border-color: var(--c-d64545);
   color: var(--c-d64545);
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 420px) {
+  .bottomRow { flex-wrap: wrap; gap: 10px; }
+}

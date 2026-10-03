@@ -308,6 +308,8 @@ export const translations = {
     "rating.col.homework": "Vazifa",
     "rating.col.total": "Umumiy ball",
     "rating.empty": "Hech narsa topilmadi.",
+
+    "common.menu": "Menyu",
   },
 
   ru: {
@@ -607,6 +609,8 @@ export const translations = {
     "rating.col.homework": "Задания",
     "rating.col.total": "Общий балл",
     "rating.empty": "Ничего не найдено.",
+
+    "common.menu": "Меню",
   },
 
   en: {
@@ -906,5 +910,7 @@ export const translations = {
     "rating.col.homework": "Homework",
     "rating.col.total": "Total score",
     "rating.empty": "Nothing found.",
+
+    "common.menu": "Menu",
   },
 };

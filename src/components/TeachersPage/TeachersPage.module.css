@@ -105,3 +105,19 @@
   color: var(--c-b7becb);
   font-size: 0.9rem;
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 900px) {
+  .statsRow { flex-wrap: wrap; }
+  .statsRow > * { flex: 1 1 calc(50% - 8px); min-width: 0; }
+}
+@media (max-width: 480px) {
+  .statsRow > * { flex-basis: 100%; }
+}
+@media (max-width: 640px) {
+  .toolbar > * { flex: 1 1 100%; min-width: 0; }
+}
+@media (max-width: 640px) {
+  .searchBox, .filterBox { min-width: 0; }
+  .addBtn { justify-content: center; }
+}

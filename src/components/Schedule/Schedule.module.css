@@ -246,3 +246,12 @@
   padding: 20px 0;
   text-align: center;
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 640px) {
+  .card { padding: 14px; }
+  .daysGrid { gap: 4px; }
+  .dayNum { font-size: 0.8rem; }
+  .legend { flex-wrap: wrap; gap: 10px; }
+  .sideHeader { flex-wrap: wrap; gap: 6px; }
+}

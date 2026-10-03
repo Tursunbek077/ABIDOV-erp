@@ -338,3 +338,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 480px) {
+  .page { padding: 16px 12px; }
+  .rightPanel { padding: 24px 18px; }
+  .leftPanel { padding: 20px 18px; }
+  .optionsRow { flex-wrap: wrap; gap: 8px; }
+  .roleTab { font-size: 0.78rem; }
+}

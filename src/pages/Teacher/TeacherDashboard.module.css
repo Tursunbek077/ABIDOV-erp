@@ -146,3 +146,19 @@
   color: var(--c-8a94a6);
   margin: 0;
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 900px) {
+  .statsRow { flex-wrap: wrap; }
+  .statsRow > * { flex: 1 1 calc(50% - 8px); min-width: 0; }
+}
+@media (max-width: 480px) {
+  .statsRow > * { flex-basis: 100%; }
+}
+@media (max-width: 640px) {
+  .banner { padding: 20px; }
+  .card { padding: 16px; }
+  .progressWrap { min-width: 0; }
+  .progressBar { width: 50px; }
+  .hwItem, .classItem { gap: 10px; }
+}

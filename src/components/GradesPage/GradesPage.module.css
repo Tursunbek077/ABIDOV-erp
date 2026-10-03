@@ -263,3 +263,17 @@
   font-weight: 700;
   color: var(--c-1a1f36);
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 900px) {
+  .statsRow { flex-wrap: wrap; }
+  .statsRow > * { flex: 1 1 calc(50% - 8px); min-width: 0; }
+}
+@media (max-width: 640px) {
+  .statsRow > * { flex-basis: 100%; }
+  .card { padding: 16px; }
+  .donutRow { justify-content: center; }
+  .legend { min-width: 0; width: 100%; }
+  .legendName { width: 70px; }
+  .levelCard { padding: 16px; }
+}

@@ -1,5 +1,8 @@
+import { useState } from "react";
 import {
   GraduationCap,
+  Menu,
+  X,
   ArrowRight,
   Code2,
   Palette,
@@ -54,6 +57,9 @@ const features = [
 ];
 
 function Landing({ onLogin, onSignup }) {
+  // Telefonda yuqoridagi havolalar ☰ tugmasi bilan ochiladi
+  const [navOpen, setNavOpen] = useState(false);
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -62,11 +68,20 @@ function Landing({ onLogin, onSignup }) {
             <GraduationCap size={26} />
             <span>ABIDOV'S</span>
           </div>
-          <nav className={styles.nav}>
-            <a href="#courses">Kurslar</a>
-            <a href="#about">Biz haqimizda</a>
-            <a href="#contact">Aloqa</a>
+          <nav className={`${styles.nav} ${navOpen ? styles.navOpen : ""}`}>
+            <a href="#courses" onClick={() => setNavOpen(false)}>Kurslar</a>
+            <a href="#about" onClick={() => setNavOpen(false)}>Biz haqimizda</a>
+            <a href="#contact" onClick={() => setNavOpen(false)}>Aloqa</a>
           </nav>
+          <button
+            type="button"
+            className={styles.navToggle}
+            onClick={() => setNavOpen((o) => !o)}
+            aria-label="Menyu"
+            aria-expanded={navOpen}
+          >
+            {navOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
           <div className={styles.headerActions}>
             <button className={styles.signupBtn} onClick={onLogin}>Kirish</button>
             {/* <button className={styles.signupBtn, styles.loginBtn} onClick={onSignup}>Ro'yxatdan o'tish</button> */}

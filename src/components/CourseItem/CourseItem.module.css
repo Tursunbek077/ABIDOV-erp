@@ -74,3 +74,9 @@
 .fill.blue { background: var(--c-2f6fed); }
 .fill.green { background: var(--c-22b573); }
 .fill.orange { background: var(--c-f5a623); }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 560px) {
+  .item { flex-wrap: wrap; }
+  .progressWrap { width: 100%; padding-left: 62px; }
+}

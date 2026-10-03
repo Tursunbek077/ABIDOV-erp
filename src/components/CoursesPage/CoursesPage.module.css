@@ -127,3 +127,10 @@
   font-weight: 600;
   background: var(--c-f8f9fb);
 }
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 640px) {
+  .toolbar { flex-wrap: wrap; }
+  .toolbar > * { flex: 1 1 100%; min-width: 0; }
+  .dropdown { min-width: 0; }
+}
