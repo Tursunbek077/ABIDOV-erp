@@ -18,9 +18,20 @@ function CourseDetailModal({ course, onClose, onStudentsChanged }) {
 
   function handleAddStudent(newStudent) {
     const all = loadStudents();
+    const today = new Date().toISOString().slice(0, 10);
+    const nextDue = new Date();
+    nextDue.setMonth(nextDue.getMonth() + 1);
     const withNew = [
       ...all,
-      { ...newStudent, id: `s-${Date.now()}`, studentCode: nextStudentCode(all) },
+      {
+        joinDate: today,
+        lastPaymentDate: today,
+        nextDueDate: nextDue.toISOString().slice(0, 10),
+        status: "faol",
+        ...newStudent,
+        id: `s-${Date.now()}`,
+        studentCode: nextStudentCode(all),
+      },
     ];
     saveStudents(withNew);
     setStudents(withNew.filter((s) => s.course === course.title));

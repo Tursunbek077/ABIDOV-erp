@@ -11,7 +11,15 @@ function initials(firstName, lastName) {
 
 // Bugungi sana endi komponent ichida tanlangan til formatida chiqariladi (formatDate)
 
+const ATTENDANCE_KEY = "abidovs_attendance";
+
 function buildInitialStatus(students) {
+  try {
+    const raw = localStorage.getItem(ATTENDANCE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {
+    // Ignore storage read error
+  }
   const map = {};
   students.forEach((s) => {
     map[s.id] = "bor";
@@ -34,11 +42,24 @@ function Attendance() {
   }, [statusMap]);
 
   function setStatus(studentId, value) {
-    setStatusMap((prev) => ({ ...prev, [studentId]: value }));
+    setStatusMap((prev) => {
+      const next = { ...prev, [studentId]: value };
+      try {
+        localStorage.setItem(ATTENDANCE_KEY, JSON.stringify(next));
+      } catch {
+        // Ignore storage write error
+      }
+      return next;
+    });
     setSaved(false);
   }
 
   function handleSave() {
+    try {
+      localStorage.setItem(ATTENDANCE_KEY, JSON.stringify(statusMap));
+    } catch {
+      // Ignore storage write error
+    }
     setSaved(true);
   }
 

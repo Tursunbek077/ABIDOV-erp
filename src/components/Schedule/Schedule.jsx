@@ -40,11 +40,18 @@ function Schedule() {
     return LESSON_WEEKDAYS.includes(dow);
   }).length;
 
+  function changeMonth(delta) {
+    const nextDate = new Date(year, month + delta, 1);
+    const daysInNextMonth = new Date(nextDate.getFullYear(), nextDate.getMonth() + 1, 0).getDate();
+    setViewDate(nextDate);
+    setSelectedDay((prev) => Math.min(prev, daysInNextMonth));
+  }
+
   function goPrevMonth() {
-    setViewDate(new Date(year, month - 1, 1));
+    changeMonth(-1);
   }
   function goNextMonth() {
-    setViewDate(new Date(year, month + 1, 1));
+    changeMonth(1);
   }
 
   function isLessonDay(d) {
@@ -53,7 +60,7 @@ function Schedule() {
     return LESSON_WEEKDAYS.includes(dow);
   }
 
-  const selectedIsLessonDay = isCurrentMonth && isLessonDay(selectedDay);
+  const selectedIsLessonDay = isLessonDay(selectedDay);
 
   return (
     <div className={styles.page}>
@@ -119,7 +126,7 @@ function Schedule() {
             <h3>
               {!selectedIsLessonDay
                 ? t("schedule.selectedDay")
-                : selectedDay === today.getDate()
+                : isCurrentMonth && selectedDay === today.getDate()
                   ? t("schedule.todayLessons")
                   : t("schedule.dayLessons", {
                       date: formatDate(new Date(year, month, selectedDay), { day: "numeric", month: "long" }),

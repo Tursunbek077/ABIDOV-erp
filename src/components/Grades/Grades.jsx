@@ -9,7 +9,15 @@ function initials(firstName, lastName) {
   return `${firstName?.[0] || ""}${lastName?.[0] || ""}`.toUpperCase();
 }
 
+const GRADES_KEY = "abidovs_grades";
+
 function buildInitialScores(students) {
+  try {
+    const raw = localStorage.getItem(GRADES_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {
+    // Ignore storage read error
+  }
   const map = {};
   students.forEach((s) => {
     map[s.id] = s.score;
@@ -60,7 +68,15 @@ function Grades() {
     const parsed = Number(rawValue);
     if (rawValue !== "" && !Number.isNaN(parsed)) {
       const clamped = Math.min(100, Math.max(0, parsed));
-      setScores((prev) => ({ ...prev, [studentId]: clamped }));
+      setScores((prev) => {
+        const next = { ...prev, [studentId]: clamped };
+        try {
+          localStorage.setItem(GRADES_KEY, JSON.stringify(next));
+        } catch {
+          // Ignore storage write error
+        }
+        return next;
+      });
     }
   }
 

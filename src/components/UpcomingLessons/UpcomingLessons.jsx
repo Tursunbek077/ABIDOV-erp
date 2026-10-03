@@ -2,13 +2,15 @@ import { lessons } from "../../data/dummyData";
 import styles from "./UpcomingLessons.module.css";
 import { useLanguage } from "../../context/useLanguage";
 
-function UpcomingLessons() {
+function UpcomingLessons({ onNavigate }) {
   const { t } = useLanguage();
   return (
     <section className={styles.card}>
       <div className={styles.header}>
         <h3>{t("student.upcomingLessons")}</h3>
-        <a href="#" className={styles.viewAll}>{t("common.viewAll")}</a>
+        <button type="button" className={styles.viewAllBtn} onClick={() => onNavigate?.("schedule")}>
+          {t("common.viewAll")}
+        </button>
       </div>
 
       <div className={styles.list}>

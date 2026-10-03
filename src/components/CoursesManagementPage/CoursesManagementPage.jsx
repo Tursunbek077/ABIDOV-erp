@@ -17,14 +17,14 @@ import CourseFormModal from "../CourseFormModal/CourseFormModal";
 import CourseDetailModal from "../CourseDetailModal/CourseDetailModal";
 import { categoryOptions } from "../../data/coursesData";
 import { loadCourses, saveCourses } from "../../utils/coursesStore";
-import { loadStudents } from "../../utils/studentsStore";
+import { loadStudents, saveStudents } from "../../utils/studentsStore";
 import styles from "./CoursesManagementPage.module.css";
 import { useLanguage } from "../../context/useLanguage";
 
 function CoursesManagementPage() {
   const { t, formatMoney } = useLanguage();
   const [courses, setCourses] = useState(loadCourses);
-  const [studentsTick, setStudentsTick] = useState(0);
+  const [students, setStudents] = useState(loadStudents);
   const [query, setQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -36,7 +36,17 @@ function CoursesManagementPage() {
     saveCourses(courses);
   }, [courses]);
 
-  const students = useMemo(() => loadStudents(), [studentsTick, courses]);
+  useEffect(() => {
+    function refreshStudents() {
+      setStudents(loadStudents());
+    }
+    window.addEventListener("storage", refreshStudents);
+    window.addEventListener("abidovs_students_changed", refreshStudents);
+    return () => {
+      window.removeEventListener("storage", refreshStudents);
+      window.removeEventListener("abidovs_students_changed", refreshStudents);
+    };
+  }, []);
 
   const studentCountByCourse = useMemo(() => {
     const map = {};
@@ -82,6 +92,15 @@ function CoursesManagementPage() {
 
   function handleSave(course) {
     if (course.id) {
+      const oldCourse = courses.find((c) => c.id === course.id);
+      if (oldCourse && oldCourse.title !== course.title) {
+        const allStudents = loadStudents();
+        const updatedStudents = allStudents.map((s) =>
+          s.course === oldCourse.title ? { ...s, course: course.title } : s
+        );
+        saveStudents(updatedStudents);
+        handleStudentsChanged();
+      }
       setCourses((prev) => prev.map((c) => (c.id === course.id ? course : c)));
     } else {
       setCourses((prev) => [...prev, { ...course, id: `c-${Date.now()}` }]);
@@ -101,7 +120,7 @@ function CoursesManagementPage() {
   }
 
   function handleStudentsChanged() {
-    setStudentsTick((n) => n + 1);
+    setStudents(loadStudents());
   }
 
   return (

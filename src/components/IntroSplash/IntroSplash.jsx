@@ -1,28 +1,47 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./IntroSplash.module.css";
 
 const TOTAL_DURATION = 3400; // ms — umumiy animatsiya davomiyligi (harflar 2s davom etadi)
 
+function playIntroChime() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const now = ctx.currentTime;
+    const freqs = [311.13, 466.16, 622.25, 783.99];
+    freqs.forEach((freq, index) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, now + index * 0.08);
+
+      gain.gain.setValueAtTime(0, now + index * 0.08);
+      gain.gain.linearRampToValueAtTime(0.06, now + index * 0.08 + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.08 + 1.2);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now + index * 0.08);
+      osc.stop(now + index * 0.08 + 1.3);
+    });
+  } catch {
+    // Autoplay policy or unsupported
+  }
+}
+
 function IntroSplash({ onFinish }) {
   const [leaving, setLeaving] = useState(false);
-  const audioRef = useRef(null);
 
   useEffect(() => {
-    // Ovozni animatsiya bilan bir vaqtda ishga tushirish.
-    // Ba'zi brauzerlar foydalanuvchi hali sahifa bilan
-    // o'zaro aloqa qilmagan bo'lsa, avtomatik ovozni bloklaydi —
-    // shu sabab xatoni jim yutib yuboramiz (animatsiya baribir davom etadi).
-    const audio = new Audio("/sounds/intro-sound.wav");
-    audio.volume = 0.6;
-    audioRef.current = audio;
-    audio.play().catch(() => {});
+    playIntroChime();
 
     const leaveTimer = setTimeout(() => setLeaving(true), TOTAL_DURATION - 600);
     const endTimer = setTimeout(() => onFinish?.(), TOTAL_DURATION);
     return () => {
       clearTimeout(leaveTimer);
       clearTimeout(endTimer);
-      audio.pause();
     };
   }, [onFinish]);
 

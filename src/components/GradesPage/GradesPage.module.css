@@ -206,6 +206,11 @@
   }
 }
 
+.levelLeft {
+  display: flex;
+  flex-direction: column;
+}
+
 .levelTop {
   margin-bottom: 10px;
 }

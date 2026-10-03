@@ -18,7 +18,12 @@
   margin: 0;
 }
 
-.viewAll {
+.viewAll,
+.viewAllBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   font-size: 0.85rem;
   color: var(--c-2f6fed);
   text-decoration: none;

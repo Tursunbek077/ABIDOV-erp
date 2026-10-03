@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { Wallet, CheckCircle2, Clock, AlertTriangle, Search } from "lucide-react";
+import { useMemo, useState, useRef, useEffect} from "react";
+import { Wallet, CheckCircle2, Clock, AlertTriangle, Search, ChevronDown } from "lucide-react";
 import StatCard from "../StatCard/StatCard";
 import { loadStudents } from "../../utils/studentsStore";
 import {
@@ -27,6 +27,37 @@ function PaymentsPage() {
   const [students, setStudents] = useState(loadStudents);
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("barchasi");
+
+    const [filterOpen, setFilterOpen] = useState(false);
+  const filterRef = useRef(null);
+
+  // Ro'yxat tashqarisiga bosilganda yoki Esc bosilganda yopiladi
+  useEffect(() => {
+    if (!filterOpen) return;
+    function handleClick(e) {
+      if (filterRef.current && !filterRef.current.contains(e.target)) setFilterOpen(false);
+    }
+    function handleKey(e) {
+      if (e.key === "Escape") setFilterOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, [filterOpen]);
+
+  // Holat filtri variantlari
+  const filterOptions = [
+    { value: "barchasi", label: t("admin.allStatuses") },
+    { value: PAYMENT_STATUS.OVERDUE, label: t("pay.status.overdue") },
+    { value: PAYMENT_STATUS.DUE_SOON, label: t("ap.dueSoon") },
+    { value: PAYMENT_STATUS.PAID, label: t("ap.paidState") },
+  ];
+  const currentFilter = filterOptions.find((o) => o.value === statusFilter) || filterOptions[0];
+
+
 
   const rows = useMemo(
     () =>
@@ -98,14 +129,50 @@ function PaymentsPage() {
           />
         </div>
 
-        <div className={styles.filterBox}>
+        {/* <div className={styles.filterBox}>
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
             <option value="barchasi">{t("admin.allStatuses")}</option>
             <option value={PAYMENT_STATUS.OVERDUE}>{t("pay.status.overdue")}</option>
             <option value={PAYMENT_STATUS.DUE_SOON}>{t("ap.dueSoon")}</option>
             <option value={PAYMENT_STATUS.PAID}>{t("ap.paidState")}</option>
           </select>
+        </div> */}
+
+        <div ref={filterRef} className={`${styles.dropdown} ${filterOpen ? styles.dropdownOpen : ""}`}>
+          <button
+            type="button"
+            className={styles.dropdownTrigger}
+            onClick={() => setFilterOpen((o) => !o)}
+            aria-haspopup="listbox"
+            aria-expanded={filterOpen}
+          >
+            <span>{currentFilter.label}</span>
+            <ChevronDown size={16} className={styles.dropdownChevron} />
+          </button>
+
+          {filterOpen && (
+            <div className={styles.dropdownMenu} role="listbox">
+              {filterOptions.map((o) => (
+                <button
+                  key={o.value}
+                  type="button"
+                  role="option"
+                  aria-selected={o.value === statusFilter}
+                  className={`${styles.dropdownOption} ${o.value === statusFilter ? styles.dropdownSelected : ""}`}
+                  onClick={() => {
+                    setStatusFilter(o.value);
+                    setFilterOpen(false);
+                  }}
+                >
+                  {o.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
+
+
+
       </div>
 
       <div className={styles.tableWrap}>

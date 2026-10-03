@@ -14,7 +14,7 @@ function initials(firstName, lastName) {
 function StudentsPage() {
   const { t } = useLanguage();
   const [students, setStudents] = useState(loadStudents);
-  const courseOptions = useMemo(() => loadCourses().map((c) => c.title), [students]);
+  const courseOptions = useMemo(() => loadCourses().map((c) => c.title), []);
   const [query, setQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -63,9 +63,20 @@ function StudentsPage() {
     if (student.id) {
       setStudents((prev) => prev.map((s) => (s.id === student.id ? student : s)));
     } else {
+      const today = new Date().toISOString().slice(0, 10);
+      const nextDue = new Date();
+      nextDue.setMonth(nextDue.getMonth() + 1);
       setStudents((prev) => [
         ...prev,
-        { ...student, id: `s-${Date.now()}`, studentCode: nextStudentCode(prev) },
+        {
+          joinDate: today,
+          lastPaymentDate: today,
+          nextDueDate: nextDue.toISOString().slice(0, 10),
+          status: "faol",
+          ...student,
+          id: `s-${Date.now()}`,
+          studentCode: nextStudentCode(prev),
+        },
       ]);
     }
     closeModal();

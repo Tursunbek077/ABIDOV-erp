@@ -9,13 +9,15 @@ const statusStyle = {
   done: { color: "var(--c-22b573)", icon: CheckCircle2 },
 };
 
-function RecentHomework() {
+function RecentHomework({ onNavigate }) {
   const { t, formatDate } = useLanguage();
   return (
     <section className={styles.card}>
       <div className={styles.header}>
         <h3>{t("student.recentHomework")}</h3>
-        <a href="#" className={styles.viewAll}>{t("common.viewAll")}</a>
+        <button type="button" className={styles.viewAllBtn} onClick={() => onNavigate?.("homework")}>
+          {t("common.viewAll")}
+        </button>
       </div>
 
       <div className={styles.list}>

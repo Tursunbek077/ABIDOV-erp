@@ -2,7 +2,7 @@ import { Users, GraduationCap, Clock, FileText, ChevronRight } from "lucide-reac
 import StatCard from "../../components/StatCard/StatCard";
 import Placeholder from "../../components/Placeholder/Placeholder";
 import Schedule from "../../components/Schedule/Schedule";
-import MyClasses from "../../components/MyClasses/MyClasess";
+import MyClasses from "../../components/MyClasses/MyClasses";
 import Attendance from "../../components/Attendance/Attendance";
 import Grades from "../../components/Grades/Grades";
 import Homework from "../../components/Homework/Homework";
@@ -13,7 +13,7 @@ import styles from "./TeacherDashboard.module.css";
 
 const iconMap = { users: Users, graduation: GraduationCap, clock: Clock, file: FileText };
 
-function TeacherDashboard({ user, activePage }) {
+function TeacherDashboard({ user, activePage, onNavigate }) {
   const { t } = useLanguage();
   const weekdays = t("cal.weekdaysShort").split(",");
   if (activePage === "schedule") {
@@ -37,7 +37,7 @@ function TeacherDashboard({ user, activePage }) {
   }
 
   if (activePage !== "dashboard") {
-        return <Placeholder page={activePage} />;
+    return <Placeholder page={activePage} />;
   }
 
   return (
@@ -57,7 +57,9 @@ function TeacherDashboard({ user, activePage }) {
         <section className={styles.card}>
           <div className={styles.cardHeader}>
             <h3>{t("nav.classes")}</h3>
-            <a href="#">{t("common.viewAll")}</a>
+            <button type="button" className={styles.cardHeaderBtn} onClick={() => onNavigate?.("classes")}>
+              {t("common.viewAll")}
+            </button>
           </div>
           <div>
             {teacherClasses.map((c) => (
@@ -82,7 +84,9 @@ function TeacherDashboard({ user, activePage }) {
         <section className={styles.card}>
           <div className={styles.cardHeader}>
             <h3>{t("teacher.toReview")}</h3>
-            <a href="#">{t("common.viewAll")}</a>
+            <button type="button" className={styles.cardHeaderBtn} onClick={() => onNavigate?.("homework")}>
+              {t("common.viewAll")}
+            </button>
           </div>
           <div className={styles.list}>
             {teacherHomeworkQueue.map((h) => (

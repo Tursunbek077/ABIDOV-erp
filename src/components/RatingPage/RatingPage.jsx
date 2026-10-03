@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { Search, ChevronDown, Trophy, Crown, Medal, TrendingUp, CalendarCheck, ClipboardCheck } from "lucide-react";
 import StatCard from "../StatCard/StatCard";
 import { ratingSeed } from "../../data/ratingData";
@@ -74,11 +74,38 @@ function PodiumCard({ item, place }) {
 
 function RatingPage() {
   const { t } = useLanguage();
-  const rating = useMemo(buildRating, []);
+  const rating = useMemo(() => buildRating(), []);
   const [query, setQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState("all");
 
   const courses = useMemo(() => [...new Set(rating.map((r) => r.course))], [rating]);
+
+
+  const [filterOpen, setFilterOpen] = useState(false);
+  const filterRef = useRef(null);
+
+  // Ro'yxat tashqarisiga bosilganda yoki Esc bosilganda yopiladi
+  useEffect(() => {
+    if (!filterOpen) return;
+    function handleClick(e) {
+      if (filterRef.current && !filterRef.current.contains(e.target)) setFilterOpen(false);
+    }
+    function handleKey(e) {
+      if (e.key === "Escape") setFilterOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, [filterOpen]);
+
+  // Kurs filtri variantlari
+  const filterOptions = [{ value: "all", label: t("courses.all") }, ...courses.map((c) => ({ value: c, label: c }))];
+  const currentFilter = filterOptions.find((o) => o.value === courseFilter) || filterOptions[0];
+
+
 
   const stats = useMemo(() => {
     const n = rating.length || 1;
@@ -130,16 +157,50 @@ function RatingPage() {
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
-        <div className={styles.filterBox}>
-          <select value={courseFilter} onChange={(e) => setCourseFilter(e.target.value)}>
-            <option value="all">{t("courses.all")}</option>
-            {courses.map((c) => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
-          <ChevronDown size={16} style={{ color: "var(--c-8a93a6)" }} />
+
+
+
+
+        <div ref={filterRef} className={`${styles.dropdown} ${filterOpen ? styles.dropdownOpen : ""}`}>
+          <button
+            type="button"
+            className={styles.dropdownTrigger}
+            onClick={() => setFilterOpen((o) => !o)}
+            aria-haspopup="listbox"
+            aria-expanded={filterOpen}
+          >
+            <span>{currentFilter.label}</span>
+            <ChevronDown size={16} className={styles.dropdownChevron} />
+          </button>
+
+          {filterOpen && (
+            <div className={styles.dropdownMenu} role="listbox">
+              {filterOptions.map((o) => (
+                <button
+                  key={o.value}
+                  type="button"
+                  role="option"
+                  aria-selected={o.value === courseFilter}
+                  className={`${styles.dropdownOption} ${o.value === courseFilter ? styles.dropdownSelected : ""}`}
+                  onClick={() => {
+                    setCourseFilter(o.value);
+                    setFilterOpen(false);
+                  }}
+                >
+                  {o.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
+
+
+
+
+
+
       </div>
+
 
       <section className={styles.listCard}>
         <div className={styles.listHead}>

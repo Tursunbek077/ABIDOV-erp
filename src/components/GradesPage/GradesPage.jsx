@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Trophy, TrendingUp, ClipboardCheck, CalendarCheck2 } from "lucide-react";
 import StatCard from "../StatCard/StatCard";
-import { courses, stats } from "../../data/dummyData";
+import { stats } from "../../data/dummyData";
 import styles from "./GradesPage.module.css";
 import { useLanguage } from "../../context/useLanguage";
 
@@ -23,15 +23,17 @@ function GradeDonut({ segments }) {
   const stroke = 22;
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
-  const total = segments.reduce((sum, s) => sum + s.value, 0);
+  const total = segments.reduce((sum, s) => sum + s.value, 0) || 1;
 
-  let offset = 0;
-  const arcs = segments.map((s) => {
-    const length = (s.value / total) * circumference;
-    const arc = { ...s, length, dashoffset: -offset };
-    offset += length;
-    return arc;
-  });
+  const { arcs } = segments.reduce(
+    (acc, s) => {
+      const length = (s.value / total) * circumference;
+      acc.arcs.push({ ...s, length, dashoffset: -acc.offset });
+      acc.offset += length;
+      return acc;
+    },
+    { arcs: [], offset: 0 }
+  );
 
   return (
     <div className={styles.donutWrap}>

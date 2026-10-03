@@ -62,6 +62,8 @@ function AppShell({ user, activePage, onNavigate, onLogout, children }) {
           title={t(navItems.find((i) => i.key === activePage)?.labelKey || pageTitles[activePage] || "nav.dashboard")}
           user={user}
           onMenuClick={() => setMenuOpen(true)}
+          onNavigate={handleNavigate}
+          onLogout={onLogout}
         />
         {children}
       </div>

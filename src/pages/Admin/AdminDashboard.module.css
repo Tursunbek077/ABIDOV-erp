@@ -1,3 +1,8 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
 .banner {
   background: linear-gradient(120deg, #1A1F36, #2F6FED);
   border-radius: 20px;

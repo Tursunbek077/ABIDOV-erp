@@ -86,7 +86,9 @@ function AdminDashboard({ user, activePage, onNavigate }) {
         <section className={styles.card}>
           <div className={styles.cardHeader}>
             <h3>{t("admin.recent")}</h3>
-            <a href="#">{t("common.viewAll")}</a>
+            <button type="button" className={styles.cardHeaderBtn} onClick={() => onNavigate?.("students")}>
+              {t("common.viewAll")}
+            </button>
           </div>
           <div>
             {recentEnrollments.map((e) => (

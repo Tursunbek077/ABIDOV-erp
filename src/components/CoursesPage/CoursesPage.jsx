@@ -1,20 +1,59 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Search, ChevronDown } from "lucide-react";
-import CourseProgressCard from "../courseProgressCard/CourseProgressCard";
-import { courses } from "../../data/dummyData";
+import CourseProgressCard from "../CourseProgressCard/CourseProgressCard";
+import { loadCourses } from "../../utils/coursesStore";
 import styles from "./CoursesPage.module.css";
 import { useLanguage } from "../../context/useLanguage";
 
+function enrichCourse(course) {
+  const start = new Date(course.startDate || Date.now());
+  const now = new Date();
+
+  let elapsedMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  let elapsedDays = now.getDate() - start.getDate();
+  if (elapsedDays < 0) {
+    elapsedMonths = Math.max(0, elapsedMonths - 1);
+    elapsedDays = 30 + elapsedDays;
+  }
+  elapsedMonths = Math.max(0, elapsedMonths);
+  elapsedDays = Math.max(0, elapsedDays);
+
+  const duration = course.durationMonths || 6;
+  const currentMonth = Math.min(duration, Math.max(1, elapsedMonths + 1));
+  const progress = course.progress !== undefined ? course.progress : Math.min(100, Math.round((currentMonth / duration) * 100));
+
+  return {
+    ...course,
+    progress: course.progress ?? progress,
+    currentMonth: course.currentMonth ?? currentMonth,
+    elapsedMonths: course.elapsedMonths ?? elapsedMonths,
+    elapsedDays: course.elapsedDays ?? elapsedDays,
+  };
+}
+
 function CoursesPage() {
   const { t } = useLanguage();
+  const [courses, setCourses] = useState(() => loadCourses().map(enrichCourse));
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    function refresh() {
+      setCourses(loadCourses().map(enrichCourse));
+    }
+    window.addEventListener("storage", refresh);
+    window.addEventListener("abidovs_courses_changed", refresh);
+    return () => {
+      window.removeEventListener("storage", refresh);
+      window.removeEventListener("abidovs_courses_changed", refresh);
+    };
+  }, []);
+
   const categories = useMemo(
     () => ["all", ...new Set(courses.map((c) => c.category))],
-    []
+    [courses]
   );
 
   // Ro'yxat tashqarisiga bosilganda yoki Esc bosilganda yopiladi

@@ -10,11 +10,11 @@ import Schedule from "../../components/Schedule/Schedule";
 import styles from "./StudentDashboard.module.css";
 import CoursesPage from "../../components/CoursesPage/CoursesPage";
 import GradesPage from "../../components/GradesPage/GradesPage";
-import Homeworks from "../../components/homeworkStudent/homeworkStudent";
+import Homeworks from "../../components/HomeworkStudent/HomeworkStudent";
 import StudentPaymentsPage from "../../components/StudentPaymentsPage/StudentPaymentsPage";
 
 
-function StudentDashboard({ user, activePage }) {
+function StudentDashboard({ user, activePage, onNavigate }) {
   if (activePage === "schedule") {
     return <Schedule />;
   }
@@ -36,7 +36,7 @@ function StudentDashboard({ user, activePage }) {
   } 
 
   if (activePage !== "dashboard") {
-        return <Placeholder page={activePage} />;
+    return <Placeholder page={activePage} />;
   }
 
   return (
@@ -46,13 +46,13 @@ function StudentDashboard({ user, activePage }) {
 
       <div className={styles.mainGrid}>
         <div className={styles.leftCol}>
-          <MyCourses />
+          <MyCourses onNavigate={onNavigate} />
           <ExamAnnouncement />
         </div>
 
         <div className={styles.rightCol}>
-          <UpcomingLessons />
-          <RecentHomework />
+          <UpcomingLessons onNavigate={onNavigate} />
+          <RecentHomework onNavigate={onNavigate} />
         </div>
       </div>
     </div>
