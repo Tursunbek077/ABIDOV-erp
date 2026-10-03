@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FileText, Clock, CheckCircle } from 'lucide-react';
-import styles from './homeworkStudent.module.css';
+import styles from './HomeworkStudent.module.css';
 import { useLanguage } from "../../context/useLanguage";
 
 const HomeworkStudent = () => {
