@@ -32,29 +32,6 @@
   color: var(--c-b7becb);
 }
 
-.filterBox {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--c-ffffff);
-  border: 1px solid var(--c-edeff3);
-  border-radius: 12px;
-  padding: 11px 16px;
-  min-width: 190px;
-}
-
-.filterBox select {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--c-1a1f36);
-  cursor: pointer;
-  appearance: none;
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -69,4 +46,84 @@
   text-align: center;
   color: var(--c-b7becb);
   font-size: 0.9rem;
+}
+
+/* ===== Kurs filtri (dropdown) ===== */
+.dropdown {
+  position: relative;
+  min-width: 190px;
+}
+
+.dropdownTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  padding: 11px 14px 11px 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--c-1a1f36);
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdownTrigger:hover,
+.dropdownOpen .dropdownTrigger {
+  border-color: var(--c-2f6fed);
+}
+
+.dropdownOpen .dropdownTrigger {
+  box-shadow: 0 0 0 3px var(--c-eaf2ff);
+}
+
+.dropdownChevron {
+  margin-left: auto;
+  color: var(--c-8a94a6);
+  transition: transform 0.2s ease;
+}
+
+.dropdownOpen .dropdownChevron {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(26, 31, 54, 0.12);
+}
+
+.dropdownOption {
+  width: 100%;
+  padding: 9px 14px;
+  background: var(--c-ffffff);
+  border: 0 solid var(--c-edeff3);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--c-1a1f36);
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdownOption:hover {
+  background: var(--c-f3f5f9);
+}
+
+.dropdownSelected {
+  font-weight: 600;
+  background: var(--c-f8f9fb);
 }
