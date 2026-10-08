@@ -1,0 +1,213 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---- Guruhlar ro'yxati ---- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.classCard {
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.classCard:hover {
+  border-color: var(--c-2f6fed);
+  box-shadow: 0 4px 14px rgba(47, 111, 237, 0.08);
+}
+
+.classTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.classIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.className {
+  margin: 0;
+  font-size: 1.02rem;
+  color: var(--c-1a1f36);
+}
+
+.classSubject {
+  margin: 0;
+  font-size: 0.83rem;
+  color: var(--c-8a94a6);
+}
+
+.classFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--c-f3f5f9);
+}
+
+.classFooterItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--c-5b6478);
+  font-weight: 600;
+}
+
+.classFooterItem svg {
+  color: var(--c-b7becb);
+}
+
+.classFooterTime {
+  font-size: 0.76rem;
+  color: var(--c-8a94a6);
+}
+
+/* ---- Guruh ichi: o'quvchilar ro'yxati ---- */
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--c-5b6478);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 4px;
+}
+
+.backBtn:hover {
+  color: var(--c-2f6fed);
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.groupIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.groupTitle {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: var(--c-1a1f36);
+}
+
+.groupMeta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--c-8a94a6);
+}
+
+.studentList {
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.studentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--c-f3f5f9);
+}
+
+.studentRow:last-child {
+  border-bottom: none;
+}
+
+.studentInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 10px;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.studentName {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--c-1a1f36);
+  font-weight: 500;
+}
+
+.statusBadge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.statusActive {
+  background: var(--c-e4f8ee);
+  color: var(--c-22b573);
+}
+
+.statusInactive {
+  background: var(--c-fdecec);
+  color: var(--c-d64545);
+}
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .groupHeader { padding: 14px; flex-wrap: wrap; }
+  .studentRow { padding: 12px 14px; gap: 10px; }
+  .studentInfo { min-width: 0; }
+}

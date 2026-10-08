@@ -1,0 +1,22 @@
+.page {
+  flex: 1;
+  margin-left: 260px;
+  padding: 28px 32px;
+  background: var(--c-f8f9fb);
+  min-height: 100vh;
+}
+
+/* Planshet: menyu yon tomondan chiqadi, sahifa butun kenglikni egallaydi */
+@media (max-width: 1024px) {
+  .page {
+    margin-left: 0;
+    padding: 20px 24px;
+  }
+}
+
+/* Telefon */
+@media (max-width: 640px) {
+  .page {
+    padding: 14px 14px 24px;
+  }
+}

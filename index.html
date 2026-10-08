@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABIDOV'S ACADEMY</title>
+  <script>
+    // React yuklanishidan oldin mavzuni qo'yamiz — qorong'i rejimda
+    // sahifa ochilayotganda oq ekran miltillamasligi uchun.
+    (function () {
+      try {
+        // var t = localStorage.getItem("abidovs_theme");
+        // if (t !== "light" && t !== "dark") {
+        //   t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        // }
+        // document.documentElement.setAttribute("data-theme", t);
+        // var l = localStorage.getItem("abidovs_lang");
+        var t = "light";
+        var s = JSON.parse(localStorage.getItem("abidovs_session") || "null");
+        if (s && s.email && localStorage.getItem("abidovs_theme_" + s.email) === "dark") t = "dark";
+        document.documentElement.setAttribute("data-theme", t);
+        var l = s && s.email ? localStorage.getItem("abidovs_lang_" + s.email) : null;
+        if (l) document.documentElement.setAttribute("lang", l);
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

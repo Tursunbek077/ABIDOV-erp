@@ -1,0 +1,257 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---- Stat kartalari ---- */
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.statCard {
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 18px;
+  padding: 15px;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.blue { background: var(--c-eaf2ff); color: var(--c-2f6fed); }
+.green { background: var(--c-e4f8ee); color: var(--c-22b573); }
+.orange { background: var(--c-fef3e3); color: var(--c-f5a623); }
+.red { background: var(--c-fdecec); color: var(--c-d64545); }
+
+.statLabel {
+  font-size: 0.85rem;
+  color: var(--c-8a94a6);
+  margin: 0 0 6px;
+}
+
+.statValue {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--c-1a1f36);
+  margin: 0;
+}
+
+/* ---- Asosiy karta ---- */
+
+.card {
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--c-f3f5f9);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.groupInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.groupIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.groupName {
+  margin: 0 0 3px;
+  font-size: 1.02rem;
+  color: var(--c-1a1f36);
+}
+
+.groupSubject {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--c-8a94a6);
+}
+
+.dateBadge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--c-f6f8fb);
+  color: var(--c-5b6478);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.dateBadge svg {
+  color: var(--c-8a94a6);
+}
+
+/* ---- O'quvchilar ro'yxati ---- */
+
+.studentList {
+  display: flex;
+  flex-direction: column;
+}
+
+.studentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--c-f3f5f9);
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.studentRow:last-child {
+  border-bottom: none;
+}
+
+.studentInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 180px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 10px;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.studentName {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--c-1a1f36);
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--c-edeff3);
+  background: var(--c-ffffff);
+  color: var(--c-8a94a6);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.actionBtn:hover {
+  border-color: var(--c-d5d9e2);
+}
+
+.borBtn.active {
+  background: var(--c-e4f8ee);
+  border-color: var(--c-22b573);
+  color: var(--c-22b573);
+}
+
+.kechikdiBtn.active {
+  background: var(--c-fef3e3);
+  border-color: var(--c-f5a623);
+  color: var(--c-f5a623);
+}
+
+.yoqBtn.active {
+  background: var(--c-fdecec);
+  border-color: var(--c-d64545);
+  color: var(--c-d64545);
+}
+
+/* ---- Footer ---- */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--c-f9fafc);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footerHint {
+  font-size: 0.83rem;
+  color: var(--c-8a94a6);
+}
+
+.saveBtn {
+  background: var(--c-2f6fed);
+  color: #fff;
+  border: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.saveBtn:hover {
+  background: var(--c-2559c7);
+}
+
+@media (max-width: 640px) {
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 900px) {
+  .statsRow { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .cardHeader, .studentRow, .footer { padding-left: 14px; padding-right: 14px; }
+  .studentInfo { min-width: 0; }
+  .actions { width: 100%; }
+  .actionBtn { flex: 1; justify-content: center; }
+  .saveBtn { width: 100%; }
+}

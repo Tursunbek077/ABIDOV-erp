@@ -1,0 +1,401 @@
+.page {
+  padding: 4px 0 24px;
+}
+
+.statsRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  padding: 11px 16px;
+}
+
+.searchBox input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: var(--c-1a1f36);
+  background: transparent;
+}
+
+.searchBox input::placeholder {
+  color: var(--c-b7becb);
+}
+
+.filterBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  padding: 11px 16px;
+  min-width: 220px;
+}
+
+.filterBox select {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--c-1a1f36);
+  cursor: pointer;
+}
+
+.tableWrap {
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead tr {
+  background: var(--c-f8f9fc);
+}
+
+.table th {
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--c-8a94a6);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--c-edeff3);
+}
+
+.actionsHead {
+  text-align: right;
+}
+
+.table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--c-f3f5f9);
+  font-size: 0.88rem;
+  color: var(--c-1a1f36);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--c-fafbfd);
+}
+
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 10px;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.fullName {
+  margin: 0 0 2px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--c-1a1f36);
+}
+
+.code {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--c-8a94a6);
+}
+
+.courseBadge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-2f6fed);
+  background: var(--c-eaf2ff);
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.dateCell {
+  color: var(--c-5b6478);
+}
+
+.amountCell {
+  font-weight: 600;
+  color: var(--c-1a1f36);
+}
+
+.statusBadge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.payBtn {
+  background: var(--c-2f6fed);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 9px 14px;
+  border-radius: 9px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.payBtn:hover {
+  background: var(--c-2359c9);
+}
+
+.paidTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c-22b573);
+}
+
+.emptyState {
+  padding: 40px;
+  text-align: center;
+  color: var(--c-b7becb);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .tableWrap {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 780px;
+  }
+}
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 900px) {
+  .statsRow {
+    flex-wrap: wrap;
+  }
+
+  .statsRow>* {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsRow>* {
+    flex-basis: 100%;
+  }
+}
+
+/* @media (max-width: 640px) {
+  .toolbar > * { flex: 1 1 100%; min-width: 0; }
+} */
+
+@media (max-width: 480px) {
+  .statsRow>* {
+    flex-basis: 100%;
+  }
+}
+
+.tableWrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  min-width: 780px;
+}
+
+
+.tableWrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  min-width: 780px;
+}
+
+@media (max-width: 640px) {
+
+  .table th,
+  .table td {
+    padding: 11px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .searchBox,
+  .filterBox {
+    min-width: 0;
+  }
+}
+
+
+/* ===== Filtr (dropdown) — "Mening kurslarim"dagi bilan bir xil ===== */
+.dropdown {
+  position: relative;
+  min-width: 200px;
+}
+
+.dropdownTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  padding: 11px 14px 11px 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--c-1a1f36);
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdownTrigger > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdownTrigger:hover,
+.dropdownOpen .dropdownTrigger {
+  border-color: var(--c-2f6fed);
+}
+
+.dropdownOpen .dropdownTrigger {
+  box-shadow: 0 0 0 3px var(--c-eaf2ff);
+}
+
+.dropdownChevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--c-8a94a6);
+  transition: transform 0.2s ease;
+}
+
+.dropdownOpen .dropdownChevron {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  min-width: 100%;
+  width: max-content;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(26, 31, 54, 0.12);
+}
+
+.dropdownOption {
+  width: 100%;
+  padding: 9px 14px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--c-1a1f36);
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdownOption:hover {
+  background: var(--c-f3f5f9);
+}
+
+.dropdownSelected {
+  font-weight: 600;
+  background: var(--c-f8f9fb);
+}
+
+/* Telefonda: filtr kichrayib qidiruv yonida, bitta qatorda turadi */
+@media (max-width: 640px) {
+  .toolbar {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .searchBox {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 10px 12px;
+  }
+
+  .searchBox input {
+    min-width: 0;
+    text-overflow: ellipsis;
+  }
+
+  .dropdown {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: 140px;
+  }
+
+  .dropdownTrigger {
+    padding: 10px 10px 10px 12px;
+    gap: 6px;
+    font-size: 0.82rem;
+  }
+}

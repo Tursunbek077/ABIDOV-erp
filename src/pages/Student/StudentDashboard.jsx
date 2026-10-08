@@ -1,0 +1,62 @@
+import WelcomeBanner from "../../components/WelcomeBanner/WelcomeBanner";
+import StatsRow from "../../components/StatsRow/StatsRow";
+import MyCourses from "../../components/MyCourses/MyCourses";
+import UpcomingLessons from "../../components/UpcomingLessons/UpcomingLessons";
+import RecentHomework from "../../components/RecentHomework/RecentHomework";
+import ExamAnnouncement from "../../components/ExamAnnouncement/ExamAnnouncement";
+import Placeholder from "../../components/Placeholder/Placeholder";
+import Schedule from "../../components/Schedule/Schedule";
+// import { pageTitles } from "../../data/navConfig";
+import styles from "./StudentDashboard.module.css";
+import CoursesPage from "../../components/CoursesPage/CoursesPage";
+import GradesPage from "../../components/GradesPage/GradesPage";
+import Homeworks from "../../components/HomeworkStudent/HomeworkStudent";
+import StudentPaymentsPage from "../../components/StudentPaymentsPage/StudentPaymentsPage";
+
+
+function StudentDashboard({ user, activePage, onNavigate }) {
+  if (activePage === "schedule") {
+    return <Schedule />;
+  }
+
+  if (activePage === "courses") {
+    return <CoursesPage />;
+  }
+
+  if (activePage === "grades") {
+    return <GradesPage />;
+  }
+
+  if (activePage === "homeworks" || activePage === "homework") {
+    return <Homeworks />;
+  }
+
+  if (activePage === "payments") {
+    return <StudentPaymentsPage user={user} />;
+  } 
+
+  if (activePage !== "dashboard") {
+    return <Placeholder page={activePage} />;
+  }
+
+  return (
+    <div className={styles.page}>
+      <WelcomeBanner name={user.firstName} />
+      <StatsRow />
+
+      <div className={styles.mainGrid}>
+        <div className={styles.leftCol}>
+          <MyCourses onNavigate={onNavigate} />
+          <ExamAnnouncement />
+        </div>
+
+        <div className={styles.rightCol}>
+          <UpcomingLessons onNavigate={onNavigate} />
+          <RecentHomework onNavigate={onNavigate} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default StudentDashboard;

@@ -1,0 +1,257 @@
+.page {
+  padding: 4px 0 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+/* Calendar header */
+.calHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.monthLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-1a1f36);
+}
+
+.navBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--c-edeff3);
+  background: var(--c-ffffff);
+  color: var(--c-1a1f36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.navBtn:hover {
+  background: var(--c-f5f7fa);
+}
+
+/* Weekday row */
+.weekRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.weekLabel,
+.weekLabelLesson {
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 4px 0;
+}
+
+.weekLabel {
+  color: var(--c-b7becb);
+}
+
+.weekLabelLesson {
+  color: var(--c-2f6fed);
+  font-weight: 600;
+}
+
+/* Days grid */
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.emptyCell {
+  min-height: 56px;
+}
+
+.dayCell {
+  position: relative;
+  min-height: 56px;
+  border-radius: 10px;
+  border: 1px solid var(--c-edeff3);
+  background: var(--c-ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dayCell:hover {
+  border-color: var(--c-c9d3e0);
+}
+
+.dayNum {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--c-1a1f36);
+}
+
+.lessonCell {
+  background: var(--c-eaf2ff);
+  border-color: var(--c-d3e4ff);
+}
+
+.lessonCell .dayNum {
+  color: var(--c-2f6fed);
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-2f6fed);
+}
+
+.selectedCell {
+  border: 2px solid var(--c-2f6fed);
+}
+
+.selectedCell.lessonCell {
+  background: var(--c-2f6fed);
+}
+
+.selectedCell.lessonCell .dayNum {
+  color: #fff;
+}
+
+.selectedCell.lessonCell .dot {
+  background: var(--c-ffffff);
+}
+
+.selectedCell:not(.lessonCell) .dayNum {
+  color: var(--c-2f6fed);
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--c-f0f1f5);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--c-8a94a6);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.legendDotLesson {
+  background: var(--c-2f6fed);
+}
+
+/* Side panel */
+.sideHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.sideHeader h3 {
+  font-size: 1.05rem;
+  color: var(--c-1a1f36);
+  margin: 0;
+}
+
+.sideCount {
+  font-size: 0.75rem;
+  color: var(--c-8a94a6);
+}
+
+.lessonList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lessonItem {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--c-f0f1f5);
+}
+
+.lessonItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lessonTime {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--c-eaf2ff);
+  color: var(--c-2f6fed);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  height: fit-content;
+  white-space: nowrap;
+}
+
+.lessonTitle {
+  font-weight: 600;
+  color: var(--c-1a1f36);
+  margin: 0 0 2px;
+  font-size: 0.9rem;
+}
+
+.lessonSubtitle {
+  font-size: 0.8rem;
+  color: var(--c-8a94a6);
+  margin: 0;
+}
+
+.emptyNote {
+  font-size: 0.85rem;
+  color: var(--c-b7becb);
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 640px) {
+  .card { padding: 14px; }
+  .daysGrid { gap: 4px; }
+  .dayNum { font-size: 0.8rem; }
+  .legend { flex-wrap: wrap; gap: 10px; }
+  .sideHeader { flex-wrap: wrap; gap: 6px; }
+}

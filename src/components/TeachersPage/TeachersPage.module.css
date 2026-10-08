@@ -1,0 +1,272 @@
+.page {
+  padding: 4px 0 24px;
+}
+
+.statsRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  padding: 11px 16px;
+}
+
+.searchBox input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: var(--c-1a1f36);
+  background: transparent;
+}
+
+.searchBox input::placeholder {
+  color: var(--c-b7becb);
+}
+
+.filterBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  padding: 11px 16px;
+  min-width: 180px;
+}
+
+.filterBox select {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--c-1a1f36);
+  cursor: pointer;
+  appearance: none;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--c-2f6fed);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 11px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.addBtn:hover {
+  background: var(--c-2359c9);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 14px;
+  padding: 40px;
+  text-align: center;
+  color: var(--c-b7becb);
+  font-size: 0.9rem;
+}
+
+/* ===== Responsive: planshet (≤1024px), telefon (≤640px / ≤480px) ===== */
+@media (max-width: 900px) {
+  .statsRow { flex-wrap: wrap; }
+  .statsRow > * { flex: 1 1 calc(50% - 8px); min-width: 0; }
+}
+@media (max-width: 480px) {
+  .statsRow > * { flex-basis: 100%; }
+}
+/* @media (max-width: 640px) {
+  .toolbar > * { flex: 1 1 100%; min-width: 0; }
+} */
+@media (max-width: 640px) {
+  .searchBox, .filterBox { min-width: 0; }
+  .addBtn { justify-content: center; }
+}
+
+
+/* ===== Filtrlar (dropdown) — sayt dizaynidagi ochiladigan ro'yxat ===== */
+.dropdown {
+  position: relative;
+  min-width: 180px;
+}
+
+.dropdownTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  padding: 11px 14px 11px 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--c-1a1f36);
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdownTrigger > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdownTrigger:hover,
+.dropdownOpen .dropdownTrigger {
+  border-color: var(--c-2f6fed);
+}
+
+.dropdownOpen .dropdownTrigger {
+  box-shadow: 0 0 0 3px var(--c-eaf2ff);
+}
+
+.dropdownChevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--c-8a94a6);
+  transition: transform 0.2s ease;
+}
+
+.dropdownOpen .dropdownChevron {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  min-width: 100%;
+  width: max-content;
+  max-width: 260px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(26, 31, 54, 0.12);
+}
+
+/* Birinchi filtr ro'yxati o'ngga qarab ochiladi (telefonda ekrandan chiqib ketmasligi uchun) */
+.dropdownMenuStart {
+  right: auto;
+  left: 0;
+}
+
+.dropdownOption {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 9px 14px;
+  background: var(--c-ffffff);
+  border: 1px solid var(--c-edeff3);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--c-1a1f36);
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdownOption:hover {
+  background: var(--c-f3f5f9);
+}
+
+.dropdownSelected {
+  font-weight: 600;
+  background: var(--c-f8f9fb);
+}
+
+/* Telefonda: qidiruv, ikkala filtr va + tugmasi bitta qatorda, ixcham */
+@media (max-width: 640px) {
+  .toolbar {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .searchBox {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .searchBox input {
+    min-width: 0;
+    width: 100%;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+  }
+
+  .dropdown {
+    flex: 0 1 92px;
+    min-width: 0;
+  }
+
+  .dropdownTrigger {
+    padding: 10px 8px;
+    gap: 3px;
+    font-size: 0.75rem;
+  }
+
+  .dropdownMenu {
+    width: 210px;
+  }
+
+  .addBtn {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .addText {
+    display: none;
+  }
+}
